@@ -28,6 +28,8 @@
 		7EBB3C281E2623A800E810DA /* UIScreen+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C191E2623A800E810DA /* UIScreen+YHAddition.m */; };
 		7EBB3C291E2623A800E810DA /* UIView+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C1B1E2623A800E810DA /* UIView+YHAddition.m */; };
 		7EBB3C2A1E2623A800E810DA /* UIViewController+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C1D1E2623A800E810DA /* UIViewController+YHAddition.m */; };
+		7EBB3C301E2625AC00E810DA /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C2D1E2625AC00E810DA /* UIView_extra.m */; };
+		7EBB3C311E2625AC00E810DA /* YHLeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C2F1E2625AC00E810DA /* YHLeftDrawerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,10 @@
 		7EBB3C1C1E2623A800E810DA /* UIViewController+YHAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YHAddition.h"; sourceTree = "<group>"; };
 		7EBB3C1D1E2623A800E810DA /* UIViewController+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C1E1E2623A800E810DA /* YHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHHeader.h; sourceTree = "<group>"; };
+		7EBB3C2C1E2625AC00E810DA /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		7EBB3C2D1E2625AC00E810DA /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
+		7EBB3C2E1E2625AC00E810DA /* YHLeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHLeftDrawerController.h; sourceTree = "<group>"; };
+		7EBB3C2F1E2625AC00E810DA /* YHLeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHLeftDrawerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +192,7 @@
 		7EBB3BF41E26217B00E810DA /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7EBB3C2B1E2625AC00E810DA /* LeftDrawerController */,
 				7EBB3C051E2623A800E810DA /* Tools */,
 			);
 			path = Other;
@@ -239,6 +246,17 @@
 				7EBB3C1E1E2623A800E810DA /* YHHeader.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		7EBB3C2B1E2625AC00E810DA /* LeftDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3C2C1E2625AC00E810DA /* UIView_extra.h */,
+				7EBB3C2D1E2625AC00E810DA /* UIView_extra.m */,
+				7EBB3C2E1E2625AC00E810DA /* YHLeftDrawerController.h */,
+				7EBB3C2F1E2625AC00E810DA /* YHLeftDrawerController.m */,
+			);
+			path = LeftDrawerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +369,9 @@
 				7EBB3BAC1E2616F200E810DA /* AppDelegate.m in Sources */,
 				7EBB3C281E2623A800E810DA /* UIScreen+YHAddition.m in Sources */,
 				7EBB3C231E2623A800E810DA /* NSString+YHAddition.m in Sources */,
+				7EBB3C311E2625AC00E810DA /* YHLeftDrawerController.m in Sources */,
 				7EBB3C261E2623A800E810DA /* UIColor+YHAddition.m in Sources */,
+				7EBB3C301E2625AC00E810DA /* UIView_extra.m in Sources */,
 				7EBB3C251E2623A800E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C1F1E2623A800E810DA /* NSArray+YHLog.m in Sources */,
 				7EBB3BA91E2616F200E810DA /* main.m in Sources */,

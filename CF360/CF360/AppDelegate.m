@@ -16,7 +16,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    CFHomeViewController *homeVC = [[CFHomeViewController alloc] init];
+    self.homeNav = [[CFNavgationController alloc] initWithRootViewController:homeVC];
+    
+    CFLeftViewController *leftVC = [[CFLeftViewController alloc] init];
+    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    
+    self.drawerController = [[YHLeftDrawerController alloc] initWithLeftView:leftNav andMainView:self.homeNav];
+    
+    _window.rootViewController = self.drawerController;
+    [_window makeKeyAndVisible];
     return YES;
 }
 
