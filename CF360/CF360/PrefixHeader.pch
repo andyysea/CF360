@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  CF360
+//
+//  Created by junde on 2017/1/12.
+//  Copyright © 2017年 junde. All rights reserved.
+//
+
+
+#if __OBJC__
+
+// 输出宏定义
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...)
+#endif
+
+
+// 第三方类库
+#import <AFNetworking.h>
+#import <MKNetworkKit.h>
+#import <UIImageView+WebCache.h>
+#import <MJRefresh.h>
+#import <MBProgressHUD.h>
+#import <SVProgressHUD.h>
+#import <SDCycleScrollView.h>
+
+
+// 其他公共类
+#import "UIView_extra.h"
+#import "YHHeader.h"
+
+
+#endif

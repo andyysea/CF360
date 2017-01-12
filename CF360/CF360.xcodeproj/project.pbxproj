@@ -94,6 +94,7 @@
 		7EBB3C971E272D9000E810DA /* UIViewController+YHAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YHAddition.h"; sourceTree = "<group>"; };
 		7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C991E272D9000E810DA /* YHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHHeader.h; sourceTree = "<group>"; };
+		7EBB3CAE1E2731E900E810DA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 				7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */,
 				7EBB3C571E272D0100E810DA /* Info.plist */,
 				7EBB3C471E272D0100E810DA /* main.m */,
+				7EBB3CAE1E2731E900E810DA /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -637,6 +639,7 @@
 			baseConfigurationReference = EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -651,6 +654,7 @@
 			baseConfigurationReference = 58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
