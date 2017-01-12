@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A5E3E5B51B42B7854A44DD /* libPods-CF360Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */; };
+		38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
 		7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C6E1E272D9000E810DA /* CFHomeViewController.m */; };
 		7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C721E272D9000E810DA /* CFLeftViewController.m */; };
-		7EBB3C9C1E272D9000E810DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C751E272D9000E810DA /* AppDelegate.m */; };
 		7EBB3C9D1E272D9000E810DA /* CFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C771E272D9000E810DA /* CFBaseViewController.m */; };
 		7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C791E272D9000E810DA /* CFNavgationController.m */; };
 		7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C7D1E272D9000E810DA /* UIView_extra.m */; };
@@ -30,6 +31,7 @@
 		7EBB3CAA1E272D9000E810DA /* UIScreen+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C941E272D9000E810DA /* UIScreen+YHAddition.m */; };
 		7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C961E272D9000E810DA /* UIView+YHAddition.m */; };
 		7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */; };
+		7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C751E272D9000E810DA /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4ED1419B254BFF38F8D47442 /* Pods-CF360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360/Pods-CF360.release.xcconfig"; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +94,10 @@
 		7EBB3C971E272D9000E810DA /* UIViewController+YHAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YHAddition.h"; sourceTree = "<group>"; };
 		7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C991E272D9000E810DA /* YHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHHeader.h; sourceTree = "<group>"; };
+		B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.release.xcconfig"; sourceTree = "<group>"; };
+		EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CF360/Pods-CF360.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,18 +113,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A5E3E5B51B42B7854A44DD /* libPods-CF360Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		018DCFB14543F48A9B5919D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */,
+				58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */,
+				4ED1419B254BFF38F8D47442 /* Pods-CF360Tests.debug.xcconfig */,
+				C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7EBB3C3A1E272D0100E810DA = {
 			isa = PBXGroup;
 			children = (
 				7EBB3C451E272D0100E810DA /* CF360 */,
 				7EBB3C5F1E272D0100E810DA /* CF360Tests */,
 				7EBB3C441E272D0100E810DA /* Products */,
+				018DCFB14543F48A9B5919D4 /* Pods */,
+				B2502AF879B97E9929AA794F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +282,15 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		B2502AF879B97E9929AA794F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */,
+				C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -266,9 +298,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EBB3C651E272D0100E810DA /* Build configuration list for PBXNativeTarget "CF360" */;
 			buildPhases = (
+				66801F8ED4FCD37F0C082A47 /* [CP] Check Pods Manifest.lock */,
 				7EBB3C3F1E272D0100E810DA /* Sources */,
 				7EBB3C401E272D0100E810DA /* Frameworks */,
 				7EBB3C411E272D0100E810DA /* Resources */,
+				942612D05927BC9F31903675 /* [CP] Embed Pods Frameworks */,
+				81E1F2B8D9D3A9481567CCB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,9 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EBB3C681E272D0100E810DA /* Build configuration list for PBXNativeTarget "CF360Tests" */;
 			buildPhases = (
+				42FF43374EBB79DA698F6550 /* [CP] Check Pods Manifest.lock */,
 				7EBB3C581E272D0100E810DA /* Sources */,
 				7EBB3C591E272D0100E810DA /* Frameworks */,
 				7EBB3C5A1E272D0100E810DA /* Resources */,
+				999C31CC1DA017AD95D21B37 /* [CP] Embed Pods Frameworks */,
+				E1BA681946285B063DD4A5CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,11 +393,105 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42FF43374EBB79DA698F6550 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		66801F8ED4FCD37F0C082A47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		81E1F2B8D9D3A9481567CCB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CF360/Pods-CF360-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		942612D05927BC9F31903675 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CF360/Pods-CF360-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		999C31CC1DA017AD95D21B37 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1BA681946285B063DD4A5CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7EBB3C3F1E272D0100E810DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
@@ -379,7 +511,6 @@
 				7EBB3CA01E272D9000E810DA /* YHLeftDrawerController.m in Sources */,
 				7EBB3CA31E272D9000E810DA /* NSDate+YHString.m in Sources */,
 				7EBB3CAA1E272D9000E810DA /* UIScreen+YHAddition.m in Sources */,
-				7EBB3C9C1E272D9000E810DA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +634,7 @@
 		};
 		7EBB3C661E272D0100E810DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CF360/Info.plist;
@@ -516,6 +648,7 @@
 		};
 		7EBB3C671E272D0100E810DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CF360/Info.plist;
@@ -529,6 +662,7 @@
 		};
 		7EBB3C691E272D0100E810DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ED1419B254BFF38F8D47442 /* Pods-CF360Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CF360Tests/Info.plist;
@@ -541,6 +675,7 @@
 		};
 		7EBB3C6A1E272D0100E810DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CF360Tests/Info.plist;

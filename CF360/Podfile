@@ -1,0 +1,31 @@
+platform :ios, '8.0'
+
+target 'CF360' do
+
+pod 'AFNetworking'
+pod 'MKNetworkKit'
+pod 'SDWebImage'
+pod 'MBProgressHUD'
+pod 'SVProgressHUD'
+pod 'MJRefresh'
+pod 'SDCycleScrollView'
+
+
+
+  target 'CF360Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+
+# 对应的版本号
+# Using AFNetworking (3.1.0)
+# Using MBProgressHUD (1.0.0)
+# Using MJRefresh (3.1.12)
+# Using MKNetworkKit (0.87)
+# Using Reachability (3.1.1)
+# Using SDCycleScrollView (1.65)
+# Using SDWebImage (3.8.2)
+# Using SVProgressHUD (2.0.4)
