@@ -7,6 +7,15 @@
 //
 
 #import "CFHomeViewController.h"
+#import "MessageViewController.h" // 导航栏消息控制器
+
+/**
+    定义枚举类型,来设置添加按钮的 tag
+ */
+typedef NS_ENUM(NSInteger, MyButtonTag) {
+    MyButtonTagOfNavLeft,
+    MyButtonTagOfNavRight
+};
 
 @interface CFHomeViewController ()
 
@@ -17,8 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setupNavgationBar];
     [self setupUI];
 }
 
@@ -42,11 +50,63 @@
     [delegate.drawerController setPanEnabled:NO];
 }
 
+#pragma mark - 导航栏上 左边/右边 按钮点击方法
+- (void)navButtonClick:(UIButton *)button {
+    
+    
+    switch (button.tag) {
+        case MyButtonTagOfNavLeft:
+        {
+            // 打开/关闭 左侧菜单控制器
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            delegate.drawerController.closed ? [delegate.drawerController openLeftView] : [delegate.drawerController closeLeftView];
+        }
+            break;
+            
+        case MyButtonTagOfNavRight:
+        {
+            // 跳转消息控制器
+            MessageViewController *messageVC = [[MessageViewController alloc] init];
+            [self.navigationController pushViewController:messageVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - 设置导航栏
+- (void)setupNavgationBar {
+    
+    // 1>添加导航栏中 能打开左侧菜单控制器的按钮
+    UIButton *leftNavButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    leftNavButton.tag = MyButtonTagOfNavLeft;
+    [leftNavButton setImage:[UIImage imageNamed:@"icon-菜单"] forState:UIControlStateNormal];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftNavButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    [leftNavButton addTarget:self action:@selector(navButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 2> 添加导航栏中间的图标视图 titleView
+    UIImageView *navTitleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 24)];
+    navTitleView.image = [UIImage imageNamed:@"img-LOGO"];
+    navTitleView.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = navTitleView;
+    
+    // 3> 添加导航栏中右侧的消息按钮
+    UIButton *rightNavButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    rightNavButton.tag = MyButtonTagOfNavRight;
+    [rightNavButton setImage:[UIImage imageNamed:@"icon-信息提示框"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightNavButton];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+    [rightNavButton addTarget:self action:@selector(navButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
 
 #pragma mark - 设置界面
 - (void)setupUI {
-    NSString *str = @"hheheheh";
-    NSLog(@"--> %@", str);
+    self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 
