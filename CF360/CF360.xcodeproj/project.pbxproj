@@ -38,8 +38,9 @@
 		7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC51E277CFA00E810DA /* MyAttentionViewController.m */; };
 		7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC81E277D6100E810DA /* MyDecFormViewController.m */; };
 		7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */; };
-		7EBB3CCF1E277E8A00E810DA /* MypropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */; };
 		7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CD11E277EA300E810DA /* SettingViewController.m */; };
+		7EBB3CE01E2872B600E810DA /* MyPropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CDF1E2872B600E810DA /* MyPropFormViewController.m */; };
+		7EBB3CE41E28735B00E810DA /* MyCompactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CE31E28735B00E810DA /* MyCompactViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,10 +116,12 @@
 		7EBB3CC81E277D6100E810DA /* MyDecFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDecFormViewController.m; sourceTree = "<group>"; };
 		7EBB3CCA1E277E4300E810DA /* MyAppointMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointMentViewController.h; sourceTree = "<group>"; };
 		7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointMentViewController.m; sourceTree = "<group>"; };
-		7EBB3CCD1E277E8A00E810DA /* MypropFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MypropFormViewController.h; sourceTree = "<group>"; };
-		7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MypropFormViewController.m; sourceTree = "<group>"; };
 		7EBB3CD01E277EA300E810DA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		7EBB3CD11E277EA300E810DA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		7EBB3CDE1E2872B600E810DA /* MyPropFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPropFormViewController.h; sourceTree = "<group>"; };
+		7EBB3CDF1E2872B600E810DA /* MyPropFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPropFormViewController.m; sourceTree = "<group>"; };
+		7EBB3CE21E28735B00E810DA /* MyCompactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCompactViewController.h; sourceTree = "<group>"; };
+		7EBB3CE31E28735B00E810DA /* MyCompactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCompactViewController.m; sourceTree = "<group>"; };
 		B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,7 +237,8 @@
 				7EBB3CBE1E277B8E00E810DA /* 我的关注 */,
 				7EBB3CBD1E277B8E00E810DA /* 我的报单 */,
 				7EBB3CC01E277B8E00E810DA /* 我的预约 */,
-				7EBB3CBF1E277B8E00E810DA /* 我的投保单 */,
+				7EBB3CE11E2872C100E810DA /* 我的合同 */,
+				7EBB3CDD1E2872B600E810DA /* 我的投保单 */,
 				7EBB3CBC1E277B8E00E810DA /* 设置 */,
 			);
 			path = LeftMenu;
@@ -354,15 +358,6 @@
 			path = "我的关注";
 			sourceTree = "<group>";
 		};
-		7EBB3CBF1E277B8E00E810DA /* 我的投保单 */ = {
-			isa = PBXGroup;
-			children = (
-				7EBB3CCD1E277E8A00E810DA /* MypropFormViewController.h */,
-				7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */,
-			);
-			path = "我的投保单";
-			sourceTree = "<group>";
-		};
 		7EBB3CC01E277B8E00E810DA /* 我的预约 */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +365,24 @@
 				7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */,
 			);
 			path = "我的预约";
+			sourceTree = "<group>";
+		};
+		7EBB3CDD1E2872B600E810DA /* 我的投保单 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CDE1E2872B600E810DA /* MyPropFormViewController.h */,
+				7EBB3CDF1E2872B600E810DA /* MyPropFormViewController.m */,
+			);
+			path = "我的投保单";
+			sourceTree = "<group>";
+		};
+		7EBB3CE11E2872C100E810DA /* 我的合同 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CE21E28735B00E810DA /* MyCompactViewController.h */,
+				7EBB3CE31E28735B00E810DA /* MyCompactViewController.m */,
+			);
+			path = "我的合同";
 			sourceTree = "<group>";
 		};
 		B2502AF879B97E9929AA794F /* Frameworks */ = {
@@ -585,6 +598,7 @@
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
+				7EBB3CE01E2872B600E810DA /* MyPropFormViewController.m in Sources */,
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
@@ -602,10 +616,10 @@
 				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
 				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,
 				7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */,
+				7EBB3CE41E28735B00E810DA /* MyCompactViewController.m in Sources */,
 				7EBB3CA21E272D9000E810DA /* NSAttributedString+YHAddition.m in Sources */,
 				7EBB3CA91E272D9000E810DA /* UILabel+YHAddition.m in Sources */,
 				7EBB3C9D1E272D9000E810DA /* CFBaseViewController.m in Sources */,
-				7EBB3CCF1E277E8A00E810DA /* MypropFormViewController.m in Sources */,
 				7EBB3CA01E272D9000E810DA /* YHLeftDrawerController.m in Sources */,
 				7EBB3CA31E272D9000E810DA /* NSDate+YHString.m in Sources */,
 				7EBB3CAA1E272D9000E810DA /* UIScreen+YHAddition.m in Sources */,

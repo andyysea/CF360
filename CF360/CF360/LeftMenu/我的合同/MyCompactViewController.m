@@ -1,18 +1,18 @@
 //
-//  MypropFormViewController.m
+//  MyCompactViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/13.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "MypropFormViewController.h"
+#import "MyCompactViewController.h"
 
-@interface MypropFormViewController ()
+@interface MyCompactViewController ()
 
 @end
 
-@implementation MypropFormViewController
+@implementation MyCompactViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

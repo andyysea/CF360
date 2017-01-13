@@ -16,6 +16,9 @@
 #define NSLog(...)
 #endif
 
+// 其他宏定义
+#define Width_Screen [UIScreen mainScreen].bounds.size.width
+#define Hight_Screen [UIScreen mainScreen].bounds.size.height
 
 // 第三方类库
 #import <AFNetworking.h>

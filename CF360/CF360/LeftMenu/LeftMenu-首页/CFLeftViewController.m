@@ -7,7 +7,14 @@
 //
 
 #import "CFLeftViewController.h"
-#import "CFMyAccountButton.h"
+#import "CFMyAccountButton.h"           // 我的账户自定义按钮
+#import "ProductCenterViewController.h" // 产品中心
+#import "MyAttentionViewController.h"   // 我的关注
+#import "MyDecFormViewController.h"     // 我的报单
+#import "MyAppointMentViewController.h" // 我的预约
+#import "MyCompactViewController.h"     // 我的合同
+#import "MyPropFormViewController.h"    // 我的投保单
+#import "SettingViewController.h"       // 设置
 
 /** 表格视图的可重用标识符 */
 static NSString *cellId = @"cellId";
@@ -23,7 +30,6 @@ static NSString *cellId = @"cellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     [self initializeData];
     [self setupNavgationBar];
@@ -47,31 +53,31 @@ static NSString *cellId = @"cellId";
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         // 产品中心
-        
+        vc = [[ProductCenterViewController alloc] init];
     } else if (indexPath.section == 0 && indexPath.row == 2) {
         // 我的关注
-        
+        vc = [[MyAttentionViewController alloc] init];
     } else if (indexPath.section == 1 && indexPath.row == 0) {
         // 我的报单
-        
+        vc = [[MyDecFormViewController alloc] init];
     } else if (indexPath.section == 1 && indexPath.row == 1) {
         // 我的预约
-        
+        vc = [[MyAppointMentViewController alloc] init];
     } else if (indexPath.section == 1 && indexPath.row == 2) {
         // 我的合同
-        
+        vc = [[MyCompactViewController alloc] init];
     } else if (indexPath.section == 1 && indexPath.row == 3) {
         // 我的投保单
-    
+        vc = [[MyPropFormViewController alloc] init];
     } else if (indexPath.section == 2 && indexPath.row == 0) {
         // 设置
-        
+        vc = [[SettingViewController alloc] init];
     }
     
     
     
-    // 3> 由 Home 的导航控制器来提供 push
-//    delegate.homeNav pushViewController: animated:
+    // 3> 由 Home 的导航控制器来提供 push  *****这一点非常重要*****
+    [delegate.homeNav pushViewController:vc animated:NO];
 }
 
 
