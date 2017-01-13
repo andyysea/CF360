@@ -32,6 +32,14 @@
 		7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C961E272D9000E810DA /* UIView+YHAddition.m */; };
 		7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */; };
 		7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C751E272D9000E810DA /* AppDelegate.m */; };
+		7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CB01E274FD800E810DA /* UIColor+Common.m */; };
+		7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CB91E275AA100E810DA /* CFMyAccountButton.m */; };
+		7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC21E277C1200E810DA /* ProductCenterViewController.m */; };
+		7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC51E277CFA00E810DA /* MyAttentionViewController.m */; };
+		7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC81E277D6100E810DA /* MyDecFormViewController.m */; };
+		7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */; };
+		7EBB3CCF1E277E8A00E810DA /* MypropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */; };
+		7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CD11E277EA300E810DA /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +103,22 @@
 		7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C991E272D9000E810DA /* YHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHHeader.h; sourceTree = "<group>"; };
 		7EBB3CAE1E2731E900E810DA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		7EBB3CAF1E274FD800E810DA /* UIColor+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Common.h"; sourceTree = "<group>"; };
+		7EBB3CB01E274FD800E810DA /* UIColor+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Common.m"; sourceTree = "<group>"; };
+		7EBB3CB81E275AA000E810DA /* CFMyAccountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFMyAccountButton.h; sourceTree = "<group>"; };
+		7EBB3CB91E275AA100E810DA /* CFMyAccountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFMyAccountButton.m; sourceTree = "<group>"; };
+		7EBB3CC11E277C1200E810DA /* ProductCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCenterViewController.h; sourceTree = "<group>"; };
+		7EBB3CC21E277C1200E810DA /* ProductCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCenterViewController.m; sourceTree = "<group>"; };
+		7EBB3CC41E277CFA00E810DA /* MyAttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttentionViewController.h; sourceTree = "<group>"; };
+		7EBB3CC51E277CFA00E810DA /* MyAttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionViewController.m; sourceTree = "<group>"; };
+		7EBB3CC71E277D6100E810DA /* MyDecFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDecFormViewController.h; sourceTree = "<group>"; };
+		7EBB3CC81E277D6100E810DA /* MyDecFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDecFormViewController.m; sourceTree = "<group>"; };
+		7EBB3CCA1E277E4300E810DA /* MyAppointMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointMentViewController.h; sourceTree = "<group>"; };
+		7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointMentViewController.m; sourceTree = "<group>"; };
+		7EBB3CCD1E277E8A00E810DA /* MypropFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MypropFormViewController.h; sourceTree = "<group>"; };
+		7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MypropFormViewController.m; sourceTree = "<group>"; };
+		7EBB3CD01E277EA300E810DA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		7EBB3CD11E277EA300E810DA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CF360Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EFFE4F8C1E8EC35A0FFEF3 /* Pods-CF360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +230,12 @@
 			isa = PBXGroup;
 			children = (
 				7EBB3C701E272D9000E810DA /* LeftMenu-首页 */,
+				7EBB3CBB1E277B8E00E810DA /* 产品中心 */,
+				7EBB3CBE1E277B8E00E810DA /* 我的关注 */,
+				7EBB3CBD1E277B8E00E810DA /* 我的报单 */,
+				7EBB3CC01E277B8E00E810DA /* 我的预约 */,
+				7EBB3CBF1E277B8E00E810DA /* 我的投保单 */,
+				7EBB3CBC1E277B8E00E810DA /* 设置 */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -215,6 +245,8 @@
 			children = (
 				7EBB3C711E272D9000E810DA /* CFLeftViewController.h */,
 				7EBB3C721E272D9000E810DA /* CFLeftViewController.m */,
+				7EBB3CB81E275AA000E810DA /* CFMyAccountButton.h */,
+				7EBB3CB91E275AA100E810DA /* CFMyAccountButton.m */,
 			);
 			path = "LeftMenu-首页";
 			sourceTree = "<group>";
@@ -224,10 +256,10 @@
 			children = (
 				7EBB3C741E272D9000E810DA /* AppDelegate.h */,
 				7EBB3C751E272D9000E810DA /* AppDelegate.m */,
-				7EBB3C761E272D9000E810DA /* CFBaseViewController.h */,
-				7EBB3C771E272D9000E810DA /* CFBaseViewController.m */,
 				7EBB3C781E272D9000E810DA /* CFNavgationController.h */,
 				7EBB3C791E272D9000E810DA /* CFNavgationController.m */,
+				7EBB3C761E272D9000E810DA /* CFBaseViewController.h */,
+				7EBB3C771E272D9000E810DA /* CFBaseViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -237,6 +269,8 @@
 			children = (
 				7EBB3C7B1E272D9000E810DA /* LeftDrawerController */,
 				7EBB3C801E272D9000E810DA /* Tools */,
+				7EBB3CAF1E274FD800E810DA /* UIColor+Common.h */,
+				7EBB3CB01E274FD800E810DA /* UIColor+Common.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -282,6 +316,60 @@
 				7EBB3C991E272D9000E810DA /* YHHeader.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		7EBB3CBB1E277B8E00E810DA /* 产品中心 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CC11E277C1200E810DA /* ProductCenterViewController.h */,
+				7EBB3CC21E277C1200E810DA /* ProductCenterViewController.m */,
+			);
+			path = "产品中心";
+			sourceTree = "<group>";
+		};
+		7EBB3CBC1E277B8E00E810DA /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CD01E277EA300E810DA /* SettingViewController.h */,
+				7EBB3CD11E277EA300E810DA /* SettingViewController.m */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		7EBB3CBD1E277B8E00E810DA /* 我的报单 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CC71E277D6100E810DA /* MyDecFormViewController.h */,
+				7EBB3CC81E277D6100E810DA /* MyDecFormViewController.m */,
+			);
+			path = "我的报单";
+			sourceTree = "<group>";
+		};
+		7EBB3CBE1E277B8E00E810DA /* 我的关注 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CC41E277CFA00E810DA /* MyAttentionViewController.h */,
+				7EBB3CC51E277CFA00E810DA /* MyAttentionViewController.m */,
+			);
+			path = "我的关注";
+			sourceTree = "<group>";
+		};
+		7EBB3CBF1E277B8E00E810DA /* 我的投保单 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CCD1E277E8A00E810DA /* MypropFormViewController.h */,
+				7EBB3CCE1E277E8A00E810DA /* MypropFormViewController.m */,
+			);
+			path = "我的投保单";
+			sourceTree = "<group>";
+		};
+		7EBB3CC01E277B8E00E810DA /* 我的预约 */ = {
+			isa = PBXGroup;
+			children = (
+				7EBB3CCA1E277E4300E810DA /* MyAppointMentViewController.h */,
+				7EBB3CCB1E277E4300E810DA /* MyAppointMentViewController.m */,
+			);
+			path = "我的预约";
 			sourceTree = "<group>";
 		};
 		B2502AF879B97E9929AA794F /* Frameworks */ = {
@@ -493,23 +581,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
+				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
+				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
+				7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */,
 				7EBB3CA61E272D9000E810DA /* NSString+YHEncrypt.m in Sources */,
 				7EBB3C481E272D0100E810DA /* main.m in Sources */,
 				7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */,
 				7EBB3CA81E272D9000E810DA /* UIColor+YHAddition.m in Sources */,
 				7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */,
+				7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */,
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
 				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
+				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,
+				7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */,
 				7EBB3CA21E272D9000E810DA /* NSAttributedString+YHAddition.m in Sources */,
 				7EBB3CA91E272D9000E810DA /* UILabel+YHAddition.m in Sources */,
 				7EBB3C9D1E272D9000E810DA /* CFBaseViewController.m in Sources */,
+				7EBB3CCF1E277E8A00E810DA /* MypropFormViewController.m in Sources */,
 				7EBB3CA01E272D9000E810DA /* YHLeftDrawerController.m in Sources */,
 				7EBB3CA31E272D9000E810DA /* NSDate+YHString.m in Sources */,
 				7EBB3CAA1E272D9000E810DA /* UIScreen+YHAddition.m in Sources */,
@@ -639,6 +735,7 @@
 			baseConfigurationReference = EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -654,6 +751,7 @@
 			baseConfigurationReference = 58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

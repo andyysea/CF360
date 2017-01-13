@@ -1,23 +1,22 @@
 //
-//  CFNavgationController.m
+//  MyAttentionViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/11.
+//  Created by junde on 2017/1/12.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "CFNavgationController.h"
+#import "MyAttentionViewController.h"
 
-@interface CFNavgationController ()
+@interface MyAttentionViewController ()
 
 @end
 
-@implementation CFNavgationController
+@implementation MyAttentionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationBar setBarTintColor:[UIColor yh_colorNavYellowCommon]];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

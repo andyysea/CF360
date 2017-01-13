@@ -1,23 +1,22 @@
 //
-//  CFNavgationController.m
+//  MyAppointMentViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/11.
+//  Created by junde on 2017/1/12.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "CFNavgationController.h"
+#import "MyAppointMentViewController.h"
 
-@interface CFNavgationController ()
+@interface MyAppointMentViewController ()
 
 @end
 
-@implementation CFNavgationController
+@implementation MyAppointMentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationBar setBarTintColor:[UIColor yh_colorNavYellowCommon]];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

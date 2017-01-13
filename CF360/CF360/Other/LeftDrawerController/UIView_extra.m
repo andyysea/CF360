@@ -157,7 +157,7 @@
  @param title 弹窗标题
  message 弹窗信息
  */
-+ (void) showAlertView: (NSString*) title andMessage: (NSString *) message
++ (void)showAlertViewWithTitle:(NSString*)title message:(NSString *)message
 {
     dispatch_async(dispatch_get_main_queue() , ^{
         UIAlertView *alert = [[UIAlertView alloc] init];
@@ -176,9 +176,9 @@
  *  @param message  弹窗信息
  *  @param delegate 弹窗代理
  */
-+ (void) showAlertView: (NSString*) title
-            andMessage: (NSString *) message
-          withDelegate: (UIViewController<UIAlertViewDelegate> *) delegate
++ (void)showAlertViewWithTitle:(NSString*)title
+                       message:(NSString *) message
+                      delegate:(UIViewController<UIAlertViewDelegate> *)delegate
 {
     dispatch_async(dispatch_get_main_queue() , ^{
         UIAlertView *alert = [[UIAlertView alloc] init];

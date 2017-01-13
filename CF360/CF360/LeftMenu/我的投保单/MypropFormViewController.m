@@ -1,23 +1,22 @@
 //
-//  CFNavgationController.m
+//  MypropFormViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/11.
+//  Created by junde on 2017/1/12.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "CFNavgationController.h"
+#import "MypropFormViewController.h"
 
-@interface CFNavgationController ()
+@interface MypropFormViewController ()
 
 @end
 
-@implementation CFNavgationController
+@implementation MypropFormViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationBar setBarTintColor:[UIColor yh_colorNavYellowCommon]];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
