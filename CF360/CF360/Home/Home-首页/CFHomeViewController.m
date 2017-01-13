@@ -17,12 +17,17 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
     MyButtonTagOfNavRight
 };
 
-@interface CFHomeViewController ()
+/** 可重用标识符 */
+static NSString *cellId = @"cellId";
+
+
+@interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
 @implementation CFHomeViewController
 
+#pragma mark - 视图加载完成
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,10 +55,25 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
     [delegate.drawerController setPanEnabled:NO];
 }
 
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    
+    return cell;
+}
+
+
 #pragma mark - 导航栏上 左边/右边 按钮点击方法
 - (void)navButtonClick:(UIButton *)button {
-    
-    
     switch (button.tag) {
         case MyButtonTagOfNavLeft:
         {
@@ -77,7 +97,6 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
 
 #pragma mark - 设置导航栏
 - (void)setupNavgationBar {
-    
     // 1>添加导航栏中 能打开左侧菜单控制器的按钮
     UIButton *leftNavButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     leftNavButton.tag = MyButtonTagOfNavLeft;
@@ -107,6 +126,26 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
     
+    // 1> 添加 UITableView
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:tableView];
+    
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
+    
+    // 2> 创建headerView, 包含轮播图, 四个分类按钮, 两个本控制器得分类按钮
+    CGFloat headerViewHeight = Width_Screen * 496 / 640;// 表头视图高度
+    CGFloat lunboViewHeight = Width_Screen * 260 / 640; // 轮播图父视图高度
+    CGFloat categoryViewHeight = Width_Screen * 140 / 640;// 分类按钮父视图高度
+    CGFloat segMentViewHeight = Width_Screen * 96 / 640;  // 热销/推荐产品 按钮父视图高度
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, headerViewHeight)];
+    headerView.backgroundColor = [UIColor orangeColor];
+    tableView.tableHeaderView = headerView;  // 设置为表格的表头视图
+    
+    // a> 添加轮播图
+    // b> 添加分类按钮
+    // c> 添加两个 signMent
 }
 
 
