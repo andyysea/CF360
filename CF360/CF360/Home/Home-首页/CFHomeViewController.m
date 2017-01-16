@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
 static NSString *cellId = @"cellId";
 
 
-@interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
 
 @end
 
@@ -95,6 +95,20 @@ static NSString *cellId = @"cellId";
     }
 }
 
+#pragma mark - 轮播图的点击代理方法
+/** 点击图片回调 */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    
+    NSLog(@"点击回调--> %zd",index);
+}
+
+/** 图片滚动回调 */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index {
+    
+    NSLog(@"滚动回调--> %zd",index);
+}
+
+
 #pragma mark - 设置导航栏
 - (void)setupNavgationBar {
     // 1>添加导航栏中 能打开左侧菜单控制器的按钮
@@ -136,7 +150,7 @@ static NSString *cellId = @"cellId";
     
     // 2> 创建headerView, 包含轮播图, 四个分类按钮, 两个本控制器得分类按钮
     CGFloat headerViewHeight = Width_Screen * 496 / 640;// 表头视图高度
-    CGFloat lunboViewHeight = Width_Screen * 260 / 640; // 轮播图父视图高度
+    CGFloat loopViewHeight = Width_Screen * 260 / 640; // 轮播图父视图高度
     CGFloat categoryViewHeight = Width_Screen * 140 / 640;// 分类按钮父视图高度
     CGFloat segMentViewHeight = Width_Screen * 96 / 640;  // 热销/推荐产品 按钮父视图高度
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, headerViewHeight)];
@@ -144,6 +158,16 @@ static NSString *cellId = @"cellId";
     tableView.tableHeaderView = headerView;  // 设置为表格的表头视图
     
     // a> 添加轮播图
+    UIView *loopBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, loopViewHeight)];
+    loopBgView.backgroundColor = [UIColor redColor];
+    [headerView addSubview:loopBgView];
+    
+    SDCycleScrollView *sycleView = [SDCycleScrollView cycleScrollViewWithFrame:loopBgView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"img-BX"]]; // ** 这里的占位图片填充模式不对,所以我跳进框架中做了修改 **
+    sycleView.backgroundColor = [UIColor greenColor];
+    [loopBgView addSubview:sycleView];
+    
+    
+    
     // b> 添加分类按钮
     // c> 添加两个 signMent
 }
