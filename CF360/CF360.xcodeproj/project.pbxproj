@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21A5E3E5B51B42B7854A44DD /* libPods-CF360Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */; };
 		38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */; };
+		7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF51E2C981B0014669D /* YHNetworkManager.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -57,6 +58,8 @@
 /* Begin PBXFileReference section */
 		4ED1419B254BFF38F8D47442 /* Pods-CF360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360/Pods-CF360.release.xcconfig"; sourceTree = "<group>"; };
+		7E32AFF41E2C981B0014669D /* YHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetworkManager.h; sourceTree = "<group>"; };
+		7E32AFF51E2C981B0014669D /* YHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetworkManager.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7E32AFED1E2C919E0014669D /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				7E32AFF41E2C981B0014669D /* YHNetworkManager.h */,
+				7E32AFF51E2C981B0014669D /* YHNetworkManager.m */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		7EBB3C3A1E272D0100E810DA = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				7EBB3C731E272D9000E810DA /* Main */,
+				7E32AFED1E2C919E0014669D /* NetworkManager */,
 				7EBB3C6F1E272D9000E810DA /* LeftMenu */,
 				7EBB3C6B1E272D9000E810DA /* Home */,
 				7EBB3C7A1E272D9000E810DA /* Other */,
@@ -634,6 +647,7 @@
 				7EBB3CA21E272D9000E810DA /* NSAttributedString+YHAddition.m in Sources */,
 				7EBB3CA91E272D9000E810DA /* UILabel+YHAddition.m in Sources */,
 				7EBB3C9D1E272D9000E810DA /* CFBaseViewController.m in Sources */,
+				7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */,
 				7EBB3CA01E272D9000E810DA /* YHLeftDrawerController.m in Sources */,
 				7EBB3CA31E272D9000E810DA /* NSDate+YHString.m in Sources */,
 				7EBB3CAA1E272D9000E810DA /* UIScreen+YHAddition.m in Sources */,

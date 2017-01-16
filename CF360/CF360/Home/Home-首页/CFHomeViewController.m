@@ -23,6 +23,10 @@ static NSString *cellId = @"cellId";
 
 @interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
 
+/** 轮播图 */
+@property (nonatomic, weak) SDCycleScrollView *sycleView;
+
+
 @end
 
 @implementation CFHomeViewController
@@ -33,6 +37,8 @@ static NSString *cellId = @"cellId";
     
     [self setupNavgationBar];
     [self setupUI];
+    
+    [self loadLoopViewNetRequest];
 }
 
 #pragma mark - 视图已经出现
@@ -55,6 +61,16 @@ static NSString *cellId = @"cellId";
     [delegate.drawerController setPanEnabled:NO];
 }
 
+#pragma mark - 网络请求方法块
+/** 首页轮播图网络请求 */
+- (void)loadLoopViewNetRequest {
+    [YHNetworkManager loadLoopImagesCompletion:^(id responseData, NSError *error) {
+       
+        NSDictionary *dict = responseData;
+        
+        NSLog(@"--> %@",dict);
+    }];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -163,13 +179,16 @@ static NSString *cellId = @"cellId";
     [headerView addSubview:loopBgView];
     
     SDCycleScrollView *sycleView = [SDCycleScrollView cycleScrollViewWithFrame:loopBgView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"img-BX"]]; // ** 这里的占位图片填充模式不对,所以我跳进框架中做了修改 **
-    sycleView.backgroundColor = [UIColor greenColor];
     [loopBgView addSubview:sycleView];
     
     
     
     // b> 添加分类按钮
     // c> 添加两个 signMent
+    
+    
+    // 3> 属性记录
+    _sycleView = sycleView;
 }
 
 

@@ -32,9 +32,28 @@
 
 // 其他公共类
 #import "AppDelegate.h"
+#import "YHNetworkManager.h"
 #import "UIView_extra.h"
 #import "YHHeader.h"
 #import "UIColor+Common.h"
+
+
+//设置请求头
+//罗顺峰
+//#define RequestHeader @"http://192.168.1.176:9992/cf360-customerApp"
+//李来峰
+//#define RequestHeader @"http://192.168.1.157:9999/cf360-customerApp"
+//常亚萍
+//#define RequestHeader @"http://192.168.1.170:9999/cf360-customerApp"
+//黄国虎
+//#define RequestHeader @"http://192.168.1.193:9994/cf360-customerApp"
+//代树理
+//#define RequestHeader @"http://192.168.1.106:9999/cf360-customerApp"
+
+//测试环境
+//#define RequestHeader @"http://192.168.1.82:8083"
+//正式环境
+#define RequestHeader @"http://app.cf360.com"
 
 
 #endif

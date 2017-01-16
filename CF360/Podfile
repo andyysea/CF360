@@ -9,7 +9,7 @@ pod 'MBProgressHUD'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'SDCycleScrollView'
-
+pod 'YYModel'
 
 
   target 'CF360Tests' do
