@@ -28,7 +28,7 @@
 #import <MBProgressHUD.h>
 #import <SVProgressHUD.h>
 #import <SDCycleScrollView.h>
-
+#import <YYModel.h>
 
 // 其他公共类
 #import "AppDelegate.h"

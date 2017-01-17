@@ -10,6 +10,7 @@
 		21A5E3E5B51B42B7854A44DD /* libPods-CF360Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */; };
 		38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */; };
 		7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF51E2C981B0014669D /* YHNetworkManager.m */; };
+		7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF81E2CB28E0014669D /* LoopViewModel.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -60,6 +61,8 @@
 		58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360/Pods-CF360.release.xcconfig"; sourceTree = "<group>"; };
 		7E32AFF41E2C981B0014669D /* YHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetworkManager.h; sourceTree = "<group>"; };
 		7E32AFF51E2C981B0014669D /* YHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetworkManager.m; sourceTree = "<group>"; };
+		7E32AFF71E2CB28E0014669D /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
+		7E32AFF81E2CB28E0014669D /* LoopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopViewModel.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 			children = (
 				7EBB3C6D1E272D9000E810DA /* CFHomeViewController.h */,
 				7EBB3C6E1E272D9000E810DA /* CFHomeViewController.m */,
+				7E32AFF71E2CB28E0014669D /* LoopViewModel.h */,
+				7E32AFF81E2CB28E0014669D /* LoopViewModel.m */,
 			);
 			path = "Home-首页";
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				7EBB3C481E272D0100E810DA /* main.m in Sources */,
 				7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */,
 				7EBB3CA81E272D9000E810DA /* UIColor+YHAddition.m in Sources */,
+				7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */,
 				7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */,
 				7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */,
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,

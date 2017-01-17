@@ -8,6 +8,7 @@
 
 #import "CFHomeViewController.h"
 #import "MessageViewController.h" // 导航栏消息控制器
+#import "LoopViewModel.h"         // 轮播图模型
 
 /**
     定义枚举类型,来设置添加按钮的 tag
@@ -26,6 +27,9 @@ static NSString *cellId = @"cellId";
 /** 轮播图 */
 @property (nonatomic, weak) SDCycleScrollView *sycleView;
 
+/** 轮播图模型数组 */
+@property (nonatomic, strong) NSMutableArray *loopViewURLArray;
+
 
 @end
 
@@ -34,6 +38,9 @@ static NSString *cellId = @"cellId";
 #pragma mark - 视图加载完成
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 初始化
+    _loopViewURLArray = [NSMutableArray array];
     
     [self setupNavgationBar];
     [self setupUI];
@@ -61,6 +68,13 @@ static NSString *cellId = @"cellId";
     [delegate.drawerController setPanEnabled:NO];
 }
 
+#pragma mark - 设置轮播图图片数据显示
+- (void)setLoopViewDataSource {
+    if (self.loopViewURLArray.count) {
+        self.sycleView.imageURLStringsGroup = self.loopViewURLArray;
+    }
+}
+
 #pragma mark - 网络请求方法块
 /** 首页轮播图网络请求 */
 - (void)loadLoopViewNetRequest {
@@ -69,6 +83,21 @@ static NSString *cellId = @"cellId";
         NSDictionary *dict = responseData;
         
         NSLog(@"--> %@",dict);
+        
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            NSArray *dataArray = dict[@"data"];
+            
+            for (NSDictionary *dataDict in dataArray) {
+                LoopViewModel *model = [LoopViewModel loopViewModelWithDict:dataDict];
+                [self.loopViewURLArray addObject:model.picture];
+            }
+            
+            // 设置轮播图数据
+            [self setLoopViewDataSource];
+            
+        }
+        
+        
     }];
 }
 
@@ -127,6 +156,7 @@ static NSString *cellId = @"cellId";
 
 #pragma mark - 设置导航栏
 - (void)setupNavgationBar {
+    self.title = @"首页";
     // 1>添加导航栏中 能打开左侧菜单控制器的按钮
     UIButton *leftNavButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     leftNavButton.tag = MyButtonTagOfNavLeft;
@@ -179,6 +209,8 @@ static NSString *cellId = @"cellId";
     [headerView addSubview:loopBgView];
     
     SDCycleScrollView *sycleView = [SDCycleScrollView cycleScrollViewWithFrame:loopBgView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"img-BX"]]; // ** 这里的占位图片填充模式不对,所以我跳进框架中做了修改 **
+    sycleView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+    sycleView.autoScrollTimeInterval = 3.0f;
     [loopBgView addSubview:sycleView];
     
     
