@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AFNetworkActivityIndicatorManager.h>
 
 @interface AppDelegate ()
 
@@ -16,19 +17,37 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 设置网络指示器,并监控网络状态
+    [self setNetworking];
     
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     CFHomeViewController *homeVC = [[CFHomeViewController alloc] init];
     self.homeNav = [[CFNavgationController alloc] initWithRootViewController:homeVC];
-    
     CFLeftViewController *leftVC = [[CFLeftViewController alloc] init];
     UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
-    
     self.drawerController = [[YHLeftDrawerController alloc] initWithLeftView:leftNav andMainView:self.homeNav];
-    
     _window.rootViewController = self.drawerController;
     [_window makeKeyAndVisible];
+    
     return YES;
+}
+
+#pragma mark - 设置网络指示器并监控网络状态
+- (void)setNetworking {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+    }];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    // 上面的方法调用之后,只需要在各个需要的控制器中(viewDidLoad方法中)添加添加观察者即可,代码如下
+    /**
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networking:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+     
+     - (void)networking:(NSNotification *)n {
+     NSLog(@"---> %@",n.userInfo);
+     }
+     */
 }
 
 

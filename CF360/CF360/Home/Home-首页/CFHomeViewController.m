@@ -91,13 +91,10 @@ static NSString *cellId = @"cellId";
                 LoopViewModel *model = [LoopViewModel loopViewModelWithDict:dataDict];
                 [self.loopViewURLArray addObject:model.picture];
             }
-            
             // 设置轮播图数据
             [self setLoopViewDataSource];
-            
         }
-        
-        
+    
     }];
 }
 
@@ -213,13 +210,12 @@ static NSString *cellId = @"cellId";
     sycleView.autoScrollTimeInterval = 3.0f;
     [loopBgView addSubview:sycleView];
     
-    
-    
     // b> 添加分类按钮
     // c> 添加两个 signMent
     
+    // 3> 添加刷新控件
     
-    // 3> 属性记录
+    // 4> 属性记录
     _sycleView = sycleView;
 }
 

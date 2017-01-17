@@ -480,6 +480,7 @@
 				TargetAttributes = {
 					7EBB3C421E272D0100E810DA = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 28YSDTTQVG;
 						ProvisioningStyle = Automatic;
 					};
 					7EBB3C5B1E272D0100E810DA = {
@@ -783,12 +784,14 @@
 			baseConfigurationReference = EFA50BFC62D3BEEE642C73A3 /* Pods-CF360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 28YSDTTQVG;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.junde.CF360;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.junde.CF3600;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -799,12 +802,14 @@
 			baseConfigurationReference = 58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 28YSDTTQVG;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = CF360/PrefixHeader.pch;
 				INFOPLIST_FILE = CF360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.junde.CF360;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.junde.CF3600;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
