@@ -14,7 +14,8 @@
 /** 与导航栏颜色相近的黄色 */
 + (instancetype)yh_colorNavYellowCommon {
             // 184 138 90
-    return [UIColor yh_colorWithRed:184 green:138 blue:90];
+//    return [UIColor yh_colorWithRed:184 green:138 blue:90];
+    return [UIColor colorWithRed:0.73 green:0.53 blue:0.33 alpha:1.0];
 }
 
 /** UITableView 系统默认的背景颜色 */

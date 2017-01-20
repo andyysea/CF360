@@ -1,22 +1,22 @@
 //
-//  ProductCenterViewController.m
+//  BaoXianViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/20.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "ProductCenterViewController.h"
+#import "BaoXianViewController.h"
 
-@interface ProductCenterViewController ()
+@interface BaoXianViewController ()
 
 @end
 
-@implementation ProductCenterViewController
+@implementation BaoXianViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部产品";
+    self.title = @"保险";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

@@ -9,13 +9,19 @@
 #import "CFHomeViewController.h"
 #import "MessageViewController.h" // 导航栏消息控制器
 #import "LoopViewModel.h"         // 轮播图模型
+#import "XinTuoViewController.h"    // 信托控制器
+#import "ZiGuanViewController.h"    // 资管控制器
+#import "YangGuangViewController.h" // 阳光私募控制器
+#import "ProductCenterViewController.h"    // 产品中心 title-> 全部产品
+
 
 /**
     定义枚举类型,来设置添加按钮的 tag
  */
 typedef NS_ENUM(NSInteger, MyButtonTag) {
-    MyButtonTagOfNavLeft,
-    MyButtonTagOfNavRight
+    MyButtonTagOfNavLeft = 100,
+    MyButtonTagOfNavRight,
+    MyButtonTagOfCategory // 这个是分类按钮累加的基础,再定义tag这个还是放在最后一个
 };
 
 /** 可重用标识符 */
@@ -137,17 +143,51 @@ static NSString *cellId = @"cellId";
     }
 }
 
-#pragma mark - 轮播图的点击代理方法
+#pragma mark - 轮播图的代理方法,点击回调
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     
     NSLog(@"点击回调--> %zd",index);
 }
 
-/** 图片滚动回调 */
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index {
+#pragma mark - 四个分类按钮的点击方法
+- (void)categoryViewButtonClick:(UIButton *)button {
     
-    NSLog(@"滚动回调--> %zd",index);
+    NSInteger tag = button.tag - MyButtonTagOfCategory;
+    switch (tag) {
+        case 0:
+        {
+            NSLog(@"--> 信托");
+            XinTuoViewController *xinTuoVC = [[XinTuoViewController alloc] init];
+            [self.navigationController pushViewController:xinTuoVC animated:YES];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"--> 资管");
+            ZiGuanViewController *ziGuanVC = [[ZiGuanViewController alloc] init];
+            [self.navigationController pushViewController:ziGuanVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"--> 阳光私募");
+            YangGuangViewController *yangGuangVC = [[YangGuangViewController alloc] init];
+            [self.navigationController pushViewController:yangGuangVC animated:YES];
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"--> 全部-产品中心");
+            ProductCenterViewController *productAllVC = [[ProductCenterViewController alloc] init];
+            [self.navigationController pushViewController:productAllVC animated:YES];
+        }
+            break;
+   
+        default:
+            break;
+    }
+    
 }
 
 
@@ -196,6 +236,7 @@ static NSString *cellId = @"cellId";
     CGFloat loopViewHeight = Width_Screen * 260 / 640; // 轮播图父视图高度
     CGFloat categoryViewHeight = Width_Screen * 140 / 640;// 分类按钮父视图高度
     CGFloat segMentViewHeight = Width_Screen * 96 / 640;  // 热销/推荐产品 按钮父视图高度
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, headerViewHeight)];
     headerView.backgroundColor = [UIColor orangeColor];
     tableView.tableHeaderView = headerView;  // 设置为表格的表头视图
@@ -211,6 +252,31 @@ static NSString *cellId = @"cellId";
     [loopBgView addSubview:sycleView];
     
     // b> 添加分类按钮
+    UIView *cateBgView = [[UIView alloc] initWithFrame:CGRectMake(0, loopBgView.bottom, Width_Screen, categoryViewHeight)];
+    cateBgView.backgroundColor = [UIColor yh_colorWithRed:230 green:230 blue:230];
+    [headerView addSubview:cateBgView];
+    
+    CGFloat margin = (Width_Screen - categoryViewHeight * 4) / 5;
+    CGRect rect = CGRectMake(margin, 0, categoryViewHeight, categoryViewHeight);
+    CGFloat scale = 0.6;
+    
+    NSArray *buttonTitles = @[@"信托", @"资管", @"阳光私募", @"全部"];
+    NSArray *buttonImageNames = @[@"img-信", @"img-资", @"img-阳", @"img-更多"];
+    for (NSInteger i = 0; i < buttonTitles.count; i++) {
+        NSString *title = buttonTitles[i];
+        NSString *imageName = buttonImageNames[i];
+        NSAttributedString *attibutedStr = [NSAttributedString yh_imageTextWithImage:[UIImage imageNamed:imageName] imageWH:categoryViewHeight * scale title:title fontSize:12 titleColor:[UIColor blackColor] spacing:4];
+        UIButton *button = [[UIButton alloc] init];
+        button.frame = CGRectOffset(rect, (margin + categoryViewHeight) * i, 0);
+        [button setAttributedTitle:attibutedStr forState:UIControlStateNormal];
+        button.titleLabel.numberOfLines = 0;
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [cateBgView addSubview:button];
+        
+        button.tag = MyButtonTagOfCategory + i;
+        [button addTarget:self action:@selector(categoryViewButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     // c> 添加两个 signMent
     
     // 3> 添加刷新控件

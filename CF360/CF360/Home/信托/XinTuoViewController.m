@@ -1,22 +1,22 @@
 //
-//  ProductCenterViewController.m
+//  XinTuoViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/20.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "ProductCenterViewController.h"
+#import "XinTuoViewController.h"
 
-@interface ProductCenterViewController ()
+@interface XinTuoViewController ()
 
 @end
 
-@implementation ProductCenterViewController
+@implementation XinTuoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部产品";
+    self.title = @"信托";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

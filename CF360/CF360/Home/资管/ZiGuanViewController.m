@@ -1,22 +1,22 @@
 //
-//  ProductCenterViewController.m
+//  ZiGuanViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/20.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "ProductCenterViewController.h"
+#import "ZiGuanViewController.h"
 
-@interface ProductCenterViewController ()
+@interface ZiGuanViewController ()
 
 @end
 
-@implementation ProductCenterViewController
+@implementation ZiGuanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部产品";
+    self.title = @"资管";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

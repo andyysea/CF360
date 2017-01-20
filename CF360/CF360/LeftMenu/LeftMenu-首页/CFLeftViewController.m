@@ -8,7 +8,7 @@
 
 #import "CFLeftViewController.h"
 #import "CFMyAccountButton.h"           // 我的账户自定义按钮
-#import "ProductCenterViewController.h" // 产品中心
+#import "ProductCenterViewController.h" // 产品中心 - title->全部产品
 #import "MyAttentionViewController.h"   // 我的关注
 #import "MyDecFormViewController.h"     // 我的报单
 #import "MyAppointMentViewController.h" // 我的预约

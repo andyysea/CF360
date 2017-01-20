@@ -1,23 +1,24 @@
 //
-//  ProductCenterViewController.m
+//  YangGuangViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/20.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "ProductCenterViewController.h"
+#import "YangGuangViewController.h"
 
-@interface ProductCenterViewController ()
+@interface YangGuangViewController ()
 
 @end
 
-@implementation ProductCenterViewController
+@implementation YangGuangViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部产品";
+    self.title = @"阳光私募";
     self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {

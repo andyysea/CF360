@@ -11,6 +11,11 @@
 		38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */; };
 		7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF51E2C981B0014669D /* YHNetworkManager.m */; };
 		7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF81E2CB28E0014669D /* LoopViewModel.m */; };
+		7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0781E31E8740014669D /* ZiGuanViewController.m */; };
+		7E32B07C1E31E8860014669D /* XinTuoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B07B1E31E8860014669D /* XinTuoViewController.m */; };
+		7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B07E1E31E89D0014669D /* YangGuangViewController.m */; };
+		7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0811E31E8AB0014669D /* SiMuViewController.m */; };
+		7E32B0851E31E8C80014669D /* BaoXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0841E31E8C80014669D /* BaoXianViewController.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -63,6 +68,16 @@
 		7E32AFF51E2C981B0014669D /* YHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetworkManager.m; sourceTree = "<group>"; };
 		7E32AFF71E2CB28E0014669D /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
 		7E32AFF81E2CB28E0014669D /* LoopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopViewModel.m; sourceTree = "<group>"; };
+		7E32B0771E31E8740014669D /* ZiGuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiGuanViewController.h; sourceTree = "<group>"; };
+		7E32B0781E31E8740014669D /* ZiGuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiGuanViewController.m; sourceTree = "<group>"; };
+		7E32B07A1E31E8860014669D /* XinTuoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XinTuoViewController.h; sourceTree = "<group>"; };
+		7E32B07B1E31E8860014669D /* XinTuoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XinTuoViewController.m; sourceTree = "<group>"; };
+		7E32B07D1E31E89D0014669D /* YangGuangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YangGuangViewController.h; sourceTree = "<group>"; };
+		7E32B07E1E31E89D0014669D /* YangGuangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YangGuangViewController.m; sourceTree = "<group>"; };
+		7E32B0801E31E8AB0014669D /* SiMuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiMuViewController.h; sourceTree = "<group>"; };
+		7E32B0811E31E8AB0014669D /* SiMuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiMuViewController.m; sourceTree = "<group>"; };
+		7E32B0831E31E8C80014669D /* BaoXianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoXianViewController.h; sourceTree = "<group>"; };
+		7E32B0841E31E8C80014669D /* BaoXianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoXianViewController.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -177,6 +192,51 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
+		7E32B06E1E31E3B30014669D /* 信托 */ = {
+			isa = PBXGroup;
+			children = (
+				7E32B07A1E31E8860014669D /* XinTuoViewController.h */,
+				7E32B07B1E31E8860014669D /* XinTuoViewController.m */,
+			);
+			path = "信托";
+			sourceTree = "<group>";
+		};
+		7E32B06F1E31E3C20014669D /* 资管 */ = {
+			isa = PBXGroup;
+			children = (
+				7E32B0771E31E8740014669D /* ZiGuanViewController.h */,
+				7E32B0781E31E8740014669D /* ZiGuanViewController.m */,
+			);
+			path = "资管";
+			sourceTree = "<group>";
+		};
+		7E32B0701E31E3D70014669D /* 阳光私募 */ = {
+			isa = PBXGroup;
+			children = (
+				7E32B07D1E31E89D0014669D /* YangGuangViewController.h */,
+				7E32B07E1E31E89D0014669D /* YangGuangViewController.m */,
+			);
+			path = "阳光私募";
+			sourceTree = "<group>";
+		};
+		7E32B0721E31E3FA0014669D /* 私募股权 */ = {
+			isa = PBXGroup;
+			children = (
+				7E32B0801E31E8AB0014669D /* SiMuViewController.h */,
+				7E32B0811E31E8AB0014669D /* SiMuViewController.m */,
+			);
+			path = "私募股权";
+			sourceTree = "<group>";
+		};
+		7E32B0731E31E4060014669D /* 保险 */ = {
+			isa = PBXGroup;
+			children = (
+				7E32B0831E31E8C80014669D /* BaoXianViewController.h */,
+				7E32B0841E31E8C80014669D /* BaoXianViewController.m */,
+			);
+			path = "保险";
+			sourceTree = "<group>";
+		};
 		7EBB3C3A1E272D0100E810DA = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +296,11 @@
 			children = (
 				7EBB3C6C1E272D9000E810DA /* Home-首页 */,
 				7EBB3CE51E28B3D500E810DA /* 导航栏消息 */,
+				7E32B06E1E31E3B30014669D /* 信托 */,
+				7E32B06F1E31E3C20014669D /* 资管 */,
+				7E32B0701E31E3D70014669D /* 阳光私募 */,
+				7E32B0721E31E3FA0014669D /* 私募股权 */,
+				7E32B0731E31E4060014669D /* 保险 */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -628,14 +693,17 @@
 			files = (
 				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
+				7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
+				7E32B07C1E31E8860014669D /* XinTuoViewController.m in Sources */,
 				7EBB3CE01E2872B600E810DA /* MyPropFormViewController.m in Sources */,
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CE81E28B41100E810DA /* MessageViewController.m in Sources */,
 				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
+				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
 				7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */,
 				7EBB3CA61E272D9000E810DA /* NSString+YHEncrypt.m in Sources */,
@@ -648,8 +716,10 @@
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
 				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
+				7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */,
 				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,
 				7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */,
+				7E32B0851E31E8C80014669D /* BaoXianViewController.m in Sources */,
 				7EBB3CE41E28735B00E810DA /* MyCompactViewController.m in Sources */,
 				7EBB3CA21E272D9000E810DA /* NSAttributedString+YHAddition.m in Sources */,
 				7EBB3CA91E272D9000E810DA /* UILabel+YHAddition.m in Sources */,

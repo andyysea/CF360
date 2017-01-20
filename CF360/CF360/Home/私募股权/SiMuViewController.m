@@ -1,22 +1,22 @@
 //
-//  ProductCenterViewController.m
+//  SiMuViewController.m
 //  CF360
 //
-//  Created by junde on 2017/1/12.
+//  Created by junde on 2017/1/20.
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
-#import "ProductCenterViewController.h"
+#import "SiMuViewController.h"
 
-@interface ProductCenterViewController ()
+@interface SiMuViewController ()
 
 @end
 
-@implementation ProductCenterViewController
+@implementation SiMuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全部产品";
+    self.title = @"私募股权";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
