@@ -17,7 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 设置导航条颜色
     [self.navigationBar setBarTintColor:[UIColor yh_colorNavYellowCommon]];
+    // 设置左右 items 的颜色
+    [self.navigationBar setTintColor:[UIColor whiteColor]];
+    // 设置title的颜色
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
 - (void)didReceiveMemoryWarning {
