@@ -147,7 +147,7 @@ static NSString *cellId = @"cellId";
     
     // 创建并设置 headerView; --> 这里可以根据是否登陆来判断添加什么
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 115)];
-    headerView.backgroundColor = [UIColor yh_ColorWithTableViewDefault];
+    headerView.backgroundColor = [UIColor yh_colorWithTableViewDefault];
     
     // 1> 如果未登陆
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.bounds.size.width - 10 - 60, 105)];

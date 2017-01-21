@@ -18,6 +18,9 @@
 + (instancetype)yh_colorNavYellowCommon;
 
 /** UITableView 系统默认的背景颜色 */
-+ (instancetype)yh_ColorWithTableViewDefault;
++ (instancetype)yh_colorWithTableViewDefault;
+
+/** 浅灰色 230 230 230 */
++ (instancetype)yh_colorLightGrayCommon;
 
 @end

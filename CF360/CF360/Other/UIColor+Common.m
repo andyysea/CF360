@@ -13,15 +13,20 @@
 
 /** 与导航栏颜色相近的黄色 */
 + (instancetype)yh_colorNavYellowCommon {
-            // 184 138 90
-//    return [UIColor yh_colorWithRed:184 green:138 blue:90];
-    return [UIColor colorWithRed:0.73 green:0.53 blue:0.33 alpha:1.0];
+            // 186 135 89
+    return [UIColor yh_colorWithRed:186 green:135 blue:89];
 }
 
 /** UITableView 系统默认的背景颜色 */
-+ (instancetype)yh_ColorWithTableViewDefault {
++ (instancetype)yh_colorWithTableViewDefault {
     
     return [UIColor yh_colorWithRed:239 green:239 blue:244];
+}
+
+
+/** 浅灰色 230 230 230 */
++ (instancetype)yh_colorLightGrayCommon {
+    return [UIColor yh_colorWithRed:230 green:230 blue:230];
 }
 
 
