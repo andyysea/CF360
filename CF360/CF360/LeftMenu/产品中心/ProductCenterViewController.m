@@ -29,6 +29,11 @@
     [self setupUI];
 }
 
+#pragma mark - 导航栏右侧搜索按钮点击方法
+- (void)rightItemClick {
+    NSLog(@"--> 搜索按钮点击");
+}
+
 #pragma mark - 产品分类按钮点击方法
 - (void)productButtonClick:(UIButton *)button {
     NSInteger tag = button.tag - buttonTagBase;
@@ -71,6 +76,11 @@
 #pragma mark - 设置界面
 - (void)setupUI {
     
+    // 1> 设置右侧搜索 item
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(rightItemClick)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+    // 2> 添加产品分类
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, Width_Screen, Height_Screen - 64)];
     bgView.backgroundColor = [UIColor yh_colorLightGrayCommon];
     [self.view addSubview:bgView];
