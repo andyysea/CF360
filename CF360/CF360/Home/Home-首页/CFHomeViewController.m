@@ -21,7 +21,8 @@
 typedef NS_ENUM(NSInteger, MyButtonTag) {
     MyButtonTagOfNavLeft = 100,
     MyButtonTagOfNavRight,
-    MyButtonTagOfCategory // 这个是分类按钮累加的基础,再定义tag这个还是放在最后一个
+    MyButtonTagOfCategory, // 这个是分类按钮累加的基础
+    MyButtonTagOfSegment   // 这个是sement按钮的累加基础
 };
 
 /** 可重用标识符 */
@@ -32,6 +33,11 @@ static NSString *cellId = @"cellId";
 
 /** 轮播图 */
 @property (nonatomic, weak) SDCycleScrollView *sycleView;
+
+/** 热销产品按钮 */
+@property (nonatomic, weak) UIButton *hotProButton;
+/** 产品推荐按钮 */
+@property (nonatomic, weak) UIButton *tuiJProButton;
 
 /** 轮播图模型数组 */
 @property (nonatomic, strong) NSMutableArray *loopViewURLArray;
@@ -183,11 +189,34 @@ static NSString *cellId = @"cellId";
             [self.navigationController pushViewController:productAllVC animated:YES];
         }
             break;
-   
         default:
             break;
     }
-    
+}
+
+#pragma mark - segment 上两个按钮添加方法
+- (void)segmentButtonClick:(UIButton *)button {
+    NSInteger tag = button.tag - MyButtonTagOfSegment;
+    switch (tag) {
+        case 1:
+        {
+            _hotProButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
+            [_hotProButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            _tuiJProButton.backgroundColor = [UIColor whiteColor];
+            [_tuiJProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
+        }
+            break;
+        case 2:
+        {
+            _hotProButton.backgroundColor = [UIColor whiteColor];
+            [_hotProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
+            _tuiJProButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
+            [_tuiJProButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -277,13 +306,43 @@ static NSString *cellId = @"cellId";
         [button addTarget:self action:@selector(categoryViewButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    // c> 添加两个 signMent
+    // c> 添加两个 segMent
+    UIView *segmentbgView = [[UIView alloc] initWithFrame:CGRectMake(0, cateBgView.bottom, Width_Screen, segMentViewHeight)];
+    segmentbgView.backgroundColor = [UIColor whiteColor];
+    [headerView addSubview:segmentbgView];
+    
+    UIButton *hotProductBtn = [[UIButton alloc] initWithFrame:CGRectMake(8, (segmentbgView.height - 35) / 2, (Width_Screen - 16) / 2, 35)];
+    hotProductBtn.tag = MyButtonTagOfSegment + 1;
+    [hotProductBtn setTitle:@"热销产品" forState:UIControlStateNormal];
+    [hotProductBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    hotProductBtn.layer.cornerRadius = 2;
+    hotProductBtn.layer.masksToBounds = YES;
+    hotProductBtn.layer.borderWidth = 0.5;
+    hotProductBtn.layer.borderColor = [UIColor yh_colorNavYellowCommon].CGColor;
+    hotProductBtn.backgroundColor = [UIColor yh_colorNavYellowCommon];
+    [segmentbgView addSubview:hotProductBtn];
+    [hotProductBtn addTarget:self action:@selector(segmentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *tuiJProductBtn = [[UIButton alloc] initWithFrame:CGRectMake(hotProductBtn.right, hotProductBtn.y, hotProductBtn.width, hotProductBtn.height)];
+    tuiJProductBtn.tag = MyButtonTagOfSegment + 2;
+    [tuiJProductBtn setTitle:@"产品推荐" forState:UIControlStateNormal];
+    [tuiJProductBtn setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
+    tuiJProductBtn.layer.cornerRadius = 2;
+    tuiJProductBtn.layer.masksToBounds = YES;
+    tuiJProductBtn.layer.borderWidth = 0.5;
+    tuiJProductBtn.layer.borderColor = [UIColor yh_colorNavYellowCommon].CGColor;
+    tuiJProductBtn.backgroundColor = [UIColor whiteColor];
+    [segmentbgView addSubview:tuiJProductBtn];
+    [tuiJProductBtn addTarget:self action:@selector(segmentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // 3> 添加刷新控件
     
     // 4> 属性记录
     _sycleView = sycleView;
+    _hotProButton = hotProductBtn;
+    _tuiJProButton = tuiJProductBtn;
 }
+
 
 
 
