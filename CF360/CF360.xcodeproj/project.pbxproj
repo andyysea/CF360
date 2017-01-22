@@ -16,6 +16,9 @@
 		7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B07E1E31E89D0014669D /* YangGuangViewController.m */; };
 		7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0811E31E8AB0014669D /* SiMuViewController.m */; };
 		7E32B0851E31E8C80014669D /* BaoXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0841E31E8C80014669D /* BaoXianViewController.m */; };
+		7E32B0881E348F260014669D /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0871E348F260014669D /* DES3Util.m */; };
+		7E32B08E1E348F510014669D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08A1E348F510014669D /* GTMBase64.m */; };
+		7E32B08F1E348F510014669D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08D1E348F510014669D /* Utils.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -78,6 +81,13 @@
 		7E32B0811E31E8AB0014669D /* SiMuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiMuViewController.m; sourceTree = "<group>"; };
 		7E32B0831E31E8C80014669D /* BaoXianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoXianViewController.h; sourceTree = "<group>"; };
 		7E32B0841E31E8C80014669D /* BaoXianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoXianViewController.m; sourceTree = "<group>"; };
+		7E32B0861E348F260014669D /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
+		7E32B0871E348F260014669D /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
+		7E32B0891E348F510014669D /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		7E32B08A1E348F510014669D /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		7E32B08B1E348F510014669D /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		7E32B08C1E348F510014669D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		7E32B08D1E348F510014669D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +198,13 @@
 			children = (
 				7E32AFF41E2C981B0014669D /* YHNetworkManager.h */,
 				7E32AFF51E2C981B0014669D /* YHNetworkManager.m */,
+				7E32B0861E348F260014669D /* DES3Util.h */,
+				7E32B0871E348F260014669D /* DES3Util.m */,
+				7E32B0891E348F510014669D /* GTMBase64.h */,
+				7E32B08A1E348F510014669D /* GTMBase64.m */,
+				7E32B08B1E348F510014669D /* GTMDefines.h */,
+				7E32B08C1E348F510014669D /* Utils.h */,
+				7E32B08D1E348F510014669D /* Utils.m */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -694,6 +711,7 @@
 				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */,
+				7E32B08F1E348F510014669D /* Utils.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
 				7E32B07C1E31E8860014669D /* XinTuoViewController.m in Sources */,
@@ -701,10 +719,12 @@
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CE81E28B41100E810DA /* MessageViewController.m in Sources */,
 				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
+				7E32B08E1E348F510014669D /* GTMBase64.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
+				7E32B0881E348F260014669D /* DES3Util.m in Sources */,
 				7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */,
 				7EBB3CA61E272D9000E810DA /* NSString+YHEncrypt.m in Sources */,
 				7EBB3C481E272D0100E810DA /* main.m in Sources */,
