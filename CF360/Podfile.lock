@@ -18,6 +18,7 @@ PODS:
   - MJRefresh (3.1.12)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
+  - ProgressHUD (2.4)
   - Reachability (3.1.1)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MKNetworkKit
+  - ProgressHUD
   - SDCycleScrollView
   - SDWebImage
   - SVProgressHUD
@@ -42,12 +44,13 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
+  ProgressHUD: 4b66b0df0e08519c5c7283a198fd2867a114c95a
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 7a5cef2d2fa3037a107bce3cf745db7d9f94c3ac
+PODFILE CHECKSUM: 90463f7a825d618021e9f1785d57ee79ba5b39f9
 
 COCOAPODS: 1.1.1
