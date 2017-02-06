@@ -30,6 +30,8 @@ static NSString *cellId = @"cellId";
 
 
 @interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
+/** 表格视图 */
+@property (nonatomic, weak) UITableView *tableView;
 
 /** 轮播图 */
 @property (nonatomic, weak) SDCycleScrollView *sycleView;
@@ -57,8 +59,6 @@ static NSString *cellId = @"cellId";
     [self setupNavgationBar];
     [self setupUI];
     
-    [self loadLoopViewNetRequest];
-    [self loadHotProductNetRequset];
 }
 
 #pragma mark - 视图已经出现
@@ -89,10 +89,17 @@ static NSString *cellId = @"cellId";
 }
 
 #pragma mark - 网络请求方法块
+#pragma mark 下拉刷新方法
+- (void)loadPulldownRefresh {
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [self loadLoopViewNetRequest];
+    [self loadHotProductNetRequset];
+}
+
 #pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
-    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
     [[MKNetWorkManager shareManager] loadLoopImagesCompletion:^(id responseData, NSError *error) {
+        [self.tableView.mj_header endRefreshing];
         
         if (error) {
             [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
@@ -104,9 +111,12 @@ static NSString *cellId = @"cellId";
             [ProgressHUD dismiss];
             NSArray *dataArray = dict[@"data"];
             
-            for (NSDictionary *dataDict in dataArray) {
-                LoopViewModel *model = [LoopViewModel loopViewModelWithDict:dataDict];
-                [self.loopViewURLArray addObject:model.picture];
+            if (dataArray.count) {
+                [self.loopViewURLArray removeAllObjects];
+                for (NSDictionary *dataDict in dataArray) {
+                    LoopViewModel *model = [LoopViewModel loopViewModelWithDict:dataDict];
+                    [self.loopViewURLArray addObject:model.picture];
+                }
             }
             // 设置轮播图数据
             [self setLoopViewDataSource];
@@ -122,8 +132,11 @@ static NSString *cellId = @"cellId";
 
 #pragma mark 热销产品网络请求
 - (void)loadHotProductNetRequset {
+    // 热销产品防止重复点击请求数据
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
     [[MKNetWorkManager shareManager] loadHotProductCompletion:^(id responseData, NSError *error) {
-        
+        [self.tableView.mj_header endRefreshing];
+
         if (error) {
             [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
             return ;
@@ -145,6 +158,8 @@ static NSString *cellId = @"cellId";
         }
     }];
 }
+
+#pragma mark 产品推荐网络请求
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -240,6 +255,8 @@ static NSString *cellId = @"cellId";
             [_hotProButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             _tuiJProButton.backgroundColor = [UIColor whiteColor];
             [_tuiJProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
+            
+            [self loadHotProductNetRequset]; // 加载热销产品请求
         }
             break;
         case 2:
@@ -372,11 +389,15 @@ static NSString *cellId = @"cellId";
     [tuiJProductBtn addTarget:self action:@selector(segmentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // 3> 添加刷新控件
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadPulldownRefresh)];
+    [tableView.mj_header beginRefreshing];
     
     // 4> 属性记录
+    _tableView = tableView;
     _sycleView = sycleView;
     _hotProButton = hotProductBtn;
     _tuiJProButton = tuiJProductBtn;
+    
 }
 
 
