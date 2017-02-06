@@ -187,6 +187,26 @@
 }
 
 
+//存储cookie
++ (BOOL)storeCookie:(NSString *)cookie
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:cookie forKey:@"userCookie"];
+    [userDefaults synchronize];
+    return YES;
+    
+}
++ (NSString *)getUserCookie
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"userCookie"]) {
+        return [userDefaults objectForKey:@"userCookie"];
+    }else {
+        return nil;
+    }
+}
+
+
 //百度唯一标识
 + (BOOL)storeBaiDuChannelIdCode:(NSString *)recommendCode
 {

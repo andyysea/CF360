@@ -33,6 +33,7 @@
 // 其他公共类
 #import "AppDelegate.h"
 #import "YHNetworkManager.h"
+#import "MKNetWorkManager.h"
 #import "UIView_extra.h"
 #import "YHHeader.h"
 #import "UIColor+Common.h"
@@ -52,8 +53,11 @@
 
 //测试环境
 //#define RequestHeader @"http://192.168.1.82:8083"
-//正式环境
+//正式环境 --> AFNetworking
 #define RequestHeader @"http://app.cf360.com"
+
+//正式环境 --> MKNetworking
+#define MKRequsetHeader @"app.cf360.com"
 
 
 #endif

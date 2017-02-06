@@ -51,6 +51,10 @@
 + (BOOL)storeToken:(NSString *)token;
 + (NSString *)getToken;
 
+//存储cookie
++ (BOOL)storeCookie:(NSString *)cookie;
++ (NSString *)getUserCookie;
+
 
 
 //百度唯一标识

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21A5E3E5B51B42B7854A44DD /* libPods-CF360Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BAFCE7235EDFE4A3E44B66 /* libPods-CF360Tests.a */; };
 		38DAB5A7C251B2774C81B8E7 /* libPods-CF360.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C6951F40BD77502DA5C8F0 /* libPods-CF360.a */; };
+		7E3023491E4855B400DF43E3 /* MKNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3023481E4855B400DF43E3 /* MKNetWorkManager.m */; };
 		7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF51E2C981B0014669D /* YHNetworkManager.m */; };
 		7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF81E2CB28E0014669D /* LoopViewModel.m */; };
 		7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0781E31E8740014669D /* ZiGuanViewController.m */; };
@@ -67,6 +68,8 @@
 /* Begin PBXFileReference section */
 		4ED1419B254BFF38F8D47442 /* Pods-CF360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CF360Tests/Pods-CF360Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		58233FFB200C27DCDEC53DA9 /* Pods-CF360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CF360.release.xcconfig"; path = "Pods/Target Support Files/Pods-CF360/Pods-CF360.release.xcconfig"; sourceTree = "<group>"; };
+		7E3023471E4855B400DF43E3 /* MKNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetWorkManager.h; sourceTree = "<group>"; };
+		7E3023481E4855B400DF43E3 /* MKNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetWorkManager.m; sourceTree = "<group>"; };
 		7E32AFF41E2C981B0014669D /* YHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetworkManager.h; sourceTree = "<group>"; };
 		7E32AFF51E2C981B0014669D /* YHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetworkManager.m; sourceTree = "<group>"; };
 		7E32AFF71E2CB28E0014669D /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 			children = (
 				7E32AFF41E2C981B0014669D /* YHNetworkManager.h */,
 				7E32AFF51E2C981B0014669D /* YHNetworkManager.m */,
+				7E3023471E4855B400DF43E3 /* MKNetWorkManager.h */,
+				7E3023481E4855B400DF43E3 /* MKNetWorkManager.m */,
 				7E32B0861E348F260014669D /* DES3Util.h */,
 				7E32B0871E348F260014669D /* DES3Util.m */,
 				7E32B0891E348F510014669D /* GTMBase64.h */,
@@ -733,6 +738,7 @@
 				7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */,
 				7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */,
 				7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */,
+				7E3023491E4855B400DF43E3 /* MKNetWorkManager.m in Sources */,
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
 				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
