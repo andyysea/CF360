@@ -27,6 +27,7 @@
 #import <MJRefresh.h>
 #import <MBProgressHUD.h>
 #import <SVProgressHUD.h>
+#import <ProgressHUD.h>
 #import <SDCycleScrollView.h>
 #import <YYModel.h>
 

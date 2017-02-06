@@ -91,13 +91,17 @@ static NSString *cellId = @"cellId";
 #pragma mark - 网络请求方法块
 #pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
-    [YHNetworkManager loadLoopImagesCompletion:^(id responseData, NSError *error) {
-       
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [[MKNetWorkManager shareManager] loadLoopImagesCompletion:^(id responseData, NSError *error) {
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
         NSDictionary *dict = responseData;
-        
-        NSLog(@"--> %@",dict);
-        
         if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
             NSArray *dataArray = dict[@"data"];
             
             for (NSDictionary *dataDict in dataArray) {
@@ -106,15 +110,39 @@ static NSString *cellId = @"cellId";
             }
             // 设置轮播图数据
             [self setLoopViewDataSource];
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
         }
-    
     }];
 }
 
 #pragma mark 热销产品网络请求
 - (void)loadHotProductNetRequset {
-    [YHNetworkManager loadHotProductCompletion:^(id responseData, NSError *error) {
+    [[MKNetWorkManager shareManager] loadHotProductCompletion:^(id responseData, NSError *error) {
         
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            NSArray *dataArray = dict[@"data"];
+            
+            NSLog(@"--> %@",dataArray);
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        }
     }];
 }
 
