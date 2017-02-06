@@ -59,6 +59,8 @@
     NSString *urlString = [NSString stringWithFormat:@"%@", RequestHeader];
     urlString = [urlString stringByAppendingString:@"/index/hotProduct"];
     
+    // ****** 这里的 des3Str 是字符串,不是字典 *****
+    
     [[YHNetworkManager shareManager] POST:urlString parameters:des3Str progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        
         NSLog(@"responseObject--> %@",responseObject);
@@ -80,39 +82,6 @@
 }
 
 
-
--(BOOL)isNetCanUse
-{
-    //检测网络
-    Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
-    switch ([reach currentReachabilityStatus]) {
-        case NotReachable://没有网络
-        {
-            UIAlertView *alert;
-            NSString *trackName = @"网络提示";
-            alert = [[UIAlertView alloc] initWithTitle:trackName
-                                               message:@"网络不给力，请检查网络设置"
-                                              delegate: nil
-                                     cancelButtonTitle:@"我知道了"
-                                     otherButtonTitles: nil, nil];
-            [alert show];
-            return NO;
-            break;
-        }
-        case ReachableViaWWAN://3G/4G网络
-        {
-            return YES;
-            break;
-        }
-        case ReachableViaWiFi://WiFi
-        {
-            return YES;
-            break;
-        }
-        default:
-            break;
-    }
-}
 
 
 @end
