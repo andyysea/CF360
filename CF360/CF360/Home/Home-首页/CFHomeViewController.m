@@ -69,6 +69,9 @@ static NSString *cellId = @"cellId";
     [super viewDidAppear:animated];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.drawerController setPanEnabled:YES];
+    
+    // 调用是否有未读新消息
+    [self loadUnreadMessageNetRequest];
 }
 
 #pragma mark - 视图已经消失
@@ -98,7 +101,7 @@ static NSString *cellId = @"cellId";
 
 #pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
-    [[MKNetWorkManager shareManager] loadLoopImagesCompletion:^(id responseData, NSError *error) {
+    [[MKNetWorkManager shareManager] loadLoopImagesCompletionHandler:^(id responseData, NSError *error) {
         [self.tableView.mj_header endRefreshing];
         
         if (error) {
@@ -134,7 +137,7 @@ static NSString *cellId = @"cellId";
 - (void)loadHotProductNetRequset {
     // 热销产品防止重复点击请求数据
     [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
-    [[MKNetWorkManager shareManager] loadHotProductCompletion:^(id responseData, NSError *error) {
+    [[MKNetWorkManager shareManager] loadHotProductCompletionHandler:^(id responseData, NSError *error) {
         [self.tableView.mj_header endRefreshing];
 
         if (error) {
@@ -160,6 +163,43 @@ static NSString *cellId = @"cellId";
 }
 
 #pragma mark 产品推荐网络请求
+- (void)loadProductCommendNetRequest {
+    // 防止重复点击请求数据
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [[MKNetWorkManager shareManager] loadProductCommendCompletionHandler:^(id responseData, NSError *error) {
+       
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            NSArray *dataArray = dict[@"data"];
+            
+            NSLog(@"--> %@",dataArray);
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        }
+
+    }];
+}
+
+#pragma mark 是否有新消息网络请求
+// 该方法只需要在视图已经出现调用即可,不需要提示加载等待禁止交互
+- (void)loadUnreadMessageNetRequest {
+    
+    [[MKNetWorkManager shareManager] loadUnreadMessageCompletionHandler:^(id responseData, NSError *error) {
+       
+        NSLog(@"未读消息请求--> %@",responseData);
+    }];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -256,7 +296,7 @@ static NSString *cellId = @"cellId";
             _tuiJProButton.backgroundColor = [UIColor whiteColor];
             [_tuiJProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
             
-            [self loadHotProductNetRequset]; // 加载热销产品请求
+            [self loadHotProductNetRequset]; // 加载热销产品网络请求
         }
             break;
         case 2:
@@ -265,6 +305,8 @@ static NSString *cellId = @"cellId";
             [_hotProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
             _tuiJProButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
             [_tuiJProButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            [self loadProductCommendNetRequest]; // 加载产品推荐网络请求
         }
             break;
         default:

@@ -13,6 +13,9 @@
 
 @interface MKNetWorkManager ()
 
+@property (nonatomic, copy) void(^complete)(id responseData, NSError *error);
+
+/** 提示框 */
 @property (nonatomic, strong) UIAlertView *alert;;
 
 @end
@@ -29,12 +32,12 @@
     return instance;
 }
 #pragma mark - 1.1 首页轮播图网络请求
-- (void)loadLoopImagesCompletion:(void(^)(id responseData, NSError *error))complete {
+- (void)loadLoopImagesCompletionHandler:(void(^)(id responseData, NSError *error))complete {
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     [headerFields setValue:@"application/json" forKey:@"Content-Type"];
     // ***** 如果不是第一次涉及到 cookie 这里一句代码保存 *****
-    [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+//    [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
     
     MKNetworkEngine *engines = [[MKNetworkEngine alloc] initWithHostName:MKRequsetHeader customHeaderFields:headerFields];
     MKNetworkOperation *op = [engines operationWithPath:@"/turn/advertise" params:nil httpMethod:@"GET" ssl:YES];
@@ -69,7 +72,7 @@
 }
 
 #pragma mark - 1.2 首页热销产品的请求方法
-- (void)loadHotProductCompletion:(void(^)(id responseData, NSError *error))complete {
+- (void)loadHotProductCompletionHandler:(void(^)(id responseData, NSError *error))complete {
     NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
     // 加密的签名
     NSString *md5Str = [jsonInput yh_md5String];
@@ -77,6 +80,47 @@
     NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
     //加密
     NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    self.complete = complete;
+    [self PostEncodeRequestWithPath:@"/index/hotProduct" parameter:des3Str];
+}
+
+
+#pragma mark - 1.3 首页产品推荐网络请求方法
+- (void)loadProductCommendCompletionHandler:(void(^)(id responseData, NSError *error))complete {
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    self.complete = complete;
+    [self PostEncodeRequestWithPath:@"/index/recommendProduct" parameter:des3Str];
+}
+
+#pragma mark - 1.4 加载是否有新的未读消息的网络请求
+- (void)loadUnreadMessageCompletionHandler:(void(^)(id responseData, NSError *error))complete {
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    self.complete = complete;
+    [self PostEncodeRequestWithPath:@"/index/unReadMessage" parameter:des3Str];
+}
+
+
+
+
+
+
+#pragma mark - POST的加密请求
+- (void)PostEncodeRequestWithPath:(NSString *)path parameter:(NSString *)des3Str {
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     [headerFields setValue:@"application/json" forKey:@"Content-Type"];
@@ -84,7 +128,7 @@
     [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
     
     MKNetworkEngine *engines = [[MKNetworkEngine alloc] initWithHostName:MKRequsetHeader customHeaderFields:headerFields];
-    MKNetworkOperation *op = [engines operationWithPath:@"/index/hotProduct" params:nil httpMethod:@"POST" ssl:YES];
+    MKNetworkOperation *op = [engines operationWithPath:path params:nil httpMethod:@"POST" ssl:YES];
     op.postDataEncoding = MKNKPostDataEncodingTypeCustom;
     // ****** 如果是有参数,并且是字符串的,在这里设置  下面三句代码
     [op setCustomPostDataEncodingHandler:^NSString *(NSDictionary *postDataDict) {
@@ -102,17 +146,14 @@
         NSError *error = nil;
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         
-        complete(responseDict, nil);
+        self.complete(responseDict, nil);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        complete (nil, error);
+        self.complete (nil, error);
     }];
     
     [engines enqueueOperation:op];
+
 }
-
-
-
-
 
 #pragma mark - 判断网络是否可用
 - (BOOL)isNetCanUse
