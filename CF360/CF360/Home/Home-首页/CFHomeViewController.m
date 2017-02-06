@@ -58,6 +58,7 @@ static NSString *cellId = @"cellId";
     [self setupUI];
     
     [self loadLoopViewNetRequest];
+    [self loadHotProductNetRequset];
 }
 
 #pragma mark - 视图已经出现
@@ -88,7 +89,7 @@ static NSString *cellId = @"cellId";
 }
 
 #pragma mark - 网络请求方法块
-/** 首页轮播图网络请求 */
+#pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
     [YHNetworkManager loadLoopImagesCompletion:^(id responseData, NSError *error) {
        
@@ -107,6 +108,13 @@ static NSString *cellId = @"cellId";
             [self setLoopViewDataSource];
         }
     
+    }];
+}
+
+#pragma mark 热销产品网络请求
+- (void)loadHotProductNetRequset {
+    [YHNetworkManager loadHotProductCompletion:^(id responseData, NSError *error) {
+        
     }];
 }
 

@@ -47,6 +47,11 @@
  */
 + (BOOL)validateIDCard:(NSString *)str;
 
+//存储token
++ (BOOL)storeToken:(NSString *)token;
++ (NSString *)getToken;
+
+
 
 //百度唯一标识
 + (BOOL)storeBaiDuChannelIdCode:(NSString *)recommendCode;

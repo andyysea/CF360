@@ -7,6 +7,8 @@
 //
 
 #import "YHNetworkManager.h"
+#import "Utils.h"
+#import "DES3Util.h"
 
 @implementation YHNetworkManager
 
@@ -41,6 +43,42 @@
         }
     }];
 }
+
+#pragma mark - 首页热销产品的请求方法
++ (void)loadHotProductCompletion:(void(^)(id responseData, NSError *error))complete {
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
+    
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@", RequestHeader];
+    urlString = [urlString stringByAppendingString:@"/index/hotProduct"];
+    
+    [[YHNetworkManager shareManager] POST:urlString parameters:des3Str progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+       
+        NSLog(@"responseObject--> %@",responseObject);
+        
+        if (responseObject && complete) {
+            complete(responseObject, nil);
+        }
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error --> %@",error);
+        if (error && complete) {
+            complete(nil, error);
+        }
+
+        
+    }];
+
+}
+
 
 
 -(BOOL)isNetCanUse

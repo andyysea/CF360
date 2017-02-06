@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import "DES3Util.h"
 
 @implementation Utils
 
@@ -48,11 +49,11 @@
                                                                     range:NSMakeRange(0, str.length)];
     if(numberofMatch > 0)
     {
-        DDLog(@"%@ isNumbericString: YES", str);
+        NSLog(@"%@ isNumbericString: YES", str);
         return YES;
     }
     
-    DDLog(@"%@ isNumbericString: NO", str);
+    NSLog(@"%@ isNumbericString: NO", str);
     return NO;
 }
 
@@ -68,11 +69,11 @@
                                                                   range:NSMakeRange(0, str.length)];
     if(isMatchEmail > 0)
     {
-        DDLog(@"%@ isMatchEmail: YES", str);
+        NSLog(@"%@ isMatchEmail: YES", str);
         return YES;
     }
     
-    DDLog(@"%@ isMatchEmail: NO", str);
+    NSLog(@"%@ isMatchEmail: NO", str);
     return NO;
 }
 
@@ -96,20 +97,20 @@
                                                                     range:NSMakeRange(0, str.length)];
     if(numberofMatch > 0)
     {
-        DDLog(@"%@ isNumbericString: YES", str);
+        NSLog(@"%@ isNumbericString: YES", str);
         return YES;
     }
     
-    DDLog(@"%@ isNumbericString: NO", str);
+    NSLog(@"%@ isNumbericString: NO", str);
     return NO;
 }
 
 /**
  *校验身份证证号是否合法
- *@param	str	身份证号
+ *@param	value	身份证号
  *@return		身份证号是否合法
  */
-+ (BOOL) validateIDCard:(NSString *)value{
++ (BOOL)validateIDCard:(NSString *)value{
 //    if (!str) {
 //        return NO;
 //    }
@@ -163,6 +164,28 @@
     checkBit = [checkString substringWithRange:NSMakeRange(remainder,1)];// 判断校验位
     return [checkBit isEqualToString:[[value substringWithRange:NSMakeRange(17,1)] uppercaseString]];
 }
+
+
+//存储Token
++ (BOOL)storeToken:(NSString *)token{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:token];
+    [userDefaults setObject:Des3str forKey:@"token"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getToken{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"token"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"token"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+
 
 //百度唯一标识
 + (BOOL)storeBaiDuChannelIdCode:(NSString *)recommendCode
