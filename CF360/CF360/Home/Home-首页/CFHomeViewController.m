@@ -1,4 +1,4 @@
-//
+///
 //  CFHomeViewController.m
 //  CF360
 //
@@ -36,6 +36,9 @@ static NSString *cellId = @"cellId";
 /** 轮播图 */
 @property (nonatomic, weak) SDCycleScrollView *sycleView;
 
+
+/** 导航栏右侧消息按钮 */
+@property (nonatomic, weak) UIButton *rightNavButton;
 /** 热销产品按钮 */
 @property (nonatomic, weak) UIButton *hotProButton;
 /** 产品推荐按钮 */
@@ -69,9 +72,6 @@ static NSString *cellId = @"cellId";
     [super viewDidAppear:animated];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.drawerController setPanEnabled:YES];
-    
-    // 调用是否有未读新消息
-    [self loadUnreadMessageNetRequest];
 }
 
 #pragma mark - 视图已经消失
@@ -95,12 +95,20 @@ static NSString *cellId = @"cellId";
 #pragma mark 下拉刷新方法
 - (void)loadPulldownRefresh {
     [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [self loadUnreadMessageNetRequest];
     [self loadLoopViewNetRequest];
-    [self loadHotProductNetRequset];
+    
+    // 根据选中的是哪个按钮来设置哪个产品的网络请求,减轻网络请求性能消耗
+    if (self.hotProButton.selected) {
+        [self loadHotProductNetRequset];
+    } else if (self.tuiJProButton.selected) {
+        [self loadProductCommendNetRequest];
+    }
 }
 
 #pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
+
     [[MKNetWorkManager shareManager] loadLoopImagesCompletionHandler:^(id responseData, NSError *error) {
         [self.tableView.mj_header endRefreshing];
         
@@ -129,6 +137,8 @@ static NSString *cellId = @"cellId";
             [ProgressHUD showError:@"签名不正确!"];
         } else if ([dict[@"code"] isEqualToString:@"1000"]) {
             [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
         }
     }];
 }
@@ -158,6 +168,8 @@ static NSString *cellId = @"cellId";
             [ProgressHUD showError:@"签名不正确!"];
         } else if ([dict[@"code"] isEqualToString:@"1000"]) {
             [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
         }
     }];
 }
@@ -167,7 +179,8 @@ static NSString *cellId = @"cellId";
     // 防止重复点击请求数据
     [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
     [[MKNetWorkManager shareManager] loadProductCommendCompletionHandler:^(id responseData, NSError *error) {
-       
+        [self.tableView.mj_header endRefreshing];
+        
         if (error) {
             [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
             return ;
@@ -186,18 +199,44 @@ static NSString *cellId = @"cellId";
             [ProgressHUD showError:@"签名不正确!"];
         } else if ([dict[@"code"] isEqualToString:@"1000"]) {
             [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
         }
 
     }];
 }
 
 #pragma mark 是否有新消息网络请求
-// 该方法只需要在视图已经出现调用即可,不需要提示加载等待禁止交互
+// 该方法只需要在"下拉刷新中"调用即可,不需要提示加载等待禁止交互
 - (void)loadUnreadMessageNetRequest {
-    
+
     [[MKNetWorkManager shareManager] loadUnreadMessageCompletionHandler:^(id responseData, NSError *error) {
-       
-        NSLog(@"未读消息请求--> %@",responseData);
+        [self.tableView.mj_header endRefreshing];
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            NSString *numStr = [NSString stringWithFormat:@"%@",dict[@"data"][@"unReadyCount"]];
+            if ([numStr isEqualToString:@"0"]) {
+                [self.rightNavButton setTitle:@"" forState:UIControlStateNormal];
+            } else {
+                [self.rightNavButton setTitle:numStr forState:UIControlStateNormal];
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
     }];
 }
 
@@ -291,6 +330,8 @@ static NSString *cellId = @"cellId";
     switch (tag) {
         case 1:
         {
+            _hotProButton.selected = YES;
+            _tuiJProButton.selected = NO;
             _hotProButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
             [_hotProButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             _tuiJProButton.backgroundColor = [UIColor whiteColor];
@@ -301,6 +342,8 @@ static NSString *cellId = @"cellId";
             break;
         case 2:
         {
+            _tuiJProButton.selected = YES;
+            _hotProButton.selected = NO;
             _hotProButton.backgroundColor = [UIColor whiteColor];
             [_hotProButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
             _tuiJProButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
@@ -336,11 +379,17 @@ static NSString *cellId = @"cellId";
     // 3> 添加导航栏中右侧的消息按钮
     UIButton *rightNavButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     rightNavButton.tag = MyButtonTagOfNavRight;
-    [rightNavButton setImage:[UIImage imageNamed:@"icon-信息提示框"] forState:UIControlStateNormal];
+    [rightNavButton setTitle:@"" forState:UIControlStateNormal];
+    [rightNavButton setTitleColor:[UIColor yh_colorNavYellowCommon] forState:UIControlStateNormal];
+    rightNavButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [rightNavButton setBackgroundImage:[UIImage imageNamed:@"icon-信息提示框"] forState:UIControlStateNormal];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightNavButton];
     self.navigationItem.rightBarButtonItem = rightItem;
     
     [rightNavButton addTarget:self action:@selector(navButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 记录属性
+    _rightNavButton = rightNavButton;
 }
 
 #pragma mark - 设置界面
@@ -416,6 +465,7 @@ static NSString *cellId = @"cellId";
     hotProductBtn.layer.borderColor = [UIColor yh_colorNavYellowCommon].CGColor;
     hotProductBtn.backgroundColor = [UIColor yh_colorNavYellowCommon];
     [segmentbgView addSubview:hotProductBtn];
+    hotProductBtn.selected = YES;
     [hotProductBtn addTarget:self action:@selector(segmentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *tuiJProductBtn = [[UIButton alloc] initWithFrame:CGRectMake(hotProductBtn.right, hotProductBtn.y, hotProductBtn.width, hotProductBtn.height)];
@@ -428,6 +478,7 @@ static NSString *cellId = @"cellId";
     tuiJProductBtn.layer.borderColor = [UIColor yh_colorNavYellowCommon].CGColor;
     tuiJProductBtn.backgroundColor = [UIColor whiteColor];
     [segmentbgView addSubview:tuiJProductBtn];
+    tuiJProductBtn.selected = NO;
     [tuiJProductBtn addTarget:self action:@selector(segmentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // 3> 添加刷新控件

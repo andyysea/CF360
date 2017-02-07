@@ -13,7 +13,11 @@
 
 @interface MKNetWorkManager ()
 
-@property (nonatomic, copy) void(^complete)(id responseData, NSError *error);
+/**
+ 问题 -->不能只定义一个属性记录请求回调结果,如果网速较慢,有多个网络请求的时候会发生请求结果回调错乱
+ 解决办法 -->回调的block作为参数传递进封装的方法内部,这样执行的时候都是各自的回调方法了,
+ */
+//@property (nonatomic, copy) void(^complete)(id responseData, NSError *error);
 
 /** 提示框 */
 @property (nonatomic, strong) UIAlertView *alert;;
@@ -32,12 +36,15 @@
     return instance;
 }
 #pragma mark - 1.1 首页轮播图网络请求
+// 在该方法内设置 cookie
 - (void)loadLoopImagesCompletionHandler:(void(^)(id responseData, NSError *error))complete {
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     [headerFields setValue:@"application/json" forKey:@"Content-Type"];
     // ***** 如果不是第一次涉及到 cookie 这里一句代码保存 *****
-//    [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+    if ([Utils getUserCookie].length) {
+        [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+    }
     
     MKNetworkEngine *engines = [[MKNetworkEngine alloc] initWithHostName:MKRequsetHeader customHeaderFields:headerFields];
     MKNetworkOperation *op = [engines operationWithPath:@"/turn/advertise" params:nil httpMethod:@"GET" ssl:YES];
@@ -81,8 +88,7 @@
     //加密
     NSString *des3Str = [DES3Util encrypt:jsonInputStr];
     
-    self.complete = complete;
-    [self PostEncodeRequestWithPath:@"/index/hotProduct" parameter:des3Str];
+    [self PostEncodeRequestWithPath:@"/index/hotProduct" parameter:des3Str completionHandler:complete];
 }
 
 
@@ -96,8 +102,7 @@
     //加密
     NSString *des3Str = [DES3Util encrypt:jsonInputStr];
     
-    self.complete = complete;
-    [self PostEncodeRequestWithPath:@"/index/recommendProduct" parameter:des3Str];
+    [self PostEncodeRequestWithPath:@"/index/recommendProduct" parameter:des3Str completionHandler:complete];
 }
 
 #pragma mark - 1.4 加载是否有新的未读消息的网络请求
@@ -110,8 +115,7 @@
     //加密
     NSString *des3Str = [DES3Util encrypt:jsonInputStr];
     
-    self.complete = complete;
-    [self PostEncodeRequestWithPath:@"/index/unReadMessage" parameter:des3Str];
+    [self PostEncodeRequestWithPath:@"/index/unReadMessage" parameter:des3Str completionHandler:complete];
 }
 
 
@@ -120,12 +124,14 @@
 
 
 #pragma mark - POST的加密请求
-- (void)PostEncodeRequestWithPath:(NSString *)path parameter:(NSString *)des3Str {
+- (void)PostEncodeRequestWithPath:(NSString *)path parameter:(NSString *)des3Str completionHandler:(void(^)(id responseData, NSError *error))complete {
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     [headerFields setValue:@"application/json" forKey:@"Content-Type"];
     // ***** 如果不是第一次涉及到 cookie 这里一句代码保存 *****
-    [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+    if ([Utils getUserCookie].length) {
+        [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+    }
     
     MKNetworkEngine *engines = [[MKNetworkEngine alloc] initWithHostName:MKRequsetHeader customHeaderFields:headerFields];
     MKNetworkOperation *op = [engines operationWithPath:path params:nil httpMethod:@"POST" ssl:YES];
@@ -146,9 +152,9 @@
         NSError *error = nil;
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         
-        self.complete(responseDict, nil);
+        complete(responseDict, nil);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        self.complete (nil, error);
+        complete (nil, error);
     }];
     
     [engines enqueueOperation:op];

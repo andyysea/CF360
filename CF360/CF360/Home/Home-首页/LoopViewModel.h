@@ -6,6 +6,11 @@
 //  Copyright © 2017年 junde. All rights reserved.
 //
 
+
+
+/**
+    轮播图模型
+ */
 #import <Foundation/Foundation.h>
 
 @interface LoopViewModel : NSObject

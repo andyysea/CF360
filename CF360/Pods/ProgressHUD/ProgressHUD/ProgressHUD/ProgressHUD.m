@@ -146,8 +146,13 @@
 {
 	if (hud == nil)
 	{
-		hud = [[UIToolbar alloc] initWithFrame:CGRectZero];
-		hud.translucent = YES;
+        /**  
+******** 原本两句代码如下,做了修改
+         hud = [[UIToolbar alloc] initWithFrame:CGRectZero];
+         hud.translucent = YES;
+         */
+		hud = [[UIView alloc] initWithFrame:CGRectZero];
+//		hud.translucent = YES;
 		hud.backgroundColor = HUD_BACKGROUND_COLOR;
 		hud.layer.cornerRadius = 10;
 		hud.layer.masksToBounds = YES;

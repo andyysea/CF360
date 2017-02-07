@@ -13,10 +13,10 @@
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 #define HUD_STATUS_FONT			[UIFont systemFontOfSize:15]
-#define HUD_STATUS_COLOR		[UIColor blackColor]
+#define HUD_STATUS_COLOR		[UIColor whiteColor]
 
 #define HUD_SPINNER_COLOR		[UIColor whiteColor]
-#define HUD_BACKGROUND_COLOR	[UIColor colorWithWhite:0.0 alpha:0.4]
+#define HUD_BACKGROUND_COLOR	[UIColor darkGrayColor]
 #define HUD_WINDOW_COLOR		[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2]
 
 #define HUD_IMAGE_SUCCESS		[UIImage imageNamed:@"ProgressHUD.bundle/progresshud-success.png"]
@@ -42,7 +42,7 @@
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UIView *background;
-@property (nonatomic, retain) UIToolbar *hud;
+@property (nonatomic, retain) UIView *hud;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) UIImageView *image;
 @property (nonatomic, retain) UILabel *label;
