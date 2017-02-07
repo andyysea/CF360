@@ -11,7 +11,7 @@ pod 'MJRefresh'
 pod 'SDCycleScrollView'
 pod 'YYModel'
 pod 'ProgressHUD'
-
+pod 'Masonry'
 
   target 'CF360Tests' do
     inherit! :search_paths
@@ -31,3 +31,4 @@ end
 # Using SDWebImage (3.8.2)
 # Using SVProgressHUD (2.0.4)
 # Using YYModel (1.0.4)
+# Using Masonry (1.0.2)

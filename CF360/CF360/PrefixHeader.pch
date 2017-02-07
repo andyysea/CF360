@@ -30,6 +30,7 @@
 #import <ProgressHUD.h>
 #import <SDCycleScrollView.h>
 #import <YYModel.h>
+#import <Masonry.h>
 
 // 其他公共类
 #import "AppDelegate.h"
