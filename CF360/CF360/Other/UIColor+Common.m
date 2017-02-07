@@ -29,6 +29,17 @@
     return [UIColor yh_colorWithRed:230 green:230 blue:230];
 }
 
+/** 红色 218 85 90*/
++ (instancetype)yh_colorSimpleRedCommon {
+    return [UIColor yh_colorWithRed:218 green:85 blue:90];
+}
+
+/** 淡蓝色 141  193 254 */
++ (instancetype)yh_colorSimpleBlueCommon {
+    return [UIColor yh_colorWithRed:141 green:193 blue:254];
+}
+
+
 
 
 

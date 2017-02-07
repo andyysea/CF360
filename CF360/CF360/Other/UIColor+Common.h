@@ -23,4 +23,10 @@
 /** 浅灰色 230 230 230 */
 + (instancetype)yh_colorLightGrayCommon;
 
+/** 红色 218 85 90*/
++ (instancetype)yh_colorSimpleRedCommon;
+
+/** 淡蓝色 141  193 254 */
++ (instancetype)yh_colorSimpleBlueCommon;
+
 @end
