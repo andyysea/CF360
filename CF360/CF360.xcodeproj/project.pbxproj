@@ -12,6 +12,8 @@
 		7E3023491E4855B400DF43E3 /* MKNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3023481E4855B400DF43E3 /* MKNetWorkManager.m */; };
 		7E30234C1E496D9500DF43E3 /* HotProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30234B1E496D9500DF43E3 /* HotProductModel.m */; };
 		7E30234F1E496DB500DF43E3 /* ProductCommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30234E1E496DB500DF43E3 /* ProductCommendModel.m */; };
+		7E3023551E49A17100DF43E3 /* HotProductViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3023541E49A17100DF43E3 /* HotProductViewCell.m */; };
+		7E3023581E49A18700DF43E3 /* ProductCommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E3023571E49A18700DF43E3 /* ProductCommendViewCell.m */; };
 		7E32AFF61E2C981B0014669D /* YHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF51E2C981B0014669D /* YHNetworkManager.m */; };
 		7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32AFF81E2CB28E0014669D /* LoopViewModel.m */; };
 		7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0781E31E8740014669D /* ZiGuanViewController.m */; };
@@ -76,6 +78,10 @@
 		7E30234B1E496D9500DF43E3 /* HotProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotProductModel.m; sourceTree = "<group>"; };
 		7E30234D1E496DB500DF43E3 /* ProductCommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommendModel.h; sourceTree = "<group>"; };
 		7E30234E1E496DB500DF43E3 /* ProductCommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCommendModel.m; sourceTree = "<group>"; };
+		7E3023531E49A17100DF43E3 /* HotProductViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotProductViewCell.h; sourceTree = "<group>"; };
+		7E3023541E49A17100DF43E3 /* HotProductViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotProductViewCell.m; sourceTree = "<group>"; };
+		7E3023561E49A18700DF43E3 /* ProductCommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommendViewCell.h; sourceTree = "<group>"; };
+		7E3023571E49A18700DF43E3 /* ProductCommendViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCommendViewCell.m; sourceTree = "<group>"; };
 		7E32AFF41E2C981B0014669D /* YHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetworkManager.h; sourceTree = "<group>"; };
 		7E32AFF51E2C981B0014669D /* YHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetworkManager.m; sourceTree = "<group>"; };
 		7E32AFF71E2CB28E0014669D /* LoopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopViewModel.h; sourceTree = "<group>"; };
@@ -338,6 +344,10 @@
 			children = (
 				7EBB3C6D1E272D9000E810DA /* CFHomeViewController.h */,
 				7EBB3C6E1E272D9000E810DA /* CFHomeViewController.m */,
+				7E3023531E49A17100DF43E3 /* HotProductViewCell.h */,
+				7E3023541E49A17100DF43E3 /* HotProductViewCell.m */,
+				7E3023561E49A18700DF43E3 /* ProductCommendViewCell.h */,
+				7E3023571E49A18700DF43E3 /* ProductCommendViewCell.m */,
 				7E32AFF71E2CB28E0014669D /* LoopViewModel.h */,
 				7E32AFF81E2CB28E0014669D /* LoopViewModel.m */,
 				7E30234A1E496D9500DF43E3 /* HotProductModel.h */,
@@ -736,6 +746,7 @@
 				7E30234F1E496DB500DF43E3 /* ProductCommendModel.m in Sources */,
 				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
 				7E32B08E1E348F510014669D /* GTMBase64.m in Sources */,
+				7E3023581E49A18700DF43E3 /* ProductCommendViewCell.m in Sources */,
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
@@ -753,6 +764,7 @@
 				7E3023491E4855B400DF43E3 /* MKNetWorkManager.m in Sources */,
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
+				7E3023551E49A17100DF43E3 /* HotProductViewCell.m in Sources */,
 				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
 				7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */,
 				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,

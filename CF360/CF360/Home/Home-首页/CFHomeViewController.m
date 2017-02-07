@@ -13,6 +13,8 @@
 #import "ZiGuanViewController.h"    // 资管控制器
 #import "YangGuangViewController.h" // 阳光私募控制器
 #import "ProductCenterViewController.h"    // 产品中心 title-> 全部产品
+#import "HotProductModel.h" // 热销产品模型
+#import "HotProductViewCell.h" // 热销产品自定义cell
 
 
 /**
@@ -46,6 +48,8 @@ static NSString *cellId = @"cellId";
 
 /** 轮播图模型数组 */
 @property (nonatomic, strong) NSMutableArray *loopViewURLArray;
+/** 热销产品模型数组 */
+@property (nonatomic, strong) NSMutableArray *hotProductArray;
 
 
 @end
@@ -58,7 +62,7 @@ static NSString *cellId = @"cellId";
     
     // 初始化
     _loopViewURLArray = [NSMutableArray array];
-    
+    _hotProductArray = [NSMutableArray array];
     [self setupNavgationBar];
     [self setupUI];
     
@@ -105,6 +109,41 @@ static NSString *cellId = @"cellId";
         [self loadProductCommendNetRequest];
     }
 }
+
+#pragma mark 是否有新消息网络请求
+// 该方法只需要在"下拉刷新中"调用即可,不需要提示加载等待禁止交互
+- (void)loadUnreadMessageNetRequest {
+    
+    [[MKNetWorkManager shareManager] loadUnreadMessageCompletionHandler:^(id responseData, NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            NSString *numStr = [NSString stringWithFormat:@"%@",dict[@"data"][@"unReadyCount"]];
+            if ([numStr isEqualToString:@"0"]) {
+                [self.rightNavButton setTitle:@"" forState:UIControlStateNormal];
+            } else {
+                [self.rightNavButton setTitle:numStr forState:UIControlStateNormal];
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
+    }];
+}
+
 
 #pragma mark 首页轮播图网络请求
 - (void)loadLoopViewNetRequest {
@@ -158,9 +197,16 @@ static NSString *cellId = @"cellId";
         NSDictionary *dict = responseData;
         if ([dict[@"code"] isEqualToString:@"0000"]) {
             [ProgressHUD dismiss];
-            NSArray *dataArray = dict[@"data"];
+            NSArray *dataArray = dict[@"data"][@"hotProduct"];
             
-            NSLog(@"--> %@",dataArray);
+            if (dataArray.count) {
+                [self.hotProductArray removeAllObjects];
+                for (NSDictionary *dataDict in dataArray) {
+                    HotProductModel *model = [HotProductModel yy_modelWithDictionary:dataDict];
+                    [self.hotProductArray addObject:model];
+                }
+            }
+            [self.tableView reloadData];
             
         } else if ([dict[@"code"] isEqualToString:@"0001"]) {
             [ProgressHUD showError:@"参数不正确!"];
@@ -206,51 +252,35 @@ static NSString *cellId = @"cellId";
     }];
 }
 
-#pragma mark 是否有新消息网络请求
-// 该方法只需要在"下拉刷新中"调用即可,不需要提示加载等待禁止交互
-- (void)loadUnreadMessageNetRequest {
-
-    [[MKNetWorkManager shareManager] loadUnreadMessageCompletionHandler:^(id responseData, NSError *error) {
-        [self.tableView.mj_header endRefreshing];
-        
-        if (error) {
-            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
-            return ;
-        }
-        
-        NSDictionary *dict = responseData;
-        if ([dict[@"code"] isEqualToString:@"0000"]) {
-            [ProgressHUD dismiss];
-            NSString *numStr = [NSString stringWithFormat:@"%@",dict[@"data"][@"unReadyCount"]];
-            if ([numStr isEqualToString:@"0"]) {
-                [self.rightNavButton setTitle:@"" forState:UIControlStateNormal];
-            } else {
-                [self.rightNavButton setTitle:numStr forState:UIControlStateNormal];
-            }
-            
-        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
-            [ProgressHUD showError:@"参数不正确!"];
-        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
-            [ProgressHUD showError:@"签名不正确!"];
-        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
-            [ProgressHUD showError:@"未登录!"];
-        } else {
-            [ProgressHUD dismiss];
-        }
-    }];
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.hotProButton.selected) {
+        return 300;
+    } else {
+        return 126;
+    }
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    if (self.hotProButton.selected) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    if (self.hotProButton.selected) {
+        return self.hotProductArray.count;
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    HotProductViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -402,7 +432,7 @@ static NSString *cellId = @"cellId";
     
     tableView.dataSource = self;
     tableView.delegate = self;
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
+    [tableView registerClass:[HotProductViewCell class] forCellReuseIdentifier:cellId];
     
     // 2> 创建headerView, 包含轮播图, 四个分类按钮, 两个本控制器得分类按钮
     CGFloat headerViewHeight = Width_Screen * 496 / 640;// 表头视图高度
