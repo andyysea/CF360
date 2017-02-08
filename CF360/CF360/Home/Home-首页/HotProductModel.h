@@ -50,7 +50,8 @@
 @property (nonatomic, copy) NSString *RECRUITMENTPROCESS;// 进度条数据
 @property (nonatomic, copy) NSString *ISSHOW; //进度条说明
 
-//@property(nonatomic,copy)NSString *auditStatus; //
+
+@property(nonatomic,copy)NSString *auditStatus; // 认证状态
 
 
 @end

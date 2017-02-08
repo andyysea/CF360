@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
 };
 
 /** 可重用标识符 */
-static NSString *cellId = @"cellId";
+static NSString *hotCellId = @"hotProductCellId";
 
 
 @interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
@@ -203,6 +203,7 @@ static NSString *cellId = @"cellId";
                 [self.hotProductArray removeAllObjects];
                 for (NSDictionary *dataDict in dataArray) {
                     HotProductModel *model = [HotProductModel yy_modelWithDictionary:dataDict];
+                    model.auditStatus = dict[@"data"][@"auditStatus"];
                     [self.hotProductArray addObject:model];
                 }
             }
@@ -279,12 +280,26 @@ static NSString *cellId = @"cellId";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HotProductViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    HotProductViewCell *cell = [tableView dequeueReusableCellWithIdentifier:hotCellId forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.model = self.hotProductArray[indexPath.row];
+    [self callBackWithCell:cell];
     
     return cell;
 }
 
+
+#pragma mark - 热销产品预约按钮点击方法
+- (void)callBackWithCell:(HotProductViewCell *)cell {
+   
+    [cell setClickBookButtonCallBack:^(HotProductViewCell *cell) {
+        NSInteger index = [self.tableView indexPathForCell:cell].row;
+        
+        // 这里可以根据index拿到对应的 model,拿到model中的属性,进行传递跳转详情控制器
+        NSLog(@"得到的index -->%zd",index);
+    }];
+}
 
 #pragma mark - 导航栏上 左边/右边 按钮点击方法
 - (void)navButtonClick:(UIButton *)button {
@@ -432,7 +447,7 @@ static NSString *cellId = @"cellId";
     
     tableView.dataSource = self;
     tableView.delegate = self;
-    [tableView registerClass:[HotProductViewCell class] forCellReuseIdentifier:cellId];
+    [tableView registerClass:[HotProductViewCell class] forCellReuseIdentifier:hotCellId];
     
     // 2> 创建headerView, 包含轮播图, 四个分类按钮, 两个本控制器得分类按钮
     CGFloat headerViewHeight = Width_Screen * 496 / 640;// 表头视图高度

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HotProductModel;
 
 @interface HotProductViewCell : UITableViewCell
+
+/** 点击预约按钮回调方法 */
+@property (nonatomic, copy) void(^clickBookButtonCallBack)(HotProductViewCell *cell);
+
+/** 模型属性 */
+@property (nonatomic, strong) HotProductModel *model;
+
 
 @end
