@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-#define HUD_STATUS_FONT			[UIFont systemFontOfSize:15]
+#define HUD_STATUS_FONT			[UIFont systemFontOfSize:13]
 #define HUD_STATUS_COLOR		[UIColor whiteColor]
 
 #define HUD_SPINNER_COLOR		[UIColor whiteColor]

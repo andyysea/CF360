@@ -31,9 +31,18 @@
 + (void)dismiss
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[[self shared] hudHide];
-	});
+    
+    /**
+     原框架方法如下注释的 三行代码,换成了延时之后的在消失,
+        --dispatch_after 也是异步回到主队列
+     
+     dispatch_async(dispatch_get_main_queue(), ^{
+     [[self shared] hudHide];
+     });
+     */
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[self shared] hudHide];
+    });
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
