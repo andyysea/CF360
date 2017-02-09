@@ -15,7 +15,8 @@
 #import "ProductCenterViewController.h"    // 产品中心 title-> 全部产品
 #import "HotProductModel.h" // 热销产品模型
 #import "HotProductViewCell.h" // 热销产品自定义cell
-
+#import "ProductCommendModel.h" // 产品推荐模型
+#import "ProductCommendViewCell.h" // 产品推荐自定义cell
 
 /**
     定义枚举类型,来设置添加按钮的 tag
@@ -29,7 +30,7 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
 
 /** 可重用标识符 */
 static NSString *hotCellId = @"hotProductCellId";
-
+static NSString *commendCellId = @"productCommendCellId";
 
 @interface CFHomeViewController ()<UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
 /** 表格视图 */
@@ -50,7 +51,8 @@ static NSString *hotCellId = @"hotProductCellId";
 @property (nonatomic, strong) NSMutableArray *loopViewURLArray;
 /** 热销产品模型数组 */
 @property (nonatomic, strong) NSMutableArray *hotProductArray;
-
+/** 产品推荐模型数组 */
+@property (nonatomic, strong) NSMutableArray *productCommendArray;
 
 @end
 
@@ -63,6 +65,8 @@ static NSString *hotCellId = @"hotProductCellId";
     // 初始化
     _loopViewURLArray = [NSMutableArray array];
     _hotProductArray = [NSMutableArray array];
+    _productCommendArray = [NSMutableArray array];
+    
     [self setupNavgationBar];
     [self setupUI];
     
@@ -236,9 +240,13 @@ static NSString *hotCellId = @"hotProductCellId";
         NSDictionary *dict = responseData;
         if ([dict[@"code"] isEqualToString:@"0000"]) {
             [ProgressHUD dismiss];
-            NSArray *dataArray = dict[@"data"];
             
-            NSLog(@"--> %@",dataArray);
+            NSArray *modelArray = [[ProductCommendModel new] productCommendModelArrayWithData:dict];
+            if (modelArray.count) {
+                [self.productCommendArray removeAllObjects];
+                [self.productCommendArray addObjectsFromArray:modelArray];
+            }
+            [self.tableView reloadData];
             
         } else if ([dict[@"code"] isEqualToString:@"0001"]) {
             [ProgressHUD showError:@"参数不正确!"];
@@ -262,12 +270,62 @@ static NSString *hotCellId = @"hotProductCellId";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+ 
+    if (self.hotProButton.selected) {
+        return 0;
+    } else {
+        return 30;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (self.hotProButton.selected) {
+        return nil;
+    } else {
+        UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, 30)];
+        customView.backgroundColor = [UIColor whiteColor];
+        UILabel *labLine = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, Width_Screen - 20, 1)];
+        labLine.backgroundColor = [UIColor yh_colorNavYellowCommon];
+        [customView addSubview:labLine];
+        
+        UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(Width_Screen / 2 - 30, 0, 60, 30)];
+        headerLabel.backgroundColor = [UIColor whiteColor];
+        headerLabel.textColor = [UIColor yh_colorNavYellowCommon];
+        headerLabel.font = [UIFont boldSystemFontOfSize:14];
+        headerLabel.textAlignment = NSTextAlignmentCenter;
+
+        NSArray *contentArray = self.productCommendArray[section];
+        ProductCommendModel *model = contentArray[0];
+        NSString *sectionName = @"";
+        if ([model.CATEGORY isEqualToString:@"xt"]) {
+            sectionName = @"信托";
+        } else if ([model.CATEGORY isEqualToString:@"zg"]) {
+            sectionName = @"资管";
+        } else if ([model.CATEGORY isEqualToString:@"ygsm"]) {
+            sectionName = @"阳光私募";
+        } else if ([model.CATEGORY isEqualToString:@"smgq"]) {
+            sectionName = @"私募股权";
+        } else if ([model.CATEGORY isEqualToString:@"bx"]) {
+            sectionName = @"保险";
+        }
+        headerLabel.text =  sectionName;
+        [customView addSubview:headerLabel];
+        
+        return customView;
+    }
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.hotProButton.selected) {
         return 1;
     } else {
-        return 0;
+        return self.productCommendArray.count;
     }
 }
 
@@ -275,16 +333,31 @@ static NSString *hotCellId = @"hotProductCellId";
     if (self.hotProButton.selected) {
         return self.hotProductArray.count;
     } else {
-        return 1;
+        NSArray *contentArray = self.productCommendArray[section];
+        return contentArray.count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HotProductViewCell *cell = [tableView dequeueReusableCellWithIdentifier:hotCellId forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.model = self.hotProductArray[indexPath.row];
-    [self callBackWithCell:cell];
+    NSString *cellID = self.hotProButton.selected ? hotCellId : commendCellId;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    if (self.hotProButton.selected) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        HotProductViewCell *hotCell = (HotProductViewCell *)cell;
+        hotCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        hotCell.model = self.hotProductArray[indexPath.row];
+        [self callBackWithCell:hotCell];
+    } else {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        ProductCommendViewCell *commendCell = (ProductCommendViewCell *)cell;
+        NSArray *contentArray = self.productCommendArray[indexPath.section];
+        commendCell.model = contentArray[indexPath.row];
+    }
+    
     
     return cell;
 }
@@ -448,6 +521,7 @@ static NSString *hotCellId = @"hotProductCellId";
     tableView.dataSource = self;
     tableView.delegate = self;
     [tableView registerClass:[HotProductViewCell class] forCellReuseIdentifier:hotCellId];
+    [tableView registerClass:[ProductCommendViewCell class] forCellReuseIdentifier:commendCellId];
     
     // 2> 创建headerView, 包含轮播图, 四个分类按钮, 两个本控制器得分类按钮
     CGFloat headerViewHeight = Width_Screen * 496 / 640;// 表头视图高度

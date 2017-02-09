@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ProductCommendModel;
+
 
 @interface ProductCommendViewCell : UITableViewCell
+
+
+/** 模型属性 */
+@property (nonatomic, strong) ProductCommendModel *model;
+
 
 @end

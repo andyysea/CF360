@@ -51,7 +51,7 @@
 @property (nonatomic, copy) NSString *ISSHOW; //进度条说明
 
 
-@property(nonatomic,copy)NSString *auditStatus; // 认证状态
+@property(nonatomic,copy)NSString *auditStatus; // 认证状态(是否登陆)
 
 
 @end

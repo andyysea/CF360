@@ -106,8 +106,9 @@
     }
     self.sixLabel.text = model.NAME5;
     
-    // 进度条
+//     进度条
     if ([model.ISSHOW boolValue]) {
+        self.progressView.hidden = NO;
         self.progressView.progress = [model.RECRUITMENTPROCESS floatValue];
         if ([model.RECRUITMENTPROCESS floatValue] == 0) {
             self.percentLabel.text = @"";
@@ -120,6 +121,7 @@
     } else {
         self.progressView.progress = 0;
         self.percentLabel.text = @"";
+        self.progressView.hidden = YES;
     }
 }
 
@@ -134,7 +136,7 @@
 #pragma mark - 设置界面
 - (void)setupUI {
     self.contentView.backgroundColor = [UIColor whiteColor];
-    self.selectedBackgroundView.backgroundColor = [UIColor redColor];
+    
     // 1> 底部视图
     UIView *bgView = [[UIView alloc] init]; // 这里直接设置frame没有效果,因为代理方法设置的cell大小后走,所以应该添加约束或者在重写模型set方法中把frame再设置一遍
     bgView.backgroundColor = [UIColor whiteColor];
