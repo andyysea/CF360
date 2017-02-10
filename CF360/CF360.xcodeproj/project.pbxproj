@@ -25,6 +25,7 @@
 		7E32B08E1E348F510014669D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08A1E348F510014669D /* GTMBase64.m */; };
 		7E32B08F1E348F510014669D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08D1E348F510014669D /* Utils.m */; };
 		7EA464851E4C626F00D3EF27 /* CFLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */; };
+		7EA464B91E4DB0EE00D3EF27 /* UserAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -106,6 +107,8 @@
 		7E32B08D1E348F510014669D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		7EA464811E4C626F00D3EF27 /* CFLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFLogInViewController.h; sourceTree = "<group>"; };
 		7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFLogInViewController.m; sourceTree = "<group>"; };
+		7EA464B71E4DB0EE00D3EF27 /* UserAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccount.h; sourceTree = "<group>"; };
+		7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccount.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 		7EA4647C1E4C610C00D3EF27 /* MyAccount */ = {
 			isa = PBXGroup;
 			children = (
+				7EA464B71E4DB0EE00D3EF27 /* UserAccount.h */,
+				7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */,
 			);
 			path = MyAccount;
 			sourceTree = "<group>";
@@ -796,6 +801,7 @@
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
+				7EA464B91E4DB0EE00D3EF27 /* UserAccount.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
 				7E32B0881E348F260014669D /* DES3Util.m in Sources */,
 				7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */,

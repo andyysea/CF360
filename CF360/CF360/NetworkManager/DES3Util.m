@@ -7,13 +7,13 @@
 //
 
 #import "DES3Util.h"
+#import <CommonCrypto/CommonCryptor.h>
+#import "GTMBase64.h"
+
 
 #define gkey            @"QAZXSWEDCVFDFGFDRTGBNHHGC"
 #define gIv             @"01234567"
 @implementation DES3Util
-
-
-
 
 // 加密方法
 + (NSString*)encrypt:(NSString*)plainText {

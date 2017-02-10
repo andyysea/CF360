@@ -55,6 +55,28 @@
 + (BOOL)storeCookie:(NSString *)cookie;
 + (NSString *)getUserCookie;
 
+// 存储登陆状态
++ (BOOL)storeLoginStates:(BOOL)loginStates;
++ (BOOL)getLoginStates;
+// 存储用户 ID
++ (BOOL)storeUserID:(NSString *)userID;
++ (NSString *)getUserID;
+// 存储昵称
++ (BOOL)storeNickName:(NSString *)nickName;
++ (NSString *)getNickName;
+// 存储真实名字
++ (BOOL)storeRealName:(NSString *)realName;
++ (NSString *)getRealName;
+// 存储电话
++ (BOOL)storePhone:(NSString *)Phone;
++ (NSString *)getPhone;
+// 存储类型
++ (BOOL)storeUserType:(NSString *)type;
++ (NSString *)getUserType;
+// 存储用户密码
++ (BOOL)storeUserpwd:(NSString *)userpwd;
++ (NSString *)getUserpwd;
+
 
 
 //百度唯一标识

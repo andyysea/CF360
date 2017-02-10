@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonCryptor.h>
-#import "GTMBase64.h"
 
 @interface DES3Util : NSObject
 

@@ -206,6 +206,135 @@
     }
 }
 
+// 存储登陆状态
++ (BOOL)storeLoginStates:(BOOL)loginStates
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:loginStates forKey:@"loginStates"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (BOOL)getLoginStates
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"loginStates"]) {
+        return [userDefaults boolForKey:@"loginStates"];
+    }else {
+        return NO;
+    }
+}
+
+// 存储昵称
++ (BOOL)storeNickName:(NSString *)nickName
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:nickName];
+    [userDefaults setObject:Des3str forKey:@"nickName"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getNickName
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"nickName"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"nickName"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+//存储真实姓名
++ (BOOL)storeRealName:(NSString *)realName
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:realName];
+    [userDefaults setObject:Des3str forKey:@"realname"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getRealName
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"realname"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"realname"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+//存储电话
++ (BOOL)storePhone:(NSString *)Phone
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:Phone];
+    [userDefaults setObject:Des3str forKey:@"Phone"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getPhone
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"Phone"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"Phone"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+
+// 存储类型
++ (BOOL)storeUserType:(NSString *)type {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:type forKey:@"userType"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getUserType {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"userType"]) {
+        return [userDefaults objectForKey:@"userType"];
+    }else {
+        return nil;
+    }
+}
+// 存储用户 ID
++ (BOOL)storeUserID:(NSString *)userID
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:userID];
+    [userDefaults setObject:Des3str forKey:@"userID"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getUserID
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"userID"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"userID"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+// 存储用户密码
++ (BOOL)storeUserpwd:(NSString *)userpwd {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *Des3str = [DES3Util encrypt:userpwd];
+    [userDefaults setObject:Des3str forKey:@"userpassword"];
+    [userDefaults synchronize];
+    return YES;
+}
++ (NSString *)getUserpwd {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"userpassword"]) {
+        NSString *Des3strde = [DES3Util decrypt:[userDefaults objectForKey:@"userpassword"]];
+        return Des3strde;
+    }else {
+        return nil;
+    }
+}
+
+
 
 //百度唯一标识
 + (BOOL)storeBaiDuChannelIdCode:(NSString *)recommendCode

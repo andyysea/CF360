@@ -55,10 +55,46 @@
 #pragma mark - 登陆按钮点击方法
 - (void)logInButtonClick {
     [self.view endEditing:YES];
+    [ProgressHUD show:@"努力加载中,请稍后" Interaction:NO];
     [[MKNetWorkManager shareManager] loadUserDataOnLogInWithUserName:self.nameField.text password:self.passwField.text completionHandler:^(id responseData, NSError *error) {
-       
-        NSLog(@"--> %@", responseData);
         
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        NSLog(@" 登陆 --> %@",dict)
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            
+            NSDictionary *contentDict = dict[@"data"];
+            if ([contentDict[@"flag"] boolValue]) {
+                [ProgressHUD showSuccess:contentDict[@"message"]];
+                
+                [Utils storeUserID:contentDict[@"userId"]];
+                [Utils storeLoginStates:YES];
+                [Utils storeNickName:contentDict[@"nickName"]];
+                [Utils storeRealName:contentDict[@"realName"]];
+                [Utils storeUserType:contentDict[@"type"]];
+                [Utils storePhone:contentDict[@"phone"]];
+                [Utils storeUserpwd:contentDict[@"password"]];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            } else {
+                [ProgressHUD showError:contentDict[@"message"]];
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
     }];
 }
 
