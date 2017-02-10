@@ -28,4 +28,16 @@
 #pragma mark - 2.1 登陆
 - (void)loadUserDataOnLogInWithUserName:(NSString *)userName password:(NSString *)password completionHandler:(void(^)(id responseData, NSError *error))complete;
 
+#pragma mark - 2.2 登陆之后,我的账户的网络请求
+- (void)loadUseAccountDataAfterLogInCompletionHandler:(void(^)(id responseData, NSError *error))complete;
+
+
 @end
+
+
+
+
+
+
+
+

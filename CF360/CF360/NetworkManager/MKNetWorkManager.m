@@ -134,6 +134,18 @@
     [self PostEncodeRequestWithPath:@"/ios/user/login" parameter:des3Str completionHandler:complete];
 }
 
+#pragma mark - 2.2 登陆之后,我的账户的网络请求
+- (void)loadUseAccountDataAfterLogInCompletionHandler:(void(^)(id responseData, NSError *error))complete {
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+
+    [self PostEncodeRequestWithPath:@"/member/myAccount" parameter:des3Str completionHandler:complete];
+}
 
 
 

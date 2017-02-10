@@ -72,26 +72,6 @@ static NSString *commendCellId = @"productCommendCellId";
     
 }
 
-#pragma mark - 视图已经出现
-/**
-    这里要开启控制器拖拽手势,以便在首页控制器滑动的时候能够打开左侧菜单控制器
- */
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.drawerController setPanEnabled:YES];
-}
-
-#pragma mark - 视图已经消失
-/**
-    这里关闭控制器拖拽手势,避免由首页控制器push到的子控制器也能拖拽,累加之后造成混乱
- */
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.drawerController setPanEnabled:NO];
-}
-
 #pragma mark - 设置轮播图图片数据显示
 - (void)setLoopViewDataSource {
     if (self.loopViewURLArray.count) {
@@ -261,6 +241,43 @@ static NSString *commendCellId = @"productCommendCellId";
     }];
 }
 
+#pragma mark - 如果登陆了,点击左侧按钮显示左侧抽屉控制器的网络请求
+// 加载用户账户数据
+- (void)loadUserAccountDataAfterLogIn {
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [[MKNetWorkManager shareManager] loadUseAccountDataAfterLogInCompletionHandler:^(id responseData, NSError *error) {
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        NSLog(@"---> %@", dict);
+        
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            
+            NSDictionary *contentDict = dict[@"data"];
+            if ([[contentDict allKeys] containsObject:@"userAccount"] && [contentDict[@"userAccount"] isEqual:[NSNull null]]) {
+                NSLog(@"--登陆超时了--");
+                
+            } else {
+                
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
+    }];
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.hotProButton.selected) {
@@ -382,6 +399,13 @@ static NSString *commendCellId = @"productCommendCellId";
             // 打开/关闭 左侧菜单控制器
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.drawerController.closed ? [delegate.drawerController openLeftView] : [delegate.drawerController closeLeftView];
+            
+            // 如果登陆
+            if ([Utils getLoginStates] && !delegate.drawerController.closed) {
+                [self loadUserAccountDataAfterLogIn];
+            }
+            
+            
         }
             break;
             
@@ -513,6 +537,11 @@ static NSString *commendCellId = @"productCommendCellId";
 #pragma mark - 设置界面
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    // 关闭侧滑开启左侧菜单控制器的拖拽手势,因为点击方法中需要请求用户账户数据
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController setPanEnabled:NO];
+
     
     // 1> 添加 UITableView
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
