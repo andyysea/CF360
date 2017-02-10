@@ -15,6 +15,8 @@
 #import "MyCompactViewController.h"     // 我的合同
 #import "MyPropFormViewController.h"    // 我的投保单
 #import "SettingViewController.h"       // 设置
+#import "CFLogInViewController.h"       // 登陆控制器 
+
 
 /** 表格视图的可重用标识符 */
 static NSString *cellId = @"cellId";
@@ -111,7 +113,10 @@ static NSString *cellId = @"cellId";
 #pragma mark - 未登陆状态下,登陆按钮点击方法
 - (void)loginButtonClick {
 
-    NSLog(@"--> 未登陆的登陆按钮");
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController closeLeftView];
+    CFLogInViewController *vc = [[CFLogInViewController alloc] init];
+    [delegate.homeNav pushViewController:vc animated:NO];
 }
 
 #pragma mark - 设置导航条

@@ -25,6 +25,7 @@
 #pragma mark - 1.4 加载是否有新的未读消息的网络请求
 - (void)loadUnreadMessageCompletionHandler:(void(^)(id responseData, NSError *error))complete;
 
-//@"/index/unReadMessage"
+#pragma mark - 2.1 登陆
+- (void)loadUserDataOnLogInWithUserName:(NSString *)userName password:(NSString *)password completionHandler:(void(^)(id responseData, NSError *error))complete;
 
 @end

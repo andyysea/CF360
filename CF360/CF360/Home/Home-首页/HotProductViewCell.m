@@ -343,6 +343,7 @@
     bookButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
     [bookButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [bookButton setTitle:@"立即预约" forState:UIControlStateNormal];
+    bookButton.showsTouchWhenHighlighted = YES;
     bookButton.layer.cornerRadius = 3;
     bookButton.layer.masksToBounds = YES;
     [bgView addSubview:bookButton];

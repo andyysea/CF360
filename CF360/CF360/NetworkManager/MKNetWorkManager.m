@@ -59,9 +59,11 @@
     }
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         // ***** 第一次网络请求涉及到 cookie 的时候 这里三句代码 保存 ******
-        NSDictionary *headerFieldDic = completedOperation.readonlyResponse.allHeaderFields;
-        NSString *cookie = headerFieldDic[@"Set-Cookie"];
-        [Utils storeCookie:cookie];
+//        if ([Utils getUserCookie].length == 0) {
+//            NSDictionary *headerFieldDic = completedOperation.readonlyResponse.allHeaderFields;
+//            NSString *cookie = headerFieldDic[@"Set-Cookie"];
+//            [Utils storeCookie:cookie];
+//        }
         
         NSString *des3Str = completedOperation.responseString;
         
@@ -118,6 +120,20 @@
     [self PostEncodeRequestWithPath:@"/index/unReadMessage" parameter:des3Str completionHandler:complete];
 }
 
+#pragma mark - 2.1 登陆
+- (void)loadUserDataOnLogInWithUserName:(NSString *)userName password:(NSString *)password completionHandler:(void (^)(id, NSError *))complete {
+    
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"password\":\"%@\",\"userName\":\"%@\"}",password, userName];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/login" parameter:des3Str completionHandler:complete];
+}
+
 
 
 
@@ -145,6 +161,12 @@
         return;
     }
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        if ([path isEqualToString:@"/ios/user/login"]) {
+            NSDictionary *headerFieldDic = completedOperation.readonlyResponse.allHeaderFields;
+            NSString *cookie = headerFieldDic[@"Set-Cookie"];
+            [Utils storeCookie:cookie];
+        }
         
         NSString *des3Str = completedOperation.responseString;
         NSString *dataStr = [DES3Util decrypt:des3Str];

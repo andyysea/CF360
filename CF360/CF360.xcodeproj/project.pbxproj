@@ -24,6 +24,7 @@
 		7E32B0881E348F260014669D /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B0871E348F260014669D /* DES3Util.m */; };
 		7E32B08E1E348F510014669D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08A1E348F510014669D /* GTMBase64.m */; };
 		7E32B08F1E348F510014669D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08D1E348F510014669D /* Utils.m */; };
+		7EA464851E4C626F00D3EF27 /* CFLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
@@ -103,6 +104,8 @@
 		7E32B08B1E348F510014669D /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		7E32B08C1E348F510014669D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7E32B08D1E348F510014669D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		7EA464811E4C626F00D3EF27 /* CFLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFLogInViewController.h; sourceTree = "<group>"; };
+		7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFLogInViewController.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,6 +274,46 @@
 			path = "保险";
 			sourceTree = "<group>";
 		};
+		7EA4647B1E4C60FF00D3EF27 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				7EA464801E4C626F00D3EF27 /* 登陆 */,
+				7EA464831E4C626F00D3EF27 /* 忘记密码 */,
+				7EA464841E4C626F00D3EF27 /* 注册 */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		7EA4647C1E4C610C00D3EF27 /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyAccount;
+			sourceTree = "<group>";
+		};
+		7EA464801E4C626F00D3EF27 /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				7EA464811E4C626F00D3EF27 /* CFLogInViewController.h */,
+				7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */,
+			);
+			path = "登陆";
+			sourceTree = "<group>";
+		};
+		7EA464831E4C626F00D3EF27 /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "忘记密码";
+			sourceTree = "<group>";
+		};
+		7EA464841E4C626F00D3EF27 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
 		7EBB3C3A1E272D0100E810DA = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +339,8 @@
 			children = (
 				7E32AFED1E2C919E0014669D /* NetworkManager */,
 				7EBB3C731E272D9000E810DA /* Main */,
+				7EA4647B1E4C60FF00D3EF27 /* LogIn */,
+				7EA4647C1E4C610C00D3EF27 /* MyAccount */,
 				7EBB3C6F1E272D9000E810DA /* LeftMenu */,
 				7EBB3C6B1E272D9000E810DA /* Home */,
 				7EBB3C7A1E272D9000E810DA /* Other */,
@@ -740,6 +785,7 @@
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
 				7E32B07C1E31E8860014669D /* XinTuoViewController.m in Sources */,
+				7EA464851E4C626F00D3EF27 /* CFLogInViewController.m in Sources */,
 				7EBB3CE01E2872B600E810DA /* MyPropFormViewController.m in Sources */,
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CE81E28B41100E810DA /* MessageViewController.m in Sources */,
