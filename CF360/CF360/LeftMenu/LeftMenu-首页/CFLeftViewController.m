@@ -16,12 +16,24 @@
 #import "MyPropFormViewController.h"    // 我的投保单
 #import "SettingViewController.h"       // 设置
 #import "CFLogInViewController.h"       // 登陆控制器 
-
+#import "UserAccount.h"                 // 当前用户账户
 
 /** 表格视图的可重用标识符 */
 static NSString *cellId = @"cellId";
 
 @interface CFLeftViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+/** 昵称 */
+@property (nonatomic, weak) UILabel *nickNameLabel;
+/** 认证视图 */
+@property (nonatomic, weak) UIImageView *statusView;
+/** 电话 */
+@property (nonatomic, weak) UILabel *phoneLabel;
+/** 佣金余额的值 */
+@property (nonatomic, weak) UILabel *brokerageValueLabel;
+
+/** 未登录状态下的'登陆按钮'的背景视图 */
+@property (nonatomic, weak) UIView *bgView;
 
 /** 本视图控制器中的表格数组数据 */
 @property (nonatomic, strong) NSArray <NSArray *>*formArrayData;
@@ -36,6 +48,44 @@ static NSString *cellId = @"cellId";
     [self initializeData];
     [self setupNavgationBar];
     [self setupUI];
+    [self addObserver];
+}
+
+#pragma mark - 添加观察者
+// 给用户账户添加观察者,用于判断 tableView 表头显示用户信息还是显示登陆按钮
+- (void)addObserver {
+    UserAccount *userAccount = [UserAccount shareManager];
+    // 给登陆属性添加观察者,用于隐藏登陆按钮
+    [userAccount addObserver:self forKeyPath:@"isLogin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+    // 给认证属性添加观察者,用于判断是否认证
+    [userAccount addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+}
+
+// 观察者调用的方法
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+  
+    UserAccount *userAccount = [UserAccount shareManager];
+    
+    if ([keyPath isEqualToString:@"isLogin"]) {
+        if (userAccount.isLogin) {
+            self.bgView.hidden = YES;
+        } else {
+            self.bgView.hidden = NO;
+        }
+    }
+    
+    // 这里只添加观察一个认证状态的属性, 所以这个属性在请求回调赋值的时候必须要放在最后
+    if ([keyPath isEqualToString:@"status"]) {
+        
+        self.nickNameLabel.text = [NSString stringWithFormat:@"%@", [Utils getNickName]];
+        if ([userAccount.status isEqualToString:@"success"]) {
+            self.statusView.image = [UIImage imageNamed:@"img-认证2"];
+        } else {
+            self.statusView.image = [UIImage imageNamed:@"img-认证"];
+        }
+        self.phoneLabel.text = [NSString yh_stringRangeReplaceByStars:[Utils getPhone]];
+        self.brokerageValueLabel.text = [NSString stringWithFormat:@"¥ %@", userAccount.expenseLeft];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -151,20 +201,87 @@ static NSString *cellId = @"cellId";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
     
     // 创建并设置 headerView; --> 这里可以根据是否登陆来判断添加什么
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 115)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 60, 115)];
     headerView.backgroundColor = [UIColor yh_colorWithTableViewDefault];
     
-    // 1> 如果未登陆
+    //  如果 登陆/未登录 --显示的东西不一样, 这里控件全部创建出来
+//    1> 如果登陆了显示的控件
+    // 昵称
+    UILabel *nickNameLabel = [[UILabel alloc] init];
+    nickNameLabel.font = [UIFont systemFontOfSize:18];
+    nickNameLabel.text = [NSString stringWithFormat:@"%@", [Utils getNickName]];
+    [headerView addSubview:nickNameLabel];
+    
+    [nickNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@20);
+        make.height.equalTo(@20);
+        make.centerX.equalTo(headerView);
+    }];
+    //认证状态
+    UIImageView *statusView = [[UIImageView alloc] init];
+    [headerView addSubview:statusView];
+    UserAccount *userAcount = [UserAccount shareManager];
+    if ([userAcount.status isEqualToString:@"success"]) {
+        statusView.image = [UIImage imageNamed:@"img-认证2"];
+    } else {
+        statusView.image = [UIImage imageNamed:@"img-认证"];
+    }
+    
+    [statusView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(nickNameLabel.mas_right).offset(5);
+        make.centerY.equalTo(nickNameLabel);
+        make.width.height.equalTo(@15);
+    }];
+    // 手机号码
+    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake((Width_Screen - 60 - 80) / 2, 45, 80, 15)];
+    phoneLabel.textColor = [UIColor lightGrayColor];
+    phoneLabel.textAlignment = NSTextAlignmentCenter;
+    phoneLabel.font = [UIFont systemFontOfSize:12];
+    if ([Utils getPhone].length) {
+        phoneLabel.text = [NSString yh_stringRangeReplaceByStars:[Utils getPhone]];
+    }
+    [headerView addSubview:phoneLabel];
+
+    // 用户的佣余额
+    CGFloat widthConstant = (Width_Screen - 60 - 10) / 2;
+    UILabel *brokerageLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, widthConstant, 30)];
+    brokerageLabel.font = [UIFont systemFontOfSize:12];
+    brokerageLabel.textColor = [UIColor darkGrayColor];
+    brokerageLabel.textAlignment = NSTextAlignmentRight;
+    brokerageLabel.text = @"佣金余额:";
+    [headerView addSubview:brokerageLabel];
+    // 用户佣金余额对应的值
+    UILabel *brokerageValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(widthConstant + 5, 70, widthConstant, 30)];
+    brokerageValueLabel.textAlignment = NSTextAlignmentLeft;
+    brokerageValueLabel.textColor = [UIColor yh_colorNavYellowCommon];
+    brokerageValueLabel.font = [UIFont systemFontOfSize:20];
+    brokerageValueLabel.text = userAcount.expenseLeft;
+    [headerView addSubview:brokerageValueLabel];
+    
+//    2>如果没有登陆
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.bounds.size.width - 10 - 60, 105)];
     bgView.backgroundColor = [UIColor whiteColor];
     [headerView addSubview:bgView];
-   
+    
     UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [loginButton setBackgroundImage:[UIImage imageNamed:@"img-登录"] forState:UIControlStateNormal];
     loginButton.center = bgView.center;
     [bgView addSubview:loginButton];
-    
     [loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 如果登陆了 就隐藏登陆按钮
+    if ([Utils getLoginStates]) {
+        bgView.hidden = YES;
+    }
+    
+    // 记录属性 --> 由添加的观察者方法来赋值
+    _nickNameLabel = nickNameLabel;
+    _statusView = statusView;
+    _phoneLabel = phoneLabel;
+    _brokerageValueLabel = brokerageValueLabel;
+    
+    _bgView = bgView;
+    
 
     self.tableView.tableHeaderView = headerView;
 }

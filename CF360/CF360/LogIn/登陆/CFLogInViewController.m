@@ -7,6 +7,7 @@
 //
 
 #import "CFLogInViewController.h"
+#import "UserAccount.h"
 
 @interface CFLogInViewController ()
 
@@ -73,12 +74,16 @@
                 [ProgressHUD showSuccess:contentDict[@"message"]];
                 
                 [Utils storeUserID:contentDict[@"userId"]];
-                [Utils storeLoginStates:YES];
                 [Utils storeNickName:contentDict[@"nickName"]];
                 [Utils storeRealName:contentDict[@"realName"]];
                 [Utils storeUserType:contentDict[@"type"]];
                 [Utils storePhone:contentDict[@"phone"]];
                 [Utils storeUserpwd:contentDict[@"password"]];
+                [Utils storeLoginStates:YES];
+                
+                // 这里设置登陆状态,视为了菜单控制器 添加观察者
+                UserAccount *userAccount = [UserAccount shareManager];
+                userAccount.isLogin = YES;
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 

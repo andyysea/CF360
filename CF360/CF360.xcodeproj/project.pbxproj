@@ -26,8 +26,10 @@
 		7E32B08F1E348F510014669D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E32B08D1E348F510014669D /* Utils.m */; };
 		7EA464851E4C626F00D3EF27 /* CFLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */; };
 		7EA464B91E4DB0EE00D3EF27 /* UserAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */; };
+		7EA464C41E515E4600D3EF27 /* CFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464C31E515E4600D3EF27 /* CFConst.m */; };
+		7EA464CD1E51605C00D3EF27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
+		7EA464D01E5161A800D3EF27 /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464C01E515DE400D3EF27 /* UIColor+Common.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
-		7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
 		7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C6E1E272D9000E810DA /* CFHomeViewController.m */; };
@@ -49,7 +51,6 @@
 		7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C961E272D9000E810DA /* UIView+YHAddition.m */; };
 		7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */; };
 		7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C751E272D9000E810DA /* AppDelegate.m */; };
-		7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CB01E274FD800E810DA /* UIColor+Common.m */; };
 		7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CB91E275AA100E810DA /* CFMyAccountButton.m */; };
 		7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC21E277C1200E810DA /* ProductCenterViewController.m */; };
 		7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3CC51E277CFA00E810DA /* MyAttentionViewController.m */; };
@@ -109,6 +110,10 @@
 		7EA464821E4C626F00D3EF27 /* CFLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFLogInViewController.m; sourceTree = "<group>"; };
 		7EA464B71E4DB0EE00D3EF27 /* UserAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccount.h; sourceTree = "<group>"; };
 		7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccount.m; sourceTree = "<group>"; };
+		7EA464BF1E515DE400D3EF27 /* UIColor+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Common.h"; sourceTree = "<group>"; };
+		7EA464C01E515DE400D3EF27 /* UIColor+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Common.m"; sourceTree = "<group>"; };
+		7EA464C31E515E4600D3EF27 /* CFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFConst.m; sourceTree = "<group>"; };
+		7EA464C51E515E6300D3EF27 /* CFConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFConst.h; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,8 +162,6 @@
 		7EBB3C981E272D9000E810DA /* UIViewController+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C991E272D9000E810DA /* YHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHHeader.h; sourceTree = "<group>"; };
 		7EBB3CAE1E2731E900E810DA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		7EBB3CAF1E274FD800E810DA /* UIColor+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Common.h"; sourceTree = "<group>"; };
-		7EBB3CB01E274FD800E810DA /* UIColor+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Common.m"; sourceTree = "<group>"; };
 		7EBB3CB81E275AA000E810DA /* CFMyAccountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFMyAccountButton.h; sourceTree = "<group>"; };
 		7EBB3CB91E275AA100E810DA /* CFMyAccountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFMyAccountButton.m; sourceTree = "<group>"; };
 		7EBB3CC11E277C1200E810DA /* ProductCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCenterViewController.h; sourceTree = "<group>"; };
@@ -319,6 +322,17 @@
 			path = "注册";
 			sourceTree = "<group>";
 		};
+		7EA464BE1E515DE400D3EF27 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7EA464BF1E515DE400D3EF27 /* UIColor+Common.h */,
+				7EA464C01E515DE400D3EF27 /* UIColor+Common.m */,
+				7EA464C51E515E6300D3EF27 /* CFConst.h */,
+				7EA464C31E515E4600D3EF27 /* CFConst.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7EBB3C3A1E272D0100E810DA = {
 			isa = PBXGroup;
 			children = (
@@ -452,8 +466,7 @@
 			children = (
 				7EBB3C7B1E272D9000E810DA /* LeftDrawerController */,
 				7EBB3C801E272D9000E810DA /* Tools */,
-				7EBB3CAF1E274FD800E810DA /* UIColor+Common.h */,
-				7EBB3CB01E274FD800E810DA /* UIColor+Common.m */,
+				7EA464BE1E515DE400D3EF27 /* Common */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -671,8 +684,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA464CD1E51605C00D3EF27 /* Assets.xcassets in Resources */,
 				7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */,
-				7EBB3C531E272D0100E810DA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA464D01E5161A800D3EF27 /* UIColor+Common.m in Sources */,
 				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */,
@@ -802,9 +816,9 @@
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
 				7EA464B91E4DB0EE00D3EF27 /* UserAccount.m in Sources */,
+				7EA464C41E515E4600D3EF27 /* CFConst.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
 				7E32B0881E348F260014669D /* DES3Util.m in Sources */,
-				7EBB3CB11E274FD800E810DA /* UIColor+Common.m in Sources */,
 				7EBB3CA61E272D9000E810DA /* NSString+YHEncrypt.m in Sources */,
 				7EBB3C481E272D0100E810DA /* main.m in Sources */,
 				7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */,

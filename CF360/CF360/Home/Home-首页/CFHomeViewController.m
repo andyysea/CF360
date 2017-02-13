@@ -17,6 +17,7 @@
 #import "HotProductViewCell.h" // 热销产品自定义cell
 #import "ProductCommendModel.h" // 产品推荐模型
 #import "ProductCommendViewCell.h" // 产品推荐自定义cell
+#import "UserAccount.h"            // 用户账户
 
 /**
     定义枚举类型,来设置添加按钮的 tag
@@ -259,13 +260,33 @@ static NSString *commendCellId = @"productCommendCellId";
             [ProgressHUD dismiss];
             
             NSDictionary *contentDict = dict[@"data"];
+            UserAccount *userAccount = [UserAccount shareManager];
+            
             if ([[contentDict allKeys] containsObject:@"userAccount"] && [contentDict[@"userAccount"] isEqual:[NSNull null]]) {
                 NSLog(@"--登陆超时了--");
+                // 提示用户重新登陆,并且设置清空登陆成功之后保存的数据,显示登陆按钮
+                [ProgressHUD showError:@"登陆超时了,请从新登陆!"];
                 
-            } else {
+                [Utils storeUserID:@""];
+                [Utils storeNickName:@""];
+                [Utils storeRealName:@""];
+                [Utils storeUserType:@""];
+                [Utils storePhone:@""];
+                [Utils storeUserpwd:@""];
+                [Utils storeLoginStates:NO];
                 
+                // 这里设置登陆状态,视为了菜单控制器 添加观察者
+                userAccount.isLogin = NO;
+
+                userAccount.expenseLeft = @"暂无数据";
+                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
+                
+            } else if ([[contentDict allKeys] containsObject:@"userAccount"] && [[contentDict[@"userAccount"] allKeys] containsObject:@"avlBal"]) {
+                // 这里保存用户账户信息--> 暂时需要 登陆状态 和 用户佣金余额
+                
+                userAccount.expenseLeft = [NSString stringWithFormat:@"%@", contentDict[@"userAccount"][@"avlBal"]];
+                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
             }
-            
         } else if ([dict[@"code"] isEqualToString:@"0001"]) {
             [ProgressHUD showError:@"参数不正确!"];
         } else if ([dict[@"code"] isEqualToString:@"0002"]) {
@@ -400,12 +421,10 @@ static NSString *commendCellId = @"productCommendCellId";
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.drawerController.closed ? [delegate.drawerController openLeftView] : [delegate.drawerController closeLeftView];
             
-            // 如果登陆
+            // 如果登陆 并且 左侧菜单打开了 --> 调用加载用户账户信息的请求
             if ([Utils getLoginStates] && !delegate.drawerController.closed) {
                 [self loadUserAccountDataAfterLogIn];
             }
-            
-            
         }
             break;
             
