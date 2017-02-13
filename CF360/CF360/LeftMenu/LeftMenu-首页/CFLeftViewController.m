@@ -189,7 +189,7 @@ static NSString *cellId = @"cellId";
     self.view.backgroundColor = [UIColor whiteColor];
     
     // 设置tableView
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 60, self.view.size.height) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 50, self.view.size.height) style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     
     self.tableView.dataSource = self;
@@ -201,7 +201,7 @@ static NSString *cellId = @"cellId";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
     
     // 创建并设置 headerView; --> 这里可以根据是否登陆来判断添加什么
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 60, 115)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 50, 115)];
     headerView.backgroundColor = [UIColor yh_colorWithTableViewDefault];
     
     //  如果 登陆/未登录 --显示的东西不一样, 这里控件全部创建出来
@@ -233,7 +233,7 @@ static NSString *cellId = @"cellId";
         make.width.height.equalTo(@15);
     }];
     // 手机号码
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake((Width_Screen - 60 - 80) / 2, 45, 80, 15)];
+    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake((Width_Screen - 50 - 80) / 2, 45, 80, 15)];
     phoneLabel.textColor = [UIColor lightGrayColor];
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     phoneLabel.font = [UIFont systemFontOfSize:12];
@@ -243,7 +243,7 @@ static NSString *cellId = @"cellId";
     [headerView addSubview:phoneLabel];
 
     // 用户的佣余额
-    CGFloat widthConstant = (Width_Screen - 60 - 10) / 2;
+    CGFloat widthConstant = (Width_Screen - 50 - 10) / 2;
     UILabel *brokerageLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, widthConstant, 30)];
     brokerageLabel.font = [UIFont systemFontOfSize:12];
     brokerageLabel.textColor = [UIColor darkGrayColor];
@@ -259,7 +259,7 @@ static NSString *cellId = @"cellId";
     [headerView addSubview:brokerageValueLabel];
     
 //    2>如果没有登陆
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.bounds.size.width - 10 - 60, 105)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.bounds.size.width - 10 - 50, 105)];
     bgView.backgroundColor = [UIColor whiteColor];
     [headerView addSubview:bgView];
     
