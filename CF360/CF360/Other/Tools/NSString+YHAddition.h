@@ -10,6 +10,16 @@
 
 @interface NSString (YHAddition)
 
+
+/**
+ 返回中间四位数字替换成 * 号的手机号码
+
+ @param str 手机字符串
+ @return 返回更改后的结果
+ */
++ (NSString *)yh_stringRangeReplaceByStars:(NSString *)str;
+
+
 /**
  判断一个字符串中是否包含汉子
 

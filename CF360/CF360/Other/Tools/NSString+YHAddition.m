@@ -10,6 +10,18 @@
 
 @implementation NSString (YHAddition)
 
+
++ (NSString *)yh_stringRangeReplaceByStars:(NSString *)str {
+    
+        if (str.length  != 11) {
+            return @"号码不正确";
+        }else{
+            NSRange range = NSMakeRange(3, 4);
+            str = [str stringByReplacingCharactersInRange:range withString:@"****"];
+            return str;
+        }
+}
+
 + (BOOL)yh_isIncludeChineseInString:(NSString *)str {
     for (NSInteger i = 0; i < str.length; i++) {
         unichar ch = [str characterAtIndex:i];
