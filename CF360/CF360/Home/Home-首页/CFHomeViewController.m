@@ -59,6 +59,25 @@ static NSString *commendCellId = @"productCommendCellId";
 
 @implementation CFHomeViewController
 
+#pragma mark - 视图已经出现
+///视图出现打开控制器的拖拽手势,消失关闭视图的拖拽手势--> 原因:不这样设置,当点击菜单控制器push时再拖拽回不到首页控制器
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // 关闭侧滑开启左侧菜单控制器的拖拽手势,因为点击方法中需要请求用户账户数据
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController setPanEnabled:YES];
+}
+
+#pragma mark - 视图已经消失
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    // 关闭侧滑开启左侧菜单控制器的拖拽手势,因为点击方法中需要请求用户账户数据
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController setPanEnabled:NO];
+}
+
 #pragma mark - 视图加载完成
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -495,11 +514,6 @@ static NSString *commendCellId = @"productCommendCellId";
 #pragma mark - 设置界面
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    // 关闭侧滑开启左侧菜单控制器的拖拽手势,因为点击方法中需要请求用户账户数据
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.drawerController setPanEnabled:NO];
-
     
     // 1> 添加 UITableView
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
