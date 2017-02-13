@@ -242,62 +242,6 @@ static NSString *commendCellId = @"productCommendCellId";
     }];
 }
 
-#pragma mark - 如果登陆了,点击左侧按钮显示左侧抽屉控制器的网络请求
-// 加载用户账户数据
-- (void)loadUserAccountDataAfterLogIn {
-    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
-    [[MKNetWorkManager shareManager] loadUseAccountDataAfterLogInCompletionHandler:^(id responseData, NSError *error) {
-        
-        if (error) {
-            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
-            return ;
-        }
-        
-        NSDictionary *dict = responseData;
-        NSLog(@"---> %@", dict);
-        
-        if ([dict[@"code"] isEqualToString:@"0000"]) {
-            [ProgressHUD dismiss];
-            
-            NSDictionary *contentDict = dict[@"data"];
-            UserAccount *userAccount = [UserAccount shareManager];
-            
-            if ([[contentDict allKeys] containsObject:@"userAccount"] && [contentDict[@"userAccount"] isEqual:[NSNull null]]) {
-                NSLog(@"--登陆超时了--");
-                // 提示用户重新登陆,并且设置清空登陆成功之后保存的数据,显示登陆按钮
-                [ProgressHUD showError:@"登陆超时了,请从新登陆!"];
-                
-                [Utils storeUserID:@""];
-                [Utils storeNickName:@""];
-                [Utils storeRealName:@""];
-                [Utils storeUserType:@""];
-                [Utils storePhone:@""];
-                [Utils storeUserpwd:@""];
-                [Utils storeLoginStates:NO];
-                
-                // 这里设置登陆状态,视为了菜单控制器 添加观察者
-                userAccount.isLogin = NO;
-
-                userAccount.expenseLeft = @"暂无数据";
-                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
-                
-            } else if ([[contentDict allKeys] containsObject:@"userAccount"] && [[contentDict[@"userAccount"] allKeys] containsObject:@"avlBal"]) {
-                // 这里保存用户账户信息--> 暂时需要 登陆状态 和 用户佣金余额
-                
-                userAccount.expenseLeft = [NSString stringWithFormat:@"%@", contentDict[@"userAccount"][@"avlBal"]];
-                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
-            }
-        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
-            [ProgressHUD showError:@"参数不正确!"];
-        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
-            [ProgressHUD showError:@"签名不正确!"];
-        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
-            [ProgressHUD showError:@"未登录!"];
-        } else {
-            [ProgressHUD dismiss];
-        }
-    }];
-}
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -420,11 +364,6 @@ static NSString *commendCellId = @"productCommendCellId";
             // 打开/关闭 左侧菜单控制器
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.drawerController.closed ? [delegate.drawerController openLeftView] : [delegate.drawerController closeLeftView];
-            
-            // 如果登陆 并且 左侧菜单打开了 --> 调用加载用户账户信息的请求
-            if ([Utils getLoginStates] && !delegate.drawerController.closed) {
-                [self loadUserAccountDataAfterLogIn];
-            }
         }
             break;
             

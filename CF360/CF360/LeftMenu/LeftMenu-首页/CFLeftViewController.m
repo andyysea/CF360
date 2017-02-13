@@ -38,6 +38,9 @@ static NSString *cellId = @"cellId";
 /** 本视图控制器中的表格数组数据 */
 @property (nonatomic, strong) NSArray <NSArray *>*formArrayData;
 
+/** 用一个BOOL 属性来控制拖拽打开的菜单控制器重复加载数据的问题 默认 YES*/
+@property (nonatomic, assign) BOOL isLogInRequest;
+
 @end
 
 @implementation CFLeftViewController
@@ -59,14 +62,18 @@ static NSString *cellId = @"cellId";
     [userAccount addObserver:self forKeyPath:@"isLogin" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
     // 给认证属性添加观察者,用于判断是否认证
     [userAccount addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+   
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController addObserver:self forKeyPath:@"closed" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
 }
 
 // 观察者调用的方法
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-  
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UserAccount *userAccount = [UserAccount shareManager];
     
-    if ([keyPath isEqualToString:@"isLogin"]) {
+    if ([keyPath isEqualToString:@"isLogin"] && object == userAccount) {
         if (userAccount.isLogin) {
             self.bgView.hidden = YES;
         } else {
@@ -75,7 +82,7 @@ static NSString *cellId = @"cellId";
     }
     
     // 这里只添加观察一个认证状态的属性, 所以这个属性在请求回调赋值的时候必须要放在最后
-    if ([keyPath isEqualToString:@"status"]) {
+    if ([keyPath isEqualToString:@"status"] && object == userAccount) {
         
         self.nickNameLabel.text = [NSString stringWithFormat:@"%@", [Utils getNickName]];
         if ([userAccount.status isEqualToString:@"success"]) {
@@ -86,7 +93,82 @@ static NSString *cellId = @"cellId";
         self.phoneLabel.text = [NSString yh_stringRangeReplaceByStars:[Utils getPhone]];
         self.brokerageValueLabel.text = [NSString stringWithFormat:@"¥ %@", userAccount.expenseLeft];
     }
+    
+    if ([keyPath isEqualToString:@"closed"] && object == delegate.drawerController) {
+     
+        if (delegate.drawerController.closed) {
+            self.isLogInRequest = YES;
+        } else {
+            // 如果登陆 并且 左侧菜单打开了 --> 调用加载用户账户信息的请求
+            if ([Utils getLoginStates] && self.isLogInRequest) {
+                [self loadUserAccountDataAfterLogIn];
+            }
+        }
+    }
 }
+
+
+#pragma mark - 如果登陆了,点击左侧按钮显示左侧抽屉控制器的网络请求
+// 加载用户账户数据
+- (void)loadUserAccountDataAfterLogIn {
+    [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
+    [[MKNetWorkManager shareManager] loadUseAccountDataAfterLogInCompletionHandler:^(id responseData, NSError *error) {
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        NSLog(@"---> %@", dict);
+        
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            
+            NSDictionary *contentDict = dict[@"data"];
+            UserAccount *userAccount = [UserAccount shareManager];
+            
+            if ([[contentDict allKeys] containsObject:@"userAccount"] && [contentDict[@"userAccount"] isEqual:[NSNull null]]) {
+                NSLog(@"--登陆超时了--");
+                // 提示用户重新登陆,并且设置清空登陆成功之后保存的数据,显示登陆按钮
+                [ProgressHUD showError:@"登陆超时了,请从新登陆!"];
+                
+                [Utils storeUserID:@""];
+                [Utils storeNickName:@""];
+                [Utils storeRealName:@""];
+                [Utils storeUserType:@""];
+                [Utils storePhone:@""];
+                [Utils storeUserpwd:@""];
+                [Utils storeLoginStates:NO];
+                
+                // 这里设置登陆状态,视为了菜单控制器 添加观察者
+                userAccount.isLogin = NO;
+                
+                userAccount.expenseLeft = @"暂无数据";
+                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
+                
+            } else if ([[contentDict allKeys] containsObject:@"userAccount"] && [[contentDict[@"userAccount"] allKeys] containsObject:@"avlBal"]) {
+                // 这里保存用户账户信息--> 暂时需要 登陆状态 和 用户佣金余额
+                
+                userAccount.expenseLeft = [NSString stringWithFormat:@"%@", contentDict[@"userAccount"][@"avlBal"]];
+                userAccount.status = [NSString stringWithFormat:@"%@", contentDict[@"auditStatus"]];
+            }
+            
+            // 设置请求成功之后设置未 NO, 不让再次请求
+            self.isLogInRequest = NO;
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
+    }];
+}
+
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -289,7 +371,23 @@ static NSString *cellId = @"cellId";
 #pragma mark - 初始化必要数据
 - (void)initializeData {
  
+    _isLogInRequest = YES;
+    
     self.formArrayData = @[@[@"首页",@"产品中心",@"我的关注"],@[@"我的报单",@"我的预约",@"我的合同",@"我的投保单"],@[@"设置"]];
+}
+
+
+- (void)dealloc {
+    // 删除观察者
+    // --> 实际上本菜单控制器只加载一次,并且一直存在,所以该系统方法永远不会被执行到
+    // --> 由于只加载一次,所以不会重复添加观察者,就算没有移除观察者也不会崩溃
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.drawerController removeObserver:self forKeyPath:@"closed"];
+    
+    UserAccount *userAccount = [UserAccount shareManager];
+    [userAccount removeObserver:self forKeyPath:@"isLogin"];
+    [userAccount removeObserver:self forKeyPath:@"status"];
 }
 
 @end
