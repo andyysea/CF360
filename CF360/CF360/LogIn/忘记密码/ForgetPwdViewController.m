@@ -128,7 +128,44 @@
 
 #pragma mark - 重置密码按钮点击方法
 - (void)resetPwdButtonClick {
+    [self.view endEditing:YES];
+    // 只需要后台会验证手机号和验证码是否正确,所以只需要判断重置的密码是否一样
+    if (![self.newpwdField.text isEqualToString:self.sureNewpwdField.text]) {
+        [ProgressHUD showError:@"两次输入的密码不一致"];
+        return;
+    }
     
+    [[MKNetWorkManager shareManager] loadNewPasswordWithPhone:self.nameField.text authCode:self.checkField.text newPassword:self.newpwdField.text sureNewPassword:self.sureNewpwdField.text completionHandler:^(id responseData, NSError *error) {
+        
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            
+            NSDictionary *contentDict = dict[@"data"];
+            if ([contentDict[@"flag"] boolValue]) {
+                [ProgressHUD showSuccess:@"密码重置成功"];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [ProgressHUD showError:contentDict[@"message"]];
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
+    }];
 }
 
 #pragma mark - 设置界面元素

@@ -35,6 +35,9 @@
 #pragma mark - 2.3 找回密码控制器中,获取验证码的请求
 - (void)loadNewAuthCodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete;
 
+#pragma mark - 2.4 重置密码
+- (void)loadNewPasswordWithPhone:(NSString *)phone authCode:(NSString *)authCode newPassword:(NSString *)newPassword sureNewPassword:(NSString *)sureNewPassword completionHandler:(void(^)(id responseData, NSError *error))complete;
+
 
 
 

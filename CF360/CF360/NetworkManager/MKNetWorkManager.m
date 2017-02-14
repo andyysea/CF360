@@ -35,6 +35,7 @@
     });
     return instance;
 }
+
 #pragma mark - 1.1 首页轮播图网络请求
 // 在该方法内设置 cookie
 - (void)loadLoopImagesCompletionHandler:(void(^)(id responseData, NSError *error))complete {
@@ -93,7 +94,6 @@
     [self PostEncodeRequestWithPath:@"/index/hotProduct" parameter:des3Str completionHandler:complete];
 }
 
-
 #pragma mark - 1.3 首页产品推荐网络请求方法
 - (void)loadProductCommendCompletionHandler:(void(^)(id responseData, NSError *error))complete {
     NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
@@ -147,13 +147,10 @@
     [self PostEncodeRequestWithPath:@"/member/myAccount" parameter:des3Str completionHandler:complete];
 }
 
-
 #pragma mark - 2.3 找回密码控制器中,获取验证码的请求
 - (void)loadNewAuthCodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete {
  
     NSInteger value = arc4random_uniform(1000 + 1);
-    
-//    NSString *jsonInput = [NSString stringWithFormat:@"{\"busiType\":\"%@\",\"mathRandom\":\"%@\",\"mobile\":\"%@\"}",@"loginRet",[NSString stringWithFormat:@"%d",value],self.phone];
     
     NSString *jsonInput = [NSString stringWithFormat:@"{\"busiType\":\"%@\",\"mathRandom\":\"%@\",\"mobile\":\"%@\"}", @"loginRet",[NSString stringWithFormat:@"%zd", value], phone];
     // 加密的签名
@@ -166,6 +163,19 @@
     [self PostEncodeRequestWithPath:@"/ios/user/mobile/send/verifycode" parameter:des3Str completionHandler:complete];
 }
 
+#pragma mark - 2.4 重置密码
+- (void)loadNewPasswordWithPhone:(NSString *)phone authCode:(NSString *)authCode newPassword:(NSString *)newPassword sureNewPassword:(NSString *)sureNewPassword completionHandler:(void (^)(id, NSError *))complete {
+
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"mobile\":\"%@\",\"password\":\"%@\",\"rePassword\":\"%@\",\"token\":\"%@\",\"validateCode\":\"%@\"}", phone, newPassword, sureNewPassword, [Utils getToken], authCode];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/password/retrieve" parameter:des3Str completionHandler:complete];
+}
 
 
 
