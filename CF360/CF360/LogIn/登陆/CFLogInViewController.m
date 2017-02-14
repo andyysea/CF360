@@ -9,6 +9,7 @@
 #import "CFLogInViewController.h"
 #import "UserAccount.h"
 #import "ForgetPwdViewController.h"
+#import "RegisterViewController.h"
 
 @interface CFLogInViewController ()
 
@@ -32,12 +33,15 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [self.view endEditing:YES];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupNavgationBar];
     [self setupUI];
 }
 
@@ -106,11 +110,18 @@
 
 #pragma mark - 忘记密码按钮点击方法
 - (void)forgetButtonClick {
-    [self.view endEditing:YES];
     
     ForgetPwdViewController *vc = [ForgetPwdViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - 导航栏右侧注册按钮的点击方法
+- (void)navgationBarRightButtonClick {
+    
+    RegisterViewController *vc = [RegisterViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 
 #pragma mark - 当点击视图的时候结束编辑状态
@@ -118,6 +129,16 @@
     [self.view endEditing:YES];
 }
 
+
+#pragma mark - 设置导航栏
+- (void)setupNavgationBar {
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 24)];
+    [rightButton setTitle:@"注册" forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(navgationBarRightButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem = rightItem;
+}
 
 #pragma mark - 设置界面
 - (void)setupUI {
