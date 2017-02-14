@@ -28,8 +28,14 @@
 #pragma mark - 2.1 登陆
 - (void)loadUserDataOnLogInWithUserName:(NSString *)userName password:(NSString *)password completionHandler:(void(^)(id responseData, NSError *error))complete;
 
-#pragma mark - 2.2 登陆之后,我的账户的网络请求
-- (void)loadUseAccountDataAfterLogInCompletionHandler:(void(^)(id responseData, NSError *error))complete;
+#pragma mark - 2.2 登陆之后,我的账的网络请求
+// 这个网络请求是登陆之后,再次代开左侧菜单控制器的请求
+- (void)loadUserAccountDataAfterLogInCompletionHandler:(void(^)(id responseData, NSError *error))complete;
+
+#pragma mark - 2.3 找回密码控制器中,获取验证码的请求
+- (void)loadNewAuthCodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete;
+
+
 
 
 @end

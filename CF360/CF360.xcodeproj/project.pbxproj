@@ -29,6 +29,12 @@
 		7EA464C41E515E4600D3EF27 /* CFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464C31E515E4600D3EF27 /* CFConst.m */; };
 		7EA464CD1E51605C00D3EF27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C521E272D0100E810DA /* Assets.xcassets */; };
 		7EA464D01E5161A800D3EF27 /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464C01E515DE400D3EF27 /* UIColor+Common.m */; };
+		7EA464D61E52A06700D3EF27 /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464D51E52A06700D3EF27 /* ForgetPwdViewController.m */; };
+		7EA464E01E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464D91E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m */; };
+		7EA464E11E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464DB1E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.m */; };
+		7EA464E21E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464DD1E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m */; };
+		7EA464E31E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464DF1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		7EA464E61E52E19600D3EF27 /* NSArray+YHLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
@@ -38,7 +44,6 @@
 		7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C791E272D9000E810DA /* CFNavgationController.m */; };
 		7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C7D1E272D9000E810DA /* UIView_extra.m */; };
 		7EBB3CA01E272D9000E810DA /* YHLeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C7F1E272D9000E810DA /* YHLeftDrawerController.m */; };
-		7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C821E272D9000E810DA /* NSArray+YHLog.m */; };
 		7EBB3CA21E272D9000E810DA /* NSAttributedString+YHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C841E272D9000E810DA /* NSAttributedString+YHAddition.m */; };
 		7EBB3CA31E272D9000E810DA /* NSDate+YHString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C861E272D9000E810DA /* NSDate+YHString.m */; };
 		7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C881E272D9000E810DA /* NSObject+YHRunTime.m */; };
@@ -114,6 +119,18 @@
 		7EA464C01E515DE400D3EF27 /* UIColor+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Common.m"; sourceTree = "<group>"; };
 		7EA464C31E515E4600D3EF27 /* CFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFConst.m; sourceTree = "<group>"; };
 		7EA464C51E515E6300D3EF27 /* CFConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFConst.h; sourceTree = "<group>"; };
+		7EA464D41E52A06700D3EF27 /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
+		7EA464D51E52A06700D3EF27 /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
+		7EA464D81E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		7EA464D91E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		7EA464DA1E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		7EA464DB1E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		7EA464DC1E52B46400D3EF27 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		7EA464DD1E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		7EA464DE1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		7EA464DF1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		7EA464E41E52E19600D3EF27 /* NSArray+YHLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+YHLog.h"; sourceTree = "<group>"; };
+		7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YHLog.m"; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,8 +153,6 @@
 		7EBB3C7D1E272D9000E810DA /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
 		7EBB3C7E1E272D9000E810DA /* YHLeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHLeftDrawerController.h; sourceTree = "<group>"; };
 		7EBB3C7F1E272D9000E810DA /* YHLeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHLeftDrawerController.m; sourceTree = "<group>"; };
-		7EBB3C811E272D9000E810DA /* NSArray+YHLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+YHLog.h"; sourceTree = "<group>"; };
-		7EBB3C821E272D9000E810DA /* NSArray+YHLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YHLog.m"; sourceTree = "<group>"; };
 		7EBB3C831E272D9000E810DA /* NSAttributedString+YHAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+YHAddition.h"; sourceTree = "<group>"; };
 		7EBB3C841E272D9000E810DA /* NSAttributedString+YHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+YHAddition.m"; sourceTree = "<group>"; };
 		7EBB3C851E272D9000E810DA /* NSDate+YHString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YHString.h"; sourceTree = "<group>"; };
@@ -311,6 +326,8 @@
 		7EA464831E4C626F00D3EF27 /* 忘记密码 */ = {
 			isa = PBXGroup;
 			children = (
+				7EA464D41E52A06700D3EF27 /* ForgetPwdViewController.h */,
+				7EA464D51E52A06700D3EF27 /* ForgetPwdViewController.m */,
 			);
 			path = "忘记密码";
 			sourceTree = "<group>";
@@ -331,6 +348,21 @@
 				7EA464C31E515E4600D3EF27 /* CFConst.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		7EA464D71E52B46400D3EF27 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				7EA464D81E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.h */,
+				7EA464D91E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m */,
+				7EA464DA1E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.h */,
+				7EA464DB1E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.m */,
+				7EA464DC1E52B46400D3EF27 /* TPKeyboardAvoidingTableView.h */,
+				7EA464DD1E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m */,
+				7EA464DE1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				7EA464DF1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		7EBB3C3A1E272D0100E810DA = {
@@ -465,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				7EBB3C7B1E272D9000E810DA /* LeftDrawerController */,
+				7EA464D71E52B46400D3EF27 /* TPKeyboardAvoiding */,
 				7EBB3C801E272D9000E810DA /* Tools */,
 				7EA464BE1E515DE400D3EF27 /* Common */,
 			);
@@ -485,8 +518,8 @@
 		7EBB3C801E272D9000E810DA /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				7EBB3C811E272D9000E810DA /* NSArray+YHLog.h */,
-				7EBB3C821E272D9000E810DA /* NSArray+YHLog.m */,
+				7EA464E41E52E19600D3EF27 /* NSArray+YHLog.h */,
+				7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */,
 				7EBB3C831E272D9000E810DA /* NSAttributedString+YHAddition.h */,
 				7EBB3C841E272D9000E810DA /* NSAttributedString+YHAddition.m */,
 				7EBB3C851E272D9000E810DA /* NSDate+YHString.h */,
@@ -796,9 +829,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA464E01E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				7EA464D01E5161A800D3EF27 /* UIColor+Common.m in Sources */,
 				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
+				7EA464D61E52A06700D3EF27 /* ForgetPwdViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
+				7EA464E21E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m in Sources */,
 				7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */,
 				7E32B08F1E348F510014669D /* Utils.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
@@ -815,6 +851,7 @@
 				7EBB3CA71E272D9000E810DA /* UIButton+YHAddition.m in Sources */,
 				7EBB3C9B1E272D9000E810DA /* CFLeftViewController.m in Sources */,
 				7E32B0821E31E8AB0014669D /* SiMuViewController.m in Sources */,
+				7EA464E61E52E19600D3EF27 /* NSArray+YHLog.m in Sources */,
 				7EA464B91E4DB0EE00D3EF27 /* UserAccount.m in Sources */,
 				7EA464C41E515E4600D3EF27 /* CFConst.m in Sources */,
 				7EBB3C9E1E272D9000E810DA /* CFNavgationController.m in Sources */,
@@ -824,14 +861,15 @@
 				7EBB3C9A1E272D9000E810DA /* CFHomeViewController.m in Sources */,
 				7EBB3CA81E272D9000E810DA /* UIColor+YHAddition.m in Sources */,
 				7E32AFF91E2CB28E0014669D /* LoopViewModel.m in Sources */,
+				7EA464E11E52B46400D3EF27 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				7E30234C1E496D9500DF43E3 /* HotProductModel.m in Sources */,
 				7EBB3CAC1E272D9000E810DA /* UIViewController+YHAddition.m in Sources */,
 				7EBB3CBA1E275AA100E810DA /* CFMyAccountButton.m in Sources */,
 				7E3023491E4855B400DF43E3 /* MKNetWorkManager.m in Sources */,
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
+				7EA464E31E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				7E3023551E49A17100DF43E3 /* HotProductViewCell.m in Sources */,
-				7EBB3CA11E272D9000E810DA /* NSArray+YHLog.m in Sources */,
 				7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */,
 				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,
 				7EBB3CC61E277CFA00E810DA /* MyAttentionViewController.m in Sources */,

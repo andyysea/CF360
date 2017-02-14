@@ -8,6 +8,7 @@
 
 #import "CFLogInViewController.h"
 #import "UserAccount.h"
+#import "ForgetPwdViewController.h"
 
 @interface CFLogInViewController ()
 
@@ -48,7 +49,7 @@
         self.logInButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
     } else {
         self.logInButton.enabled = NO;
-        self.logInButton.backgroundColor = [UIColor yh_colorLightGrayCommon];
+        self.logInButton.backgroundColor = [UIColor lightGrayColor];
     }
 }
 
@@ -105,8 +106,18 @@
 
 #pragma mark - 忘记密码按钮点击方法
 - (void)forgetButtonClick {
-    NSLog(@"忘记密码");
+    [self.view endEditing:YES];
+    
+    ForgetPwdViewController *vc = [ForgetPwdViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+#pragma mark - 当点击视图的时候结束编辑状态
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 
 #pragma mark - 设置界面
 - (void)setupUI {
@@ -134,7 +145,7 @@
     [logInButton setTitle:@"立即登陆" forState:UIControlStateNormal];
     logInButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [logInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    logInButton.backgroundColor = [UIColor yh_colorLightGrayCommon];
+    logInButton.backgroundColor = [UIColor lightGrayColor];
     logInButton.layer.cornerRadius = 3;
     logInButton.layer.masksToBounds = YES;
     logInButton.enabled = NO;

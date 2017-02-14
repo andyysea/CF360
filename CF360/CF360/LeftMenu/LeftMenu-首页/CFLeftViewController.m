@@ -112,7 +112,7 @@ static NSString *cellId = @"cellId";
 // 加载用户账户数据
 - (void)loadUserAccountDataAfterLogIn {
     [ProgressHUD show:@"努力加载中,请稍后!" Interaction:NO];
-    [[MKNetWorkManager shareManager] loadUseAccountDataAfterLogInCompletionHandler:^(id responseData, NSError *error) {
+    [[MKNetWorkManager shareManager] loadUserAccountDataAfterLogInCompletionHandler:^(id responseData, NSError *error) {
         
         if (error) {
             [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
