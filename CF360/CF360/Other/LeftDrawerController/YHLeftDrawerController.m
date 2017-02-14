@@ -245,7 +245,7 @@
 /**
  @brief 打开左视图
  */
-- (void)openLeftView;
+- (void)openLeftView
 {
     [UIView beginAnimations:nil context:nil];
     self.mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,kMainPageScale,kMainPageScale);
