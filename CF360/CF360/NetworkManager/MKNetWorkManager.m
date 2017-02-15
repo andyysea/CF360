@@ -194,6 +194,20 @@
     
 }
 
+#pragma mark - 2.6 注册控制器中点击下一步按钮的网络请求
+- (void)loadRegisterNextStepRequestWithPhone:(NSString *)phone authCode:(NSString *)authCode completionHandler:(void(^)(id responseData, NSError *error))complete {
+    
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"mobile\":\"%@\",\"validateCode\":\"%@\"}", phone, authCode];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/mobile/send/verifycode" parameter:des3Str completionHandler:complete];
+}
+
 
 
 
@@ -238,7 +252,6 @@
     }];
     
     [engines enqueueOperation:op];
-
 }
 
 #pragma mark - 判断网络是否可用

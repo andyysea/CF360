@@ -142,6 +142,7 @@
         return;
     }
     
+    [ProgressHUD show:@"请稍后~" Interaction:NO];
     [[MKNetWorkManager shareManager] loadNewPasswordWithPhone:self.nameField.text authCode:self.authCodeField.text newPassword:self.newpwdField.text sureNewPassword:self.sureNewpwdField.text completionHandler:^(id responseData, NSError *error) {
         
         if (error) {

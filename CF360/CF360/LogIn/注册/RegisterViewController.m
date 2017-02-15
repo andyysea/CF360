@@ -133,7 +133,6 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
         NSDictionary *dict = responseData;
         NSLog(@"---> %@", dict);
         if ([dict[@"code"] isEqualToString:@"0000"]) {
-            [ProgressHUD dismiss];
             
             NSDictionary *contentDict = dict[@"data"];
             if ([contentDict[@"flag"] boolValue]) {
@@ -173,9 +172,42 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
     } else if (!self.authCodeField.text.length) {
         [ProgressHUD showError:@"请输入验证码!"];
         return;
+    } else if (!self.statusButton.selected) {
+        [ProgressHUD showError:@"请同意服务协议!"];
+        return;
     }
     
-
+    [ProgressHUD show:@"请稍后~" Interaction:NO];
+    [[MKNetWorkManager shareManager] loadRegisterNextStepRequestWithPhone:self.phoneField.text authCode:self.authCodeField.text completionHandler:^(id responseData, NSError *error) {
+        if (error) {
+            [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
+            return ;
+        }
+        
+        NSDictionary *dict = responseData;
+        NSLog(@"---> %@", dict);
+        if ([dict[@"code"] isEqualToString:@"0000"]) {
+            [ProgressHUD dismiss];
+            
+            NSDictionary *contentDict = dict[@"data"];
+            if ([contentDict[@"flag"] boolValue]) {
+                
+            
+            } else {
+                [ProgressHUD showError:contentDict[@"message"]];
+            }
+            
+        } else if ([dict[@"code"] isEqualToString:@"0001"]) {
+            [ProgressHUD showError:@"参数不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"0002"]) {
+            [ProgressHUD showError:@"签名不正确!"];
+        } else if ([dict[@"code"] isEqualToString:@"1000"]) {
+            [ProgressHUD showError:@"未登录!"];
+        } else {
+            [ProgressHUD dismiss];
+        }
+    }];
+    
 }
 
 #pragma mark - 设置界面元素

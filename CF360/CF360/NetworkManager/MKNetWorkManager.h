@@ -41,6 +41,9 @@
 #pragma mark - 2.5 注册控制器中获取验证码的网络请求
 - (void)loadRegisterAuthcodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete;
 
+#pragma mark - 2.6 注册控制器中点击下一步按钮的网络请求
+- (void)loadRegisterNextStepRequestWithPhone:(NSString *)phone authCode:(NSString *)authCode completionHandler:(void(^)(id responseData, NSError *error))complete;
+
 
 @end
 
