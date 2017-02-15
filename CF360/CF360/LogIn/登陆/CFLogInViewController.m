@@ -110,6 +110,7 @@
 
 #pragma mark - 忘记密码按钮点击方法
 - (void)forgetButtonClick {
+    [self.view endEditing:YES];
     
     ForgetPwdViewController *vc = [ForgetPwdViewController new];
     [self.navigationController pushViewController:vc animated:YES];
@@ -117,6 +118,7 @@
 
 #pragma mark - 导航栏右侧注册按钮的点击方法
 - (void)navgationBarRightButtonClick {
+    [self.view endEditing:YES];
     
     RegisterViewController *vc = [RegisterViewController new];
     [self.navigationController pushViewController:vc animated:YES];

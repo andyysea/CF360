@@ -37,6 +37,8 @@
 		7EA464E61E52E19600D3EF27 /* NSArray+YHLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */; };
 		7EA464E91E52F97600D3EF27 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464E81E52F97600D3EF27 /* RegisterViewController.m */; };
 		7EA464EC1E5422AA00D3EF27 /* CFTreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */; };
+		7EA464EF1E54339C00D3EF27 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464EE1E54339C00D3EF27 /* RegisterNextViewController.m */; };
+		7EA464F41E54488F00D3EF27 /* AuthFinanPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
@@ -137,6 +139,10 @@
 		7EA464E81E52F97600D3EF27 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		7EA464EA1E5422AA00D3EF27 /* CFTreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTreatyViewController.h; sourceTree = "<group>"; };
 		7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTreatyViewController.m; sourceTree = "<group>"; };
+		7EA464ED1E54339C00D3EF27 /* RegisterNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterNextViewController.h; sourceTree = "<group>"; };
+		7EA464EE1E54339C00D3EF27 /* RegisterNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNextViewController.m; sourceTree = "<group>"; };
+		7EA464F21E54488F00D3EF27 /* AuthFinanPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthFinanPlanViewController.h; sourceTree = "<group>"; };
+		7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthFinanPlanViewController.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 			children = (
 				7EA464B71E4DB0EE00D3EF27 /* UserAccount.h */,
 				7EA464B81E4DB0EE00D3EF27 /* UserAccount.m */,
+				7EA464F11E5442B800D3EF27 /* myAccount-首页 */,
+				7EA464F01E5442B800D3EF27 /* 理财师认证 */,
 			);
 			path = MyAccount;
 			sourceTree = "<group>";
@@ -343,6 +351,8 @@
 			children = (
 				7EA464E71E52F97600D3EF27 /* RegisterViewController.h */,
 				7EA464E81E52F97600D3EF27 /* RegisterViewController.m */,
+				7EA464ED1E54339C00D3EF27 /* RegisterNextViewController.h */,
+				7EA464EE1E54339C00D3EF27 /* RegisterNextViewController.m */,
 				7EA464EA1E5422AA00D3EF27 /* CFTreatyViewController.h */,
 				7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */,
 			);
@@ -373,6 +383,22 @@
 				7EA464DF1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 			);
 			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		7EA464F01E5442B800D3EF27 /* 理财师认证 */ = {
+			isa = PBXGroup;
+			children = (
+				7EA464F21E54488F00D3EF27 /* AuthFinanPlanViewController.h */,
+				7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */,
+			);
+			path = "理财师认证";
+			sourceTree = "<group>";
+		};
+		7EA464F11E5442B800D3EF27 /* myAccount-首页 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "myAccount-首页";
 			sourceTree = "<group>";
 		};
 		7EBB3C3A1E272D0100E810DA = {
@@ -841,10 +867,12 @@
 			files = (
 				7EA464E01E52B46400D3EF27 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				7EA464D01E5161A800D3EF27 /* UIColor+Common.m in Sources */,
+				7EA464EF1E54339C00D3EF27 /* RegisterNextViewController.m in Sources */,
 				7EBB3CCC1E277E4300E810DA /* MyAppointMentViewController.m in Sources */,
 				7EA464D61E52A06700D3EF27 /* ForgetPwdViewController.m in Sources */,
 				7EBB3CAD1E272F7200E810DA /* AppDelegate.m in Sources */,
 				7EA464E21E52B46400D3EF27 /* TPKeyboardAvoidingTableView.m in Sources */,
+				7EA464F41E54488F00D3EF27 /* AuthFinanPlanViewController.m in Sources */,
 				7E32B0791E31E8740014669D /* ZiGuanViewController.m in Sources */,
 				7E32B08F1E348F510014669D /* Utils.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,

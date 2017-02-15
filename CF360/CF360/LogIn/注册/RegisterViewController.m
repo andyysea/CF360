@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "CFTreatyViewController.h" // 财富360协议
-
+#import "RegisterNextViewController.h" // 注册下一步控制器
 
 typedef NS_ENUM(NSInteger, MyButtonTag) {
     MyButtonTagOfAuthCode = 100,
@@ -84,6 +84,7 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
             break;
         case MyButtonTagOfTreaty:
         {
+            [self.view endEditing:YES];
             CFTreatyViewController *vc = [CFTreatyViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -191,8 +192,9 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
             
             NSDictionary *contentDict = dict[@"data"];
             if ([contentDict[@"flag"] boolValue]) {
-                
-            
+                RegisterNextViewController *nextVC = [RegisterNextViewController new];
+                nextVC.phoneStr = self.phoneField.text;
+                [self.navigationController pushViewController:nextVC animated:YES];
             } else {
                 [ProgressHUD showError:contentDict[@"message"]];
             }
@@ -208,6 +210,11 @@ typedef NS_ENUM(NSInteger, MyButtonTag) {
         }
     }];
     
+}
+
+#pragma mark - 当点击视图的时候结束编辑状态
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - 设置界面元素

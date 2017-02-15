@@ -44,6 +44,9 @@
 #pragma mark - 2.6 注册控制器中点击下一步按钮的网络请求
 - (void)loadRegisterNextStepRequestWithPhone:(NSString *)phone authCode:(NSString *)authCode completionHandler:(void(^)(id responseData, NSError *error))complete;
 
+#pragma mark - 2.7 下一步注册控制器中 点击立即注册按钮的网络请求
+- (void)loadRegisterAtOnceWithPassword:(NSString *)password nickName:(NSString *)nickName commendPhone:(NSString *)commendPhone selfPhone:(NSString *)selfPhone completionHandler:(void(^)(id responseData, NSError *error))complete;
+
 
 @end
 
