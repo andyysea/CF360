@@ -177,6 +177,24 @@
     [self PostEncodeRequestWithPath:@"/ios/user/password/retrieve" parameter:des3Str completionHandler:complete];
 }
 
+#pragma mark - 2.5 注册控制器中获取验证码的网络请求
+- (void)loadRegisterAuthcodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete {
+
+    NSInteger value = arc4random_uniform(1000 + 1);
+    
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"busiType\":\"%@\",\"mathRandom\":\"%@\",\"mobile\":\"%@\"}", @"register",[NSString stringWithFormat:@"%zd", value], phone];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/mobile/send/verifycode" parameter:des3Str completionHandler:complete];
+    
+}
+
+
 
 
 #pragma mark - POST的加密请求--> 公共方法

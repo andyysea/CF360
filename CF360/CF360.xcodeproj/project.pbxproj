@@ -36,6 +36,7 @@
 		7EA464E31E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464DF1E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		7EA464E61E52E19600D3EF27 /* NSArray+YHLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */; };
 		7EA464E91E52F97600D3EF27 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464E81E52F97600D3EF27 /* RegisterViewController.m */; };
+		7EA464EC1E5422AA00D3EF27 /* CFTreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
@@ -134,6 +135,8 @@
 		7EA464E51E52E19600D3EF27 /* NSArray+YHLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YHLog.m"; sourceTree = "<group>"; };
 		7EA464E71E52F97600D3EF27 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		7EA464E81E52F97600D3EF27 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7EA464EA1E5422AA00D3EF27 /* CFTreatyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTreatyViewController.h; sourceTree = "<group>"; };
+		7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTreatyViewController.m; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 			children = (
 				7EA464E71E52F97600D3EF27 /* RegisterViewController.h */,
 				7EA464E81E52F97600D3EF27 /* RegisterViewController.m */,
+				7EA464EA1E5422AA00D3EF27 /* CFTreatyViewController.h */,
+				7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */,
 			);
 			path = "注册";
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				7E32B08F1E348F510014669D /* Utils.m in Sources */,
 				7EBB3CA51E272D9000E810DA /* NSString+YHAddition.m in Sources */,
 				7EBB3CD21E277EA300E810DA /* SettingViewController.m in Sources */,
+				7EA464EC1E5422AA00D3EF27 /* CFTreatyViewController.m in Sources */,
 				7E32B07C1E31E8860014669D /* XinTuoViewController.m in Sources */,
 				7EA464851E4C626F00D3EF27 /* CFLogInViewController.m in Sources */,
 				7EBB3CE01E2872B600E810DA /* MyPropFormViewController.m in Sources */,

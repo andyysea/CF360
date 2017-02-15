@@ -11,7 +11,7 @@
 
 @implementation Utils
 
-+ (BOOL) validatePassword : (NSString *) str{
++ (BOOL) validatePassword :(NSString *) str{
     if (!str) {
         return NO;
     }
@@ -34,27 +34,29 @@
     
 }
 
-+ (BOOL) validateUserPhone : (NSString *) str
++ (BOOL)validateUserPhone:(NSString *)phoneNum
 {
-    if (!str) {
+    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$";
+    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[2378])\\d)\\d{7}$";
+    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+    NSString * CT = @"^1((33|53|70|77|8[019])[0-9]|349)\\d{7}$";
+    
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    
+    BOOL regext1 = [regextestmobile evaluateWithObject:phoneNum];
+    BOOL regext2 = [regextestcm evaluateWithObject:phoneNum];
+    BOOL regext3 = [regextestct evaluateWithObject:phoneNum];
+    BOOL regext4 = [regextestcu evaluateWithObject:phoneNum];
+    
+    
+    if (regext1 || regext2 || regext3 || regext4) {
+        return YES;
+    } else {
         return NO;
     }
-    
-    NSRegularExpression *regularexpression = [[NSRegularExpression alloc]
-                                              initWithPattern:@"^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|2|3|5|6|7|8|9])\\d{8}$"
-                                              options:NSRegularExpressionCaseInsensitive
-                                              error:nil];
-    NSUInteger numberofMatch = [regularexpression numberOfMatchesInString:str
-                                                                  options:NSMatchingReportProgress
-                                                                    range:NSMakeRange(0, str.length)];
-    if(numberofMatch > 0)
-    {
-        NSLog(@"%@ isNumbericString: YES", str);
-        return YES;
-    }
-    
-    NSLog(@"%@ isNumbericString: NO", str);
-    return NO;
 }
 
 + (BOOL) validateEmail:(NSString *)str

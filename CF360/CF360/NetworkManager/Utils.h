@@ -20,10 +20,10 @@
 
 /**
  *校验用户手机号码是否合法
- *@param	str	手机号码
+ *@param	phoneNum	手机号码
  *@return		手机号是否合法
  */
-+ (BOOL)validateUserPhone : (NSString *) str;
++ (BOOL)validateUserPhone:(NSString *)phoneNum;
 
 
 /**

@@ -38,7 +38,8 @@
 #pragma mark - 2.4 重置密码
 - (void)loadNewPasswordWithPhone:(NSString *)phone authCode:(NSString *)authCode newPassword:(NSString *)newPassword sureNewPassword:(NSString *)sureNewPassword completionHandler:(void(^)(id responseData, NSError *error))complete;
 
-
+#pragma mark - 2.5 注册控制器中获取验证码的网络请求
+- (void)loadRegisterAuthcodeWithPhone:(NSString *)phone completionHandler:(void(^)(id responseData, NSError *error))complete;
 
 
 @end

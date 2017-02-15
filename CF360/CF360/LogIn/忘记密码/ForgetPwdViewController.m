@@ -14,7 +14,7 @@
 /// 手机号
 @property (nonatomic, weak) UITextField *nameField;
 /// 验证码
-@property (nonatomic, weak) UITextField *checkField;
+@property (nonatomic, weak) UITextField *authCodeField;
 /// 点击获取验证码的按钮
 @property (nonatomic, weak) UIButton *authCodeButton;
 /// 新密码
@@ -56,24 +56,14 @@
 
 #pragma mark - 观察者调用的方法
 - (void)textFieldDidChangeNotification:(NSNotification *)n {
-    // 验证码按钮
-    if (self.nameField.text.length) {
-        self.authCodeButton.enabled = YES;
-        self.authCodeButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
-    } else {
-        self.authCodeButton.enabled = NO;
-        self.authCodeButton.backgroundColor = [UIColor lightGrayColor];
-    }
-    
     // 重置密码按钮
-    if (self.nameField.text.length && self.checkField.text.length && self.newpwdField.text.length && self.sureNewpwdField.text.length) {
+    if (self.nameField.text.length && self.authCodeField.text.length && self.newpwdField.text.length && self.sureNewpwdField.text.length) {
         self.resetPwdButton.enabled = YES;
         self.resetPwdButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
     } else {
         self.resetPwdButton.enabled = NO;
         self.resetPwdButton.backgroundColor = [UIColor lightGrayColor];
     }
-    
 }
 
 #pragma mark - 定时器调用的方法
@@ -83,7 +73,7 @@
     if (self.totalTime == 0) {
         self.authCodeButton.enabled = YES;
         self.authCodeButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
-        [self.authCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.authCodeButton setTitle:@"重新获取验证码" forState:UIControlStateNormal];
         [self.timer invalidate];
         self.timer = nil;
     }
@@ -93,6 +83,12 @@
 - (void)authCodeButtonClick {
     [self.view endEditing:YES];
     
+    // 只需要判断是否输入了手机号,因为找回密码请求验证码中,后台会验证手机号和验证码是否正确,
+    if (!self.nameField.text.length) {
+        [ProgressHUD showError:@"请输入手机号码"];
+        return;
+    }
+
     [[MKNetWorkManager shareManager] loadNewAuthCodeWithPhone:self.nameField.text completionHandler:^(id responseData, NSError *error) {
         
         if (error) {
@@ -134,13 +130,19 @@
 #pragma mark - 重置密码按钮点击方法
 - (void)resetPwdButtonClick {
     [self.view endEditing:YES];
-    // 只需要后台会验证手机号和验证码是否正确,所以只需要判断重置的密码是否一样
+    // 只需要后台会验证手机号和验证码是否正确,
+    if (!self.nameField.text.length || !self.authCodeField.text.length) {
+        [ProgressHUD showError:@"请输入完整的手机号和验证码"];
+        return;
+    }
+
+    // 判断重置输入的两次密码是否一样
     if (![self.newpwdField.text isEqualToString:self.sureNewpwdField.text]) {
         [ProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
     
-    [[MKNetWorkManager shareManager] loadNewPasswordWithPhone:self.nameField.text authCode:self.checkField.text newPassword:self.newpwdField.text sureNewPassword:self.sureNewpwdField.text completionHandler:^(id responseData, NSError *error) {
+    [[MKNetWorkManager shareManager] loadNewPasswordWithPhone:self.nameField.text authCode:self.authCodeField.text newPassword:self.newpwdField.text sureNewPassword:self.sureNewpwdField.text completionHandler:^(id responseData, NSError *error) {
         
         if (error) {
             [ProgressHUD showError:@"加载失败,请确保网络通畅!"];
@@ -189,18 +191,17 @@
     [scrollView addSubview:nameField];
     
     // 验证码
-    UITextField *checkField = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, width, 40)];
-    checkField.borderStyle = UITextBorderStyleRoundedRect;
-    checkField.placeholder = @"请输入验证码";
-    [scrollView addSubview:checkField];
+    UITextField *authCodeField = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, width, 40)];
+    authCodeField.borderStyle = UITextBorderStyleRoundedRect;
+    authCodeField.placeholder = @"请输入验证码";
+    [scrollView addSubview:authCodeField];
     
     // 获取验证码按钮
     UIButton *authCodeButton = [[UIButton alloc] initWithFrame:CGRectMake(Width_Screen - 15 - 100, 65, 100, 30)];
     authCodeButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [authCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     [authCodeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    authCodeButton.backgroundColor = [UIColor lightGrayColor];
-    authCodeButton.enabled = NO;
+    authCodeButton.backgroundColor = [UIColor yh_colorNavYellowCommon];
     authCodeButton.showsTouchWhenHighlighted = YES;
     authCodeButton.layer.cornerRadius = 5;
     authCodeButton.layer.masksToBounds = YES;
@@ -244,7 +245,7 @@
     
     // 属性记录
     _nameField = nameField;
-    _checkField = checkField;
+    _authCodeField = authCodeField;
     _authCodeButton = authCodeButton;
     _newpwdField = newpwdField;
     _sureNewpwdField = sureNewpwdField;
