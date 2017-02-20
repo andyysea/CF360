@@ -39,6 +39,9 @@
 		7EA464EC1E5422AA00D3EF27 /* CFTreatyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464EB1E5422AA00D3EF27 /* CFTreatyViewController.m */; };
 		7EA464EF1E54339C00D3EF27 /* RegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464EE1E54339C00D3EF27 /* RegisterNextViewController.m */; };
 		7EA464F41E54488F00D3EF27 /* AuthFinanPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */; };
+		7EA464F71E55881900D3EF27 /* AuthFinanPlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA464F61E55881900D3EF27 /* AuthFinanPlanModel.m */; };
+		7EA465361E5A8A7500D3EF27 /* LocationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA465351E5A8A7500D3EF27 /* LocationPickerView.m */; };
+		7EA465381E5A8BB700D3EF27 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA465371E5A8BB700D3EF27 /* Address.plist */; };
 		7EBB3C481E272D0100E810DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C471E272D0100E810DA /* main.m */; };
 		7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBB3C541E272D0100E810DA /* LaunchScreen.storyboard */; };
 		7EBB3C611E272D0100E810DA /* CF360Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBB3C601E272D0100E810DA /* CF360Tests.m */; };
@@ -143,6 +146,11 @@
 		7EA464EE1E54339C00D3EF27 /* RegisterNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterNextViewController.m; sourceTree = "<group>"; };
 		7EA464F21E54488F00D3EF27 /* AuthFinanPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthFinanPlanViewController.h; sourceTree = "<group>"; };
 		7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthFinanPlanViewController.m; sourceTree = "<group>"; };
+		7EA464F51E55881900D3EF27 /* AuthFinanPlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthFinanPlanModel.h; sourceTree = "<group>"; };
+		7EA464F61E55881900D3EF27 /* AuthFinanPlanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthFinanPlanModel.m; sourceTree = "<group>"; };
+		7EA465341E5A8A7500D3EF27 /* LocationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerView.h; sourceTree = "<group>"; };
+		7EA465351E5A8A7500D3EF27 /* LocationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerView.m; sourceTree = "<group>"; };
+		7EA465371E5A8BB700D3EF27 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		7EBB3C431E272D0100E810DA /* CF360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CF360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBB3C471E272D0100E810DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EBB3C521E272D0100E810DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -390,6 +398,11 @@
 			children = (
 				7EA464F21E54488F00D3EF27 /* AuthFinanPlanViewController.h */,
 				7EA464F31E54488F00D3EF27 /* AuthFinanPlanViewController.m */,
+				7EA464F51E55881900D3EF27 /* AuthFinanPlanModel.h */,
+				7EA464F61E55881900D3EF27 /* AuthFinanPlanModel.m */,
+				7EA465341E5A8A7500D3EF27 /* LocationPickerView.h */,
+				7EA465351E5A8A7500D3EF27 /* LocationPickerView.m */,
+				7EA465371E5A8BB700D3EF27 /* Address.plist */,
 			);
 			path = "理财师认证";
 			sourceTree = "<group>";
@@ -753,6 +766,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA465381E5A8BB700D3EF27 /* Address.plist in Resources */,
 				7EA464CD1E51605C00D3EF27 /* Assets.xcassets in Resources */,
 				7EBB3C561E272D0100E810DA /* LaunchScreen.storyboard in Resources */,
 			);
@@ -884,6 +898,7 @@
 				7EBB3CA41E272D9000E810DA /* NSObject+YHRunTime.m in Sources */,
 				7EBB3CE81E28B41100E810DA /* MessageViewController.m in Sources */,
 				7E30234F1E496DB500DF43E3 /* ProductCommendModel.m in Sources */,
+				7EA464F71E55881900D3EF27 /* AuthFinanPlanModel.m in Sources */,
 				7EBB3CC91E277D6100E810DA /* MyDecFormViewController.m in Sources */,
 				7E32B08E1E348F510014669D /* GTMBase64.m in Sources */,
 				7E3023581E49A18700DF43E3 /* ProductCommendViewCell.m in Sources */,
@@ -909,6 +924,7 @@
 				7EBB3C9F1E272D9000E810DA /* UIView_extra.m in Sources */,
 				7EBB3CAB1E272D9000E810DA /* UIView+YHAddition.m in Sources */,
 				7EA464E31E52B46400D3EF27 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				7EA465361E5A8A7500D3EF27 /* LocationPickerView.m in Sources */,
 				7E3023551E49A17100DF43E3 /* HotProductViewCell.m in Sources */,
 				7E32B07F1E31E89D0014669D /* YangGuangViewController.m in Sources */,
 				7EBB3CC31E277C1200E810DA /* ProductCenterViewController.m in Sources */,

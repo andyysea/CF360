@@ -47,6 +47,16 @@
 #pragma mark - 2.7 下一步注册控制器中 点击立即注册按钮的网络请求
 - (void)loadRegisterAtOnceWithPassword:(NSString *)password nickName:(NSString *)nickName commendPhone:(NSString *)commendPhone selfPhone:(NSString *)selfPhone completionHandler:(void(^)(id responseData, NSError *error))complete;
 
+#pragma mark - 3.1 进入理财师认证控制器,如果已经认证就显示
+- (void)loadAuthFinanPlanerRequestCompletionHandler:(void(^)(id responseData, NSError *error))complete;
+
+#pragma mark - 3.2 理财师认证控制器,上传认证证件图片
+- (void)loadUploadImageWithFilePath:(NSString *)filePath completionHandler:(void(^)(id responseData, NSError *error))complete;
+
+#pragma mark - 3.3 理财师认证控制器,提交认证请求
+- (void)loadCommitAuthFinanPlanerRequestWithBusinessCardName:(NSString *)businessCardName companyName:(NSString *)companyName email:(NSString *)email mobile:(NSString *)mobile realName:(NSString *)realName regionaCity:(NSString *)regionaCity regionaProvince:(NSString *)regionaProvince completionHandler:(void(^)(id responseData, NSError *error))complete;
+
+
 
 @end
 

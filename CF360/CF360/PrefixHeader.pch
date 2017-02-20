@@ -59,9 +59,9 @@
 #define RequestHeader @"http://app.cf360.com"
 
 // 测试
-#define MKRequsetHeader @"192.168.1.82:8083"
+//#define MKRequsetHeader @"192.168.1.82:8083"
 //正式环境 --> MKNetworking
-//#define MKRequsetHeader @"app.cf360.com"
+#define MKRequsetHeader @"app.cf360.com"
 
 
 #endif

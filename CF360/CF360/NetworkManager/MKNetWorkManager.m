@@ -223,6 +223,69 @@
     
 }
 
+#pragma mark - 3.1 进入理财师认证控制器,如果已经认证就显示
+- (void)loadAuthFinanPlanerRequestCompletionHandler:(void(^)(id responseData, NSError *error))complete {
+    
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"token\":\"%@\"}",[Utils getToken]];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/toUserAudit" parameter:des3Str completionHandler:complete];
+}
+
+#pragma mark - 3.2 理财师认证控制器,上传认证证件图片
+- (void)loadUploadImageWithFilePath:(NSString *)filePath completionHandler:(void(^)(id responseData, NSError *error))complete {
+    NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
+    [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
+    [headerFields setValue:@"application/json" forKey:@"Content-Type"];
+    if ([Utils getUserCookie].length) {
+        [headerFields setValue:[Utils getUserCookie] forKey:@"Cookie"];
+    }
+    
+    MKNetworkEngine *engines = [[MKNetworkEngine alloc] initWithHostName:MKRequsetHeader customHeaderFields:headerFields];
+    MKNetworkOperation *op = [engines operationWithPath:@"auditUser/ios/uploadFile" params:nil httpMethod:@"POST" ssl:NO];
+    [op addFile:filePath forKey:@"photo"];
+    [op setFreezable:YES];
+    if (![self isNetCanUse]) {
+        return;
+    }
+    [op addCompletionHandler:^(MKNetworkOperation* completedOperation) {
+        
+        NSString *des3Str = completedOperation.responseString;
+        
+        NSData *data = [des3Str dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error = nil;
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        complete(responseDict, nil);
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        complete(nil, error);
+    }];
+    
+    [engines enqueueOperation:op];
+}
+
+#pragma mark - 3.3 理财师认证控制器,提交认证请求
+- (void)loadCommitAuthFinanPlanerRequestWithBusinessCardName:(NSString *)businessCardName companyName:(NSString *)companyName email:(NSString *)email mobile:(NSString *)mobile realName:(NSString *)realName regionaCity:(NSString *)regionaCity regionaProvince:(NSString *)regionaProvince completionHandler:(void(^)(id responseData, NSError *error))complete {
+    
+    NSString *jsonInput = [NSString stringWithFormat:@"{\"businessCardName\":\"%@\",\"companyName\":\"%@\",\"email\":\"%@\",\"mobile\":\"%@\",\"realName\":\"%@\",\"regionaCity\":\"%@\",\"regionaProvince\":\"%@\",\"token\":\"%@\"}",businessCardName,companyName,email,mobile,realName,regionaCity,regionaProvince,[Utils getToken]];
+    // 加密的签名
+    NSString *md5Str = [jsonInput yh_md5String];
+    NSString *lowermd5Str = [md5Str lowercaseString];
+    NSString *jsonInputStr = [NSString stringWithFormat:@"{\"check\":\"%@\",\"data\":%@}",lowermd5Str,jsonInput];
+    //加密
+    NSString *des3Str = [DES3Util encrypt:jsonInputStr];
+    
+    [self PostEncodeRequestWithPath:@"/ios/user/toAudit" parameter:des3Str completionHandler:complete];
+}
+
+
+
+
 
 
 

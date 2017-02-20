@@ -15,6 +15,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+        ***** 以下属性用 '->' 的表示已经设值 *******
+ */
 @interface UserAccount : NSObject
 
 @property (nonatomic, copy) NSString *realName;
@@ -23,7 +27,7 @@
 @property (nonatomic, copy) NSString *type;//机构或个人
 @property (nonatomic, copy) NSString *status;// ->是否认证
 @property (nonatomic, copy) NSString *statusBX;//保险是否认证
-@property (nonatomic, assign) BOOL isLogin;    // 是否登陆
+@property (nonatomic, assign) BOOL isLogin;    // ->是否登陆
 @property (nonatomic, copy) NSString *isisLogin;
 @property (nonatomic, assign) double allMoney;
 @property (nonatomic, copy) NSString *userId;//userid

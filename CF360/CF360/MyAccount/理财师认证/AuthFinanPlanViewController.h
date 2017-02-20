@@ -14,7 +14,7 @@
 
 @interface AuthFinanPlanViewController : CFBaseViewController
 
-/** 认证者的电话 */
+/** 认证者的电话--> 刚注册时的电话 */
 @property (nonatomic, copy) NSString *phoneStr;
 
 /** 是否显示导航栏右侧的跳过按钮 */

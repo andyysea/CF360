@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,5 +35,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许使用相机?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许访问相册?</string>
 </dict>
 </plist>
