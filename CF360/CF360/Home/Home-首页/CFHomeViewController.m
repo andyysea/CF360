@@ -238,6 +238,7 @@ static NSString *commendCellId = @"productCommendCellId";
         }
         
         NSDictionary *dict = responseData;
+        NSLog(@"--> %@",dict);
         if ([dict[@"code"] isEqualToString:@"0000"]) {
             [ProgressHUD dismiss];
             
@@ -303,16 +304,14 @@ static NSString *commendCellId = @"productCommendCellId";
         NSArray *contentArray = self.productCommendArray[section];
         ProductCommendModel *model = contentArray[0];
         NSString *sectionName = @"";
-        if ([model.CATEGORY isEqualToString:@"xt"]) {
-            sectionName = @"信托";
-        } else if ([model.CATEGORY isEqualToString:@"zg"]) {
-            sectionName = @"资管";
-        } else if ([model.CATEGORY isEqualToString:@"ygsm"]) {
+       if ([model.CATEGORY isEqualToString:@"ygsm"]) {
             sectionName = @"阳光私募";
         } else if ([model.CATEGORY isEqualToString:@"smgq"]) {
             sectionName = @"私募股权";
         } else if ([model.CATEGORY isEqualToString:@"bx"]) {
             sectionName = @"保险";
+        } else {
+            sectionName = model.CATEGORY;
         }
         headerLabel.text =  sectionName;
         [customView addSubview:headerLabel];

@@ -165,7 +165,6 @@
     UILabel *productNameLabel = [[UILabel alloc] init];
     productNameLabel.font = [UIFont systemFontOfSize:16];
     productNameLabel.text = @"乐视体育";
-    [productNameLabel sizeToFit];
     [bgView addSubview:productNameLabel];
     
     [productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,7 +180,6 @@
     saleTypeLabel.layer.cornerRadius = 3;
     saleTypeLabel.layer.masksToBounds = YES;
     saleTypeLabel.text = @"分销";
-    [saleTypeLabel sizeToFit];
     [bgView addSubview:saleTypeLabel];
     
     [saleTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,7 +195,6 @@
     hotSaleLabel.layer.cornerRadius = 3;
     hotSaleLabel.layer.masksToBounds = YES;
     hotSaleLabel.text = @"热销";
-    [hotSaleLabel sizeToFit];
     [bgView addSubview:hotSaleLabel];
     
     [hotSaleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -213,7 +210,6 @@
     commendLabel.layer.cornerRadius = 3;
     commendLabel.layer.masksToBounds = YES;
     commendLabel.text = @"推荐";
-    [commendLabel sizeToFit];
     [bgView addSubview:commendLabel];
     
     [commendLabel mas_makeConstraints:^(MASConstraintMaker *make) {
